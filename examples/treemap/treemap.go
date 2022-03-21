@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/qauzy/gods/maps/treemap"
+import "github.com/qauzy/util/maps/treemap"
 
 // TreeMapExample to demonstrate basic usage of TreeMap
 func main() {

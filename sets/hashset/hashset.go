@@ -11,7 +11,7 @@ package hashset
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/sets"
+	"github.com/qauzy/util/sets"
 	"strings"
 )
 

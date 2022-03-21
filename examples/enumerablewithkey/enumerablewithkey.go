@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/maps/treemap"
+	"github.com/qauzy/util/maps/treemap"
 )
 
 func printMap(txt string, m *treemap.Map) {

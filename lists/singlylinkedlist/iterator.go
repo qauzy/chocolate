@@ -4,7 +4,7 @@
 
 package singlylinkedlist
 
-import "github.com/qauzy/gods/containers"
+import "github.com/qauzy/util/containers"
 
 func assertIteratorImplementation() {
 	var _ containers.IteratorWithIndex = (*Iterator)(nil)

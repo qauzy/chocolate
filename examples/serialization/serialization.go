@@ -2,8 +2,8 @@ package serialization
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/lists/arraylist"
-	"github.com/qauzy/gods/maps/hashmap"
+	"github.com/qauzy/util/lists/arraylist"
+	"github.com/qauzy/util/maps/hashmap"
 )
 
 // ListSerializationExample demonstrates how to serialize and deserialize lists to and from JSON

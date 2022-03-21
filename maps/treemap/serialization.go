@@ -4,7 +4,7 @@
 
 package treemap
 
-import "github.com/qauzy/gods/containers"
+import "github.com/qauzy/util/containers"
 
 func assertSerializationImplementation() {
 	var _ containers.JSONSerializer = (*Map)(nil)

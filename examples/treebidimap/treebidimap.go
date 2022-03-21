@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/qauzy/gods/maps/treebidimap"
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/maps/treebidimap"
+	"github.com/qauzy/util/utils"
 )
 
 // TreeBidiMapExample to demonstrate basic usage of TreeBidiMap

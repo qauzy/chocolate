@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/utils"
 )
 
 //func assertListImplementation() {

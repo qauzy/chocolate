@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/qauzy/gods/sets/hashset"
+import "github.com/qauzy/util/sets/hashset"
 
 // HashSetExample to demonstrate basic usage of HashSet
 func main() {

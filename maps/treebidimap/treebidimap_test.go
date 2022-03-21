@@ -6,7 +6,7 @@ package treebidimap
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/utils"
 	"testing"
 )
 

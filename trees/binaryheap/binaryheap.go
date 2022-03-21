@@ -13,9 +13,9 @@ package binaryheap
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/lists/arraylist"
-	"github.com/qauzy/gods/trees"
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/lists/arraylist"
+	"github.com/qauzy/util/trees"
+	"github.com/qauzy/util/utils"
 	"strings"
 )
 

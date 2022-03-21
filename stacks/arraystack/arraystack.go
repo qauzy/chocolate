@@ -11,7 +11,7 @@ package arraystack
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/lists/arraylist"
+	"github.com/qauzy/util/lists/arraylist"
 	"strings"
 )
 

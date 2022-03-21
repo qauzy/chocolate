@@ -13,9 +13,9 @@ package treemap
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/maps"
-	rbt "github.com/qauzy/gods/trees/redblacktree"
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/maps"
+	rbt "github.com/qauzy/util/trees/redblacktree"
+	"github.com/qauzy/util/utils"
 	"strings"
 )
 

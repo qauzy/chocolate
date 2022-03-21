@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	rbt "github.com/qauzy/gods/trees/redblacktree"
+	rbt "github.com/qauzy/util/trees/redblacktree"
 )
 
 // RedBlackTreeExample to demonstrate basic usage of RedBlackTree

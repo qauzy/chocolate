@@ -7,8 +7,8 @@ package linkedhashmap
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/qauzy/gods/containers"
-	"github.com/qauzy/gods/utils"
+	"github.com/qauzy/util/containers"
+	"github.com/qauzy/util/utils"
 )
 
 func assertSerializationImplementation() {

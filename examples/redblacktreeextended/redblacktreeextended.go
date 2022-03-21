@@ -6,7 +6,7 @@ package redblacktreeextended
 
 import (
 	"fmt"
-	rbt "github.com/qauzy/gods/trees/redblacktree"
+	rbt "github.com/qauzy/util/trees/redblacktree"
 )
 
 // RedBlackTreeExtended to demonstrate how to extend a RedBlackTree to include new functions

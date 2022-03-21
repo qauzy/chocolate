@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/sets/treeset"
+	"github.com/qauzy/util/sets/treeset"
 )
 
 func printSet(txt string, set *treeset.Set) {

@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	avl "github.com/qauzy/gods/trees/avltree"
+	avl "github.com/qauzy/util/trees/avltree"
 )
 
 // AVLTreeExample to demonstrate basic usage of AVLTree

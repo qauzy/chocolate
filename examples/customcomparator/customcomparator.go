@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/gods/sets/treeset"
+	"github.com/qauzy/util/sets/treeset"
 )
 
 // User model (id and name)
