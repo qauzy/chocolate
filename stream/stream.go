@@ -28,7 +28,7 @@ func Of[T any](arrs ...T) *Stream[T] {
 }
 
 func (s *Stream[T]) Filter(fn func(each T) bool) *Stream[T] {
-	list := make([]T, 0, len(s.list))
+	var list []T
 	for _, x := range s.list {
 		if fn(x) {
 			list = append(list, x)

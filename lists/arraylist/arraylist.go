@@ -11,6 +11,7 @@ package arraylist
 
 import (
 	"fmt"
+	"github.com/qauzy/util/stream"
 	"strings"
 
 	"github.com/qauzy/util/utils"
@@ -124,6 +125,10 @@ func (list *List[T]) Empty() bool {
 // Size returns number of elements within the list.
 func (list *List[T]) Size() int {
 	return list.size
+}
+
+func (list *List[T]) Stream() *stream.Stream[T] {
+	return stream.Of[T](list.elements)
 }
 
 // Clear removes all elements from the list.

@@ -67,6 +67,11 @@ func (m *Map[K, V]) Keys() []K {
 	return keys
 }
 
+func (m *Map[K, V]) ContainsKey(key K) bool {
+	_, ok := m.m[key]
+	return ok
+}
+
 // Values returns all values (random order).
 func (m *Map[K, V]) Values() []V {
 	values := make([]V, m.Size())

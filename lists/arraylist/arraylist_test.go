@@ -6,18 +6,19 @@ package arraylist
 
 import (
 	"fmt"
-	"github.com/qauzy/util/utils"
 	"testing"
+
+	"github.com/qauzy/util/utils"
 )
 
 func TestListNew(t *testing.T) {
-	list1 := New()
+	list1 := New[string]()
 
 	if actualValue := list1.Empty(); actualValue != true {
 		t.Errorf("Got %v expected %v", actualValue, true)
 	}
 
-	list2 := New(1, "b")
+	list2 := New[string](1, "b")
 
 	if actualValue := list2.Size(); actualValue != 2 {
 		t.Errorf("Got %v expected %v", actualValue, 2)
@@ -37,7 +38,7 @@ func TestListNew(t *testing.T) {
 }
 
 func TestListAdd(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	if actualValue := list.Empty(); actualValue != false {
@@ -52,7 +53,7 @@ func TestListAdd(t *testing.T) {
 }
 
 func TestListIndexOf(t *testing.T) {
-	list := New()
+	list := New[string]()
 
 	expectedIndex := -1
 	if index := list.IndexOf("a"); index != expectedIndex {
@@ -79,11 +80,11 @@ func TestListIndexOf(t *testing.T) {
 }
 
 func TestListRemove(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	list.Remove(2)
-	if actualValue, ok := list.Get(2); actualValue != nil || ok {
+	if actualValue, ok := list.Get(2); actualValue != "" || ok {
 		t.Errorf("Got %v expected %v", actualValue, nil)
 	}
 	list.Remove(1)
@@ -98,7 +99,7 @@ func TestListRemove(t *testing.T) {
 }
 
 func TestListGet(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	if actualValue, ok := list.Get(0); actualValue != "a" || !ok {
@@ -110,7 +111,7 @@ func TestListGet(t *testing.T) {
 	if actualValue, ok := list.Get(2); actualValue != "c" || !ok {
 		t.Errorf("Got %v expected %v", actualValue, "c")
 	}
-	if actualValue, ok := list.Get(3); actualValue != nil || ok {
+	if actualValue, ok := list.Get(3); actualValue != "" || ok {
 		t.Errorf("Got %v expected %v", actualValue, nil)
 	}
 	list.Remove(0)
@@ -120,7 +121,7 @@ func TestListGet(t *testing.T) {
 }
 
 func TestListSwap(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	list.Swap(0, 1)
@@ -130,21 +131,21 @@ func TestListSwap(t *testing.T) {
 }
 
 func TestListSort(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Sort(utils.StringComparator)
 	list.Add("e", "f", "g", "a", "b", "c", "d")
 	list.Sort(utils.StringComparator)
 	for i := 1; i < list.Size(); i++ {
 		a, _ := list.Get(i - 1)
 		b, _ := list.Get(i)
-		if a.(string) > b.(string) {
+		if a > b {
 			t.Errorf("Not sorted! %s > %s", a, b)
 		}
 	}
 }
 
 func TestListClear(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("e", "f", "g", "a", "b", "c", "d")
 	list.Clear()
 	if actualValue := list.Empty(); actualValue != true {
@@ -156,7 +157,7 @@ func TestListClear(t *testing.T) {
 }
 
 func TestListContains(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	if actualValue := list.Contains("a"); actualValue != true {
@@ -178,7 +179,7 @@ func TestListContains(t *testing.T) {
 }
 
 func TestListValues(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a")
 	list.Add("b", "c")
 	if actualValue, expectedValue := fmt.Sprintf("%s%s%s", list.Values()...), "abc"; actualValue != expectedValue {
@@ -187,7 +188,7 @@ func TestListValues(t *testing.T) {
 }
 
 func TestListInsert(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Insert(0, "b", "c")
 	list.Insert(0, "a")
 	list.Insert(10, "x") // ignore
@@ -204,7 +205,7 @@ func TestListInsert(t *testing.T) {
 }
 
 func TestListSet(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Set(0, "a")
 	list.Set(1, "b")
 	if actualValue := list.Size(); actualValue != 2 {
@@ -225,7 +226,7 @@ func TestListSet(t *testing.T) {
 }
 
 func TestListEach(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	list.Each(func(index int, value interface{}) {
 		switch index {
@@ -248,7 +249,7 @@ func TestListEach(t *testing.T) {
 }
 
 func TestListMap(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	mappedList := list.Map(func(index int, value interface{}) interface{} {
 		return "mapped: " + value.(string)
@@ -268,7 +269,7 @@ func TestListMap(t *testing.T) {
 }
 
 func TestListSelect(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	selectedList := list.Select(func(index int, value interface{}) bool {
 		return value.(string) >= "a" && value.(string) <= "b"
@@ -285,7 +286,7 @@ func TestListSelect(t *testing.T) {
 }
 
 func TestListAny(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	any := list.Any(func(index int, value interface{}) bool {
 		return value.(string) == "c"
@@ -301,7 +302,7 @@ func TestListAny(t *testing.T) {
 	}
 }
 func TestListAll(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	all := list.All(func(index int, value interface{}) bool {
 		return value.(string) >= "a" && value.(string) <= "c"
@@ -317,7 +318,7 @@ func TestListAll(t *testing.T) {
 	}
 }
 func TestListFind(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	foundIndex, foundValue := list.Find(func(index int, value interface{}) bool {
 		return value.(string) == "c"
@@ -333,7 +334,7 @@ func TestListFind(t *testing.T) {
 	}
 }
 func TestListChaining(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	chainedList := list.Select(func(index int, value interface{}) bool {
 		return value.(string) > "a"
@@ -352,7 +353,7 @@ func TestListChaining(t *testing.T) {
 }
 
 func TestListIteratorNextOnEmpty(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 	for it.Next() {
 		t.Errorf("Shouldn't iterate on empty list")
@@ -360,7 +361,7 @@ func TestListIteratorNextOnEmpty(t *testing.T) {
 }
 
 func TestListIteratorNext(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	it := list.Iterator()
 	count := 0
@@ -391,7 +392,7 @@ func TestListIteratorNext(t *testing.T) {
 }
 
 func TestListIteratorPrevOnEmpty(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 	for it.Prev() {
 		t.Errorf("Shouldn't iterate on empty list")
@@ -399,7 +400,7 @@ func TestListIteratorPrevOnEmpty(t *testing.T) {
 }
 
 func TestListIteratorPrev(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 	it := list.Iterator()
 	for it.Next() {
@@ -432,7 +433,7 @@ func TestListIteratorPrev(t *testing.T) {
 }
 
 func TestListIteratorBegin(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 	it.Begin()
 	list.Add("a", "b", "c")
@@ -446,7 +447,7 @@ func TestListIteratorBegin(t *testing.T) {
 }
 
 func TestListIteratorEnd(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 
 	if index := it.Index(); index != -1 {
@@ -471,7 +472,7 @@ func TestListIteratorEnd(t *testing.T) {
 }
 
 func TestListIteratorFirst(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 	if actualValue, expectedValue := it.First(), false; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
@@ -486,7 +487,7 @@ func TestListIteratorFirst(t *testing.T) {
 }
 
 func TestListIteratorLast(t *testing.T) {
-	list := New()
+	list := New[string]()
 	it := list.Iterator()
 	if actualValue, expectedValue := it.Last(), false; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
@@ -501,7 +502,7 @@ func TestListIteratorLast(t *testing.T) {
 }
 
 func TestListSerialization(t *testing.T) {
-	list := New()
+	list := New[string]()
 	list.Add("a", "b", "c")
 
 	var err error
@@ -553,7 +554,7 @@ func benchmarkRemove(b *testing.B, list *List, size int) {
 func BenchmarkArrayListGet100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -564,7 +565,7 @@ func BenchmarkArrayListGet100(b *testing.B) {
 func BenchmarkArrayListGet1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -575,7 +576,7 @@ func BenchmarkArrayListGet1000(b *testing.B) {
 func BenchmarkArrayListGet10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -586,7 +587,7 @@ func BenchmarkArrayListGet10000(b *testing.B) {
 func BenchmarkArrayListGet100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -597,7 +598,7 @@ func BenchmarkArrayListGet100000(b *testing.B) {
 func BenchmarkArrayListAdd100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	list := New()
+	list := New[int]()
 	b.StartTimer()
 	benchmarkAdd(b, list, size)
 }
@@ -605,7 +606,7 @@ func BenchmarkArrayListAdd100(b *testing.B) {
 func BenchmarkArrayListAdd1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -616,7 +617,7 @@ func BenchmarkArrayListAdd1000(b *testing.B) {
 func BenchmarkArrayListAdd10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -627,7 +628,7 @@ func BenchmarkArrayListAdd10000(b *testing.B) {
 func BenchmarkArrayListAdd100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -638,7 +639,7 @@ func BenchmarkArrayListAdd100000(b *testing.B) {
 func BenchmarkArrayListRemove100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -649,7 +650,7 @@ func BenchmarkArrayListRemove100(b *testing.B) {
 func BenchmarkArrayListRemove1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -660,7 +661,7 @@ func BenchmarkArrayListRemove1000(b *testing.B) {
 func BenchmarkArrayListRemove10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}
@@ -671,7 +672,7 @@ func BenchmarkArrayListRemove10000(b *testing.B) {
 func BenchmarkArrayListRemove100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	list := New()
+	list := New[int]()
 	for n := 0; n < size; n++ {
 		list.Add(n)
 	}

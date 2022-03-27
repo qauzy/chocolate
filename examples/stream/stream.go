@@ -36,7 +36,12 @@ func main() {
 		fmt.Printf("内置 Name=%v,Age=%v\n", each.Name, each.Age)
 	})
 
-	ss.Map(ABC.GetAge)
+	fmt.Println("=================================================")
+	ss.Filter(func(v *ABC) bool {
+		return v.Name == "bb"
+	}).ForEach(func(each *ABC) {
+		fmt.Printf("内置 Name=%v,Age=%v\n", each.Name, each.Age)
+	})
 
 }
 
