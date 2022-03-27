@@ -4,7 +4,10 @@
 
 package main
 
-import "github.com/qauzy/util/sets/hashset"
+import (
+	"fmt"
+	"github.com/qauzy/util/sets/hashset"
+)
 
 // HashSetExample to demonstrate basic usage of HashSet
 func main() {
@@ -16,7 +19,7 @@ func main() {
 	set.Contains(1)           // true
 	set.Contains(1, 5)        // true
 	set.Contains(1, 6)        // false
-	_ = set.Values()          // []int{5,1} (random order)
+	fmt.Println(set.Values()) // []int{5,1} (random order)
 	set.Clear()               // empty
 	set.Empty()               // true
 	set.Size()                // 0

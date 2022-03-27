@@ -12,6 +12,7 @@ package hashset
 import (
 	"fmt"
 	"github.com/qauzy/util/sets"
+	"github.com/qauzy/util/stream"
 	"strings"
 )
 
@@ -40,6 +41,13 @@ func (set *Set[T]) Add(items ...T) {
 	for _, item := range items {
 		set.items[item] = itemExists
 	}
+}
+func (set *Set[T]) Stream() *stream.Stream[T] {
+	var list []T
+	for k, _ := range set.items {
+		list = append(list, k)
+	}
+	return stream.Of[T](list...)
 }
 
 // Remove removes the items (one or more) from the set.
