@@ -18,6 +18,18 @@ import (
 //func assertMapImplementation() {
 //	var _ maps.Map = (*Map)(nil)
 //}
+type Entry[K comparable, V any] struct {
+	k K
+	v V
+}
+
+func (e *Entry[K, V]) GetKey() K {
+	return e.k
+}
+
+func (e *Entry[K, V]) GetValue() V {
+	return e.v
+}
 
 // Map holds the elements in go's native map
 type Map[K comparable, V any] struct {
@@ -32,6 +44,20 @@ func New[K comparable, V any]() *Map[K, V] {
 // Put inserts element into the map.
 func (m *Map[K, V]) Put(key K, value V) {
 	m.m[key] = value
+}
+
+func (m *Map[K, V]) PutAll(data *Map[K, V]){
+	for _,entry := range data.EntrySet(){
+		m.Put(entry.GetKey(),entry.GetValue())
+	}
+}
+
+func (m *Map[K, V]) EntrySet() []Entry[K, V] {
+	var entry []Entry[K, V]
+	for kk, vv := range m.m {
+		entry = append(entry, Entry[K, V]{kk, vv})
+	}
+	return entry
 }
 
 // Get searches the element in the map by key and returns its value or nil if key is not found in map.
@@ -66,6 +92,8 @@ func (m *Map[K, V]) Keys() []K {
 	}
 	return keys
 }
+
+PutAll
 
 func (m *Map[K, V]) ContainsKey(key K) bool {
 	_, ok := m.m[key]
