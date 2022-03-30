@@ -3,6 +3,7 @@ package LocalDateTime
 import (
 	"database/sql/driver"
 	"errors"
+	"fmt"
 	"github.com/qauzy/util/timex/LocalDate"
 	"time"
 )
@@ -86,15 +87,37 @@ func (t *LocalDateTime) Scan(v interface{}) error {
 	switch vt := v.(type) {
 	case string:
 		// 字符串转成 timex.Time 类型
-		tTime, _ := time.Parse(dateTimeFormart, vt)
+		tTime, _ := time.ParseInLocation(dateTimeFormart, vt, GetBjTimeLoc())
 		*t = LocalDateTime(tTime)
 	case []byte:
-		tTime, _ := time.Parse(dateTimeFormart, string(vt))
+		tTime, _ := time.ParseInLocation(dateTimeFormart, string(vt), GetBjTimeLoc())
 		*t = LocalDateTime(tTime)
+	case time.Time:
+		*t = LocalDateTime(vt)
 	default:
-		return errors.New("类型处理错误")
+		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
 	}
 	return nil
+}
+func (t LocalDateTime) After(t2 LocalDateTime) bool {
+	// MyTime 转换成 timex.Time 类型
+	time1 := time.Time(t)
+	time2 := time.Time(t2)
+	return time1.After(time2)
+}
+
+func (t LocalDateTime) Before(t2 LocalDateTime) bool {
+	// MyTime 转换成 timex.Time 类型
+	time1 := time.Time(t)
+	time2 := time.Time(t2)
+	return time1.Before(time2)
+}
+
+func (t LocalDateTime) Equal(t2 LocalDateTime) bool {
+	// MyTime 转换成 timex.Time 类型
+	time1 := time.Time(t)
+	time2 := time.Time(t2)
+	return time1.Equal(time2)
 }
 func (t LocalDateTime) ToLocalDate() *LocalDate.LocalDate {
 	// MyTime 转换成 timex.Time 类型
