@@ -63,6 +63,10 @@ func (t *List[T]) Scan(v interface{}) error {
 	switch vt := v.(type) {
 	case []T:
 		t = New(vt...)
+	case []byte:
+		return t.UnmarshalJSON(vt)
+	case string:
+		return t.UnmarshalJSON([]byte(vt))
 	default:
 		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
 	}
