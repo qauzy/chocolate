@@ -10,11 +10,13 @@
 package arraylist
 
 import (
+	"database/sql/driver"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/qauzy/util/stream"
-	"strings"
-
 	"github.com/qauzy/util/utils"
+	"strings"
 )
 
 //func assertListImplementation() {
@@ -39,6 +41,32 @@ func New[TP comparable](values ...TP) *List[TP] {
 		list.Add(values...)
 	}
 	return list
+}
+
+func (t *List[T]) UnmarshalJSON(data []byte) (err error) {
+	err = json.Unmarshal(data, &t.elements)
+	if err != nil {
+		return
+	}
+	t.size = len(t.elements)
+	return
+}
+func (t List[T]) MarshalJSON() ([]byte, error) {
+	return json.Marshal(t.elements)
+}
+
+func (t List[T]) Value() (driver.Value, error) {
+	return t.elements, nil
+}
+
+func (t *List[T]) Scan(v interface{}) error {
+	switch vt := v.(type) {
+	case []T:
+		t = New(vt...)
+	default:
+		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
+	}
+	return nil
 }
 
 // Add appends a value at the end of the list
