@@ -63,11 +63,15 @@ func (t *List[T]) Scan(v interface{}) error {
 	switch vt := v.(type) {
 	case []T:
 		t = New(vt...)
+		fmt.Println("*************")
 	case []byte:
+		fmt.Println("=======111=========")
 		return t.UnmarshalJSON(vt)
 	case string:
+		fmt.Println("=======2222=========")
 		return t.UnmarshalJSON([]byte(vt))
 	default:
+		fmt.Println("11=======111=========")
 		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
 	}
 	return nil
@@ -136,6 +140,10 @@ func (list *List[T]) Values() []T {
 	return newElements
 }
 
+func (list *List[T]) GetElements() []T {
+	return list.elements
+}
+
 //IndexOf returns index of provided element
 func (list *List[T]) IndexOf(value T) int {
 	if list.size == 0 {
@@ -160,7 +168,7 @@ func (list *List[T]) Size() int {
 }
 
 func (list *List[T]) Stream() *stream.Stream[T] {
-	return stream.Of[T](list.elements)
+	return stream.Of[T](list.elements...)
 }
 
 // Clear removes all elements from the list.
