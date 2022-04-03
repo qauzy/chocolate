@@ -32,7 +32,7 @@ func main() {
 	even := m.Select(func(key interface{}, value interface{}) bool {
 		return value.(int)%2 == 0
 	})
-	printMap("Elements with even values", even) // { b:2 d:4 f:6 }
+	printMap("elements with even values", even) // { b:2 d:4 f:6 }
 
 	foundKey, foundValue := m.Find(func(key interface{}, value interface{}) bool {
 		return value.(int)%2 == 0 && value.(int)%3 == 0
@@ -44,7 +44,7 @@ func main() {
 	square := m.Map(func(key interface{}, value interface{}) (interface{}, interface{}) {
 		return key.(string) + key.(string), value.(int) * value.(int)
 	})
-	printMap("Elements' values squared and letters duplicated", square) // { aa:1 bb:4 cc:9 dd:16 ee:25 ff:36 gg:49 }
+	printMap("elements' values squared and letters duplicated", square) // { aa:1 bb:4 cc:9 dd:16 ee:25 ff:36 gg:49 }
 
 	bigger := m.Any(func(key interface{}, value interface{}) bool {
 		return value.(int) > 5

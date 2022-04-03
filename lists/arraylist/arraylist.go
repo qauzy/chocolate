@@ -10,9 +10,6 @@
 package arraylist
 
 import (
-	"database/sql/driver"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/qauzy/util/stream"
 	"github.com/qauzy/util/utils"
@@ -23,11 +20,8 @@ import (
 //	var _ *lists.List = (*List)(nil)
 //}
 
-// List holds the elements in a slice
-type List[T comparable] struct {
-	elements []T
-	size     int
-}
+// List holds the Elements in a slice
+type List[T comparable] []T
 
 const (
 	growthFactor = float32(2.0)  // growth by 100%
@@ -35,92 +29,84 @@ const (
 )
 
 //New instantiates a new list and adds the passed values, if any, to the list
-func New[TP comparable](values ...TP) *List[TP] {
-	list := &List[TP]{}
+func New[TP comparable](values ...TP) List[TP] {
+	list := List[TP]{}
 	if len(values) > 0 {
 		list.Add(values...)
 	}
 	return list
 }
 
-func (t *List[T]) UnmarshalJSON(data []byte) (err error) {
-	err = json.Unmarshal(data, &t.elements)
-	if err != nil {
-		return
-	}
-	t.size = len(t.elements)
-	return
-}
-func (t List[T]) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.elements)
-}
+//
+//func (t *List[T]) UnmarshalJSON(data []byte) (err error) {
+//	err = json.Unmarshal(data, &t.Elements)
+//	if err != nil {
+//		return
+//	}
+//	t.size = len(t.Elements)
+//	return
+//}
+//func (t List[T]) MarshalJSON() ([]byte, error) {
+//	return json.Marshal(t.Elements)
+//}
 
-func (t List[T]) Value() (driver.Value, error) {
-	return t.elements, nil
-}
-
-func (t *List[T]) Scan(v interface{}) error {
-	switch vt := v.(type) {
-	case []T:
-		t = New(vt...)
-		fmt.Println("*************")
-	case []byte:
-		fmt.Println("=======111=========")
-		return t.UnmarshalJSON(vt)
-	case string:
-		fmt.Println("=======2222=========")
-		return t.UnmarshalJSON([]byte(vt))
-	default:
-		fmt.Println("11=======111=========")
-		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
-	}
-	return nil
-}
+//func (t List[T]) Value() (driver.Value, error) {
+//	return t.Elements, nil
+//}
+//
+//func (t *List[T]) Scan(v interface{}) error {
+//	switch vt := v.(type) {
+//	case []T:
+//		t = New(vt...)
+//	case []byte:
+//		return t.UnmarshalJSON(vt)
+//	case string:
+//		return t.UnmarshalJSON([]byte(vt))
+//	default:
+//		return errors.New(fmt.Sprintf("类型处理错误,%v", v))
+//	}
+//	return nil
+//}
 
 // Add appends a value at the end of the list
-func (list *List[T]) Add(values ...T) {
-	list.growBy(len(values))
+func (list List[T]) Add(values ...T) {
 	for _, value := range values {
-		list.elements[list.size] = value
-		list.size++
+		list = append(list, value)
 	}
 }
 
 // Get returns the element at index.
 // Second return parameter is true if index is within bounds of the array and array is not empty, otherwise false.
-func (list *List[T]) Get(index int) (T, bool) {
+func (list List[T]) Get(index int) (T, bool) {
 
 	if !list.withinRange(index) {
-		t := new(T)
-		return *t, false
+		var t T
+		return t, false
 	}
-
-	return list.elements[index], true
+	return list[index], true
 }
 
 // Remove removes the element at the given index from the list.
-func (list *List[T]) Remove(index int) {
+func (list List[T]) Remove(index int) {
 
 	if !list.withinRange(index) {
 		return
 	}
 
-	//list.elements[index] =                                    // cleanup reference
-	copy(list.elements[index:], list.elements[index+1:list.size]) // shift to the left by one (slow operation, need ways to optimize this)
-	list.size--
+	//list.Elements[index] =                                    // cleanup reference
+	copy(list[index:], list[index+1:]) // shift to the left by one (slow operation, need ways to optimize this)
 
-	list.shrink()
 }
 
-// Contains checks if elements (one or more) are present in the set.
-// All elements have to be present in the set for the method to return true.
+// Contains checks if Elements (one or more) are present in the set.
+// All Elements have to be present in the set for the method to return true.
 // Performance time complexity of n^2.
 // Returns true if no arguments are passed at all, i.e. set is always super-set of empty set.
-func (list *List[T]) Contains(values ...T) bool {
+func (list List[T]) Contains(values ...T) bool {
 
 	for _, searchValue := range values {
 		found := false
-		for _, element := range list.elements {
+		for _, element := range list {
 			if element == searchValue {
 				found = true
 				break
@@ -133,23 +119,18 @@ func (list *List[T]) Contains(values ...T) bool {
 	return true
 }
 
-// Values returns all elements in the list.
-func (list *List[T]) Values() []T {
-	newElements := make([]T, list.size, list.size)
-	copy(newElements, list.elements[:list.size])
-	return newElements
-}
+// Values returns all Elements in the list.
+func (list List[T]) Values() []T {
 
-func (list *List[T]) GetElements() []T {
-	return list.elements
+	return []T(list)
 }
 
 //IndexOf returns index of provided element
-func (list *List[T]) IndexOf(value T) int {
-	if list.size == 0 {
+func (list List[T]) IndexOf(value T) int {
+	if len(list) == 0 {
 		return -1
 	}
-	for index, element := range list.elements {
+	for index, element := range list {
 		if element == value {
 			return index
 		}
@@ -157,82 +138,80 @@ func (list *List[T]) IndexOf(value T) int {
 	return -1
 }
 
-// Empty returns true if list does not contain any elements.
-func (list *List[T]) Empty() bool {
-	return list.size == 0
+// Empty returns true if list does not contain any Elements.
+func (list List[T]) Empty() bool {
+	return len(list) == 0
 }
 
-// Size returns number of elements within the list.
-func (list *List[T]) Size() int {
-	return list.size
+// Size returns number of Elements within the list.
+func (list List[T]) Size() int {
+	return len(list)
 }
 
-func (list *List[T]) Stream() *stream.Stream[T] {
-	return stream.Of[T](list.elements...)
+func (list List[T]) Stream() *stream.Stream[T] {
+	return stream.Of[T](list...)
 }
 
-// Clear removes all elements from the list.
-func (list *List[T]) Clear() {
-	list.size = 0
-	list.elements = []T{}
+// Clear removes all Elements from the list.
+func (list List[T]) Clear() {
+	list = make(List[T], 0)
 }
 
 // Sort sorts values (in-place) using.
-func (list *List[T]) Sort(comparator utils.Comparator) {
-	if len(list.elements) < 2 {
+func (list List[T]) Sort(comparator utils.Comparator) {
+	if len(list) < 2 {
 		return
 	}
-	utils.Sort(list.elements[:list.size], comparator)
+	utils.Sort(list, comparator)
 }
 
 // Swap swaps the two values at the specified positions.
-func (list *List[T]) Swap(i, j int) {
+func (list List[T]) Swap(i, j int) {
 	if list.withinRange(i) && list.withinRange(j) {
-		list.elements[i], list.elements[j] = list.elements[j], list.elements[i]
+		list[i], list[j] = list[j], list[i]
 	}
 }
 
-// Insert inserts values at specified index position shifting the value at that position (if any) and any subsequent elements to the right.
+// Insert inserts values at specified index position shifting the value at that position (if any) and any subsequent Elements to the right.
 // Does not do anything if position is negative or bigger than list's size
 // Note: position equal to list's size is valid, i.e. append.
-func (list *List[T]) Insert(index int, values ...T) {
+func (list List[T]) Insert(index int, values ...T) {
 
 	if !list.withinRange(index) {
 		// Append
-		if index == list.size {
+		if index == len(list) {
 			list.Add(values...)
 		}
 		return
 	}
 
 	l := len(values)
-	list.growBy(l)
-	list.size += l
-	copy(list.elements[index+l:], list.elements[index:list.size-l])
-	copy(list.elements[index:], values)
+	copy(list[index+l:], list[index:len(list)-l])
+	copy(list[index:], values)
 }
 
 // Set the value at specified index
 // Does not do anything if position is negative or bigger than list's size
 // Note: position equal to list's size is valid, i.e. append.
-func (list *List[T]) Set(index int, value T) {
+func (list List[T]) Set(index int, value T) {
 
 	if !list.withinRange(index) {
 		// Append
-		if index == list.size {
+		for index >= len(list) {
 			list.Add(value)
 		}
+
 		return
 	}
 
-	list.elements[index] = value
+	list[index] = value
 }
 
 // String returns a string representation of container
-func (list *List[T]) String() string {
+func (list List[T]) String() string {
 	str := "ArrayList\n"
 	values := []string{}
-	for _, value := range list.elements[:list.size] {
+	for _, value := range list {
 		values = append(values, fmt.Sprintf("%v", value))
 	}
 	str += strings.Join(values, ", ")
@@ -240,34 +219,6 @@ func (list *List[T]) String() string {
 }
 
 // Check that the index is within bounds of the list
-func (list *List[T]) withinRange(index int) bool {
-	return index >= 0 && index < list.size
-}
-
-func (list *List[T]) resize(cap int) {
-	newElements := make([]T, cap, cap)
-	copy(newElements, list.elements)
-	list.elements = newElements
-}
-
-// Expand the array if necessary, i.e. capacity will be reached if we add n elements
-func (list *List[T]) growBy(n int) {
-	// When capacity is reached, grow by a factor of growthFactor and add number of elements
-	currentCapacity := cap(list.elements)
-	if list.size+n >= currentCapacity {
-		newCapacity := int(growthFactor * float32(currentCapacity+n))
-		list.resize(newCapacity)
-	}
-}
-
-// Shrink the array if necessary, i.e. when size is shrinkFactor percent of current capacity
-func (list *List[T]) shrink() {
-	if shrinkFactor == 0.0 {
-		return
-	}
-	// Shrink when size is at shrinkFactor * capacity
-	currentCapacity := cap(list.elements)
-	if list.size <= int(float32(currentCapacity)*shrinkFactor) {
-		list.resize(list.size)
-	}
+func (list List[T]) withinRange(index int) bool {
+	return index >= 0 && index < len(list)
 }

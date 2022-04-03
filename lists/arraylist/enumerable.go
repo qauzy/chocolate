@@ -27,7 +27,7 @@ func (list *List[T]) Map(f func(index int, value T) T) *List[T] {
 	return newList
 }
 
-// Select returns a new container containing all elements for which the given function returns a true value.
+// Select returns a new container containing all Elements for which the given function returns a true value.
 func (list *List[T]) Select(f func(index int, value T) bool) *List[T] {
 	newList := &List[T]{}
 	iterator := list.Iterator()
@@ -52,7 +52,7 @@ func (list *List[T]) Any(f func(index int, value T) bool) bool {
 }
 
 // All passes each element of the collection to the given function and
-// returns true if the function returns true for all elements.
+// returns true if the function returns true for all Elements.
 func (list *List[T]) All(f func(index int, value T) bool) bool {
 	iterator := list.Iterator()
 	for iterator.Next() {

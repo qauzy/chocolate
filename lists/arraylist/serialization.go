@@ -13,16 +13,14 @@ import (
 //	var _ containers.JSONDeserializer = (*List)(nil)
 //}
 
-// ToJSON outputs the JSON representation of list's elements.
+// ToJSON outputs the JSON representation of list's Elements.
 func (list *List[T]) ToJSON() ([]byte, error) {
-	return json.Marshal(list.elements[:list.size])
+	return json.Marshal(list)
 }
 
-// FromJSON populates list's elements from the input JSON representation.
+// FromJSON populates list's Elements from the input JSON representation.
 func (list *List[T]) FromJSON(data []byte) error {
-	err := json.Unmarshal(data, &list.elements)
-	if err == nil {
-		list.size = len(list.elements)
-	}
+	err := json.Unmarshal(data, &list)
+
 	return err
 }
