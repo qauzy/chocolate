@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/qauzy/util/maps/linkedhashmap"
+import "github.com/qauzy/chocolate/maps/linkedhashmap"
 
 // LinkedHashMapExample to demonstrate basic usage of LinkedHashMapExample
 func main() {

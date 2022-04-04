@@ -19,8 +19,8 @@ package btree
 import (
 	"bytes"
 	"fmt"
-	"github.com/qauzy/util/trees"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/trees"
+	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 

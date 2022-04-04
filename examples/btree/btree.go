@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/util/trees/btree"
+	"github.com/qauzy/chocolate/trees/btree"
 )
 
 // BTreeExample to demonstrate basic usage of BTree

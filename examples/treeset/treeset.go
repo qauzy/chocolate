@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/qauzy/util/sets/treeset"
+import "github.com/qauzy/chocolate/sets/treeset"
 
 // TreeSetExample to demonstrate basic usage of TreeSet
 func main() {

@@ -13,8 +13,8 @@ package linkedhashmap
 
 import (
 	"fmt"
-	"github.com/qauzy/util/lists/doublylinkedlist"
-	"github.com/qauzy/util/maps"
+	"github.com/qauzy/chocolate/lists/doublylinkedlist"
+	"github.com/qauzy/chocolate/maps"
 	"strings"
 )
 

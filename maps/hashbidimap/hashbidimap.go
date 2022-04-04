@@ -8,7 +8,7 @@
 // Thus the binary relation is functional in each direction: value can also act as a key to key.
 // A pair (a,b) thus provides a unique coupling between 'a' and 'b' so that 'b' can be found when 'a' is used as a key and 'a' can be found when 'b' is used as a key.
 //
-// Elements are unordered in the map.
+// elements are unordered in the map.
 //
 // Structure is not thread safe.
 //
@@ -17,8 +17,8 @@ package hashbidimap
 
 import (
 	"fmt"
-	"github.com/qauzy/util/maps"
-	"github.com/qauzy/util/maps/hashmap"
+	"github.com/qauzy/chocolate/maps"
+	"github.com/qauzy/chocolate/maps/hashmap"
 )
 
 func assertMapImplementation() {

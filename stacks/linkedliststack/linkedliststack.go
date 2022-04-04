@@ -11,8 +11,8 @@ package linkedliststack
 
 import (
 	"fmt"
-	"github.com/qauzy/util/lists/singlylinkedlist"
-	"github.com/qauzy/util/stacks"
+	"github.com/qauzy/chocolate/lists/singlylinkedlist"
+	"github.com/qauzy/chocolate/stacks"
 	"strings"
 )
 

@@ -11,8 +11,8 @@ package arraylist
 
 import (
 	"fmt"
-	"github.com/qauzy/util/stream"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/stream"
+	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 

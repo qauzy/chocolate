@@ -10,8 +10,8 @@ import (
 	"go/parser"
 	"go/token"
 
-	"github.com/qauzy/util/lists/arraylist"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/lists/arraylist"
+	"github.com/qauzy/chocolate/utils"
 )
 
 var srcCode = `
@@ -42,7 +42,7 @@ func main() {
 	}
 	ast.Print(fset, f)
 
-	var list *arraylist.List[string]
+	var list arraylist.List[string]
 	list = arraylist.New[string]()
 	list.Add("a")                     // ["a"]
 	list.Add("c", "b")                // ["a","c","b"]

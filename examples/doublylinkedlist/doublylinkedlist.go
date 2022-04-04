@@ -5,8 +5,8 @@
 package main
 
 import (
-	dll "github.com/qauzy/util/lists/doublylinkedlist"
-	"github.com/qauzy/util/utils"
+	dll "github.com/qauzy/chocolate/lists/doublylinkedlist"
+	"github.com/qauzy/chocolate/utils"
 )
 
 // DoublyLinkedListExample to demonstrate basic usage of DoublyLinkedList

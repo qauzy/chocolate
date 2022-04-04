@@ -6,7 +6,7 @@ package treeset
 
 import (
 	"encoding/json"
-	"github.com/qauzy/util/containers"
+	"github.com/qauzy/chocolate/containers"
 )
 
 func assertSerializationImplementation() {

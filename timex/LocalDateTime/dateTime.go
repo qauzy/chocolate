@@ -4,7 +4,7 @@ import (
 	"database/sql/driver"
 	"errors"
 	"fmt"
-	"github.com/qauzy/util/timex/LocalDate"
+	"github.com/qauzy/chocolate/timex/LocalDate"
 	"time"
 )
 

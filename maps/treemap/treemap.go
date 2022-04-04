@@ -4,7 +4,7 @@
 
 // Package treemap implements a map backed by red-black tree.
 //
-// Elements are ordered by key in the map.
+// elements are ordered by key in the map.
 //
 // Structure is not thread safe.
 //
@@ -13,9 +13,9 @@ package treemap
 
 import (
 	"fmt"
-	"github.com/qauzy/util/maps"
-	rbt "github.com/qauzy/util/trees/redblacktree"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/maps"
+	rbt "github.com/qauzy/chocolate/trees/redblacktree"
+	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 

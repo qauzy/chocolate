@@ -4,7 +4,7 @@
 
 // Package hashmap implements a map backed by a hash table.
 //
-// Elements are unordered in the map.
+// elements are unordered in the map.
 //
 // Structure is not thread safe.
 //
@@ -46,9 +46,9 @@ func (m *Map[K, V]) Put(key K, value V) {
 	m.m[key] = value
 }
 
-func (m *Map[K, V]) PutAll(data *Map[K, V]){
-	for _,entry := range data.EntrySet(){
-		m.Put(entry.GetKey(),entry.GetValue())
+func (m *Map[K, V]) PutAll(data *Map[K, V]) {
+	for _, entry := range data.EntrySet() {
+		m.Put(entry.GetKey(), entry.GetValue())
 	}
 }
 
@@ -92,8 +92,6 @@ func (m *Map[K, V]) Keys() []K {
 	}
 	return keys
 }
-
-PutAll
 
 func (m *Map[K, V]) ContainsKey(key K) bool {
 	_, ok := m.m[key]

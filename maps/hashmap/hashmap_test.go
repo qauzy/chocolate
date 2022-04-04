@@ -10,7 +10,7 @@ import (
 )
 
 func TestMapPut(t *testing.T) {
-	m := New()
+	m := New[int, string]()
 	m.Put(5, "e")
 	m.Put(6, "f")
 	m.Put(7, "g")

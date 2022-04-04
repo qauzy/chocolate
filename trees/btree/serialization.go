@@ -6,8 +6,8 @@ package btree
 
 import (
 	"encoding/json"
-	"github.com/qauzy/util/containers"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/containers"
+	"github.com/qauzy/chocolate/utils"
 )
 
 func assertSerializationImplementation() {

@@ -15,8 +15,8 @@ package linkedhashset
 
 import (
 	"fmt"
-	"github.com/qauzy/util/lists/doublylinkedlist"
-	"github.com/qauzy/util/sets"
+	"github.com/qauzy/chocolate/lists/doublylinkedlist"
+	"github.com/qauzy/chocolate/sets"
 	"strings"
 )
 

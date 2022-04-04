@@ -7,7 +7,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/qauzy/util/stream"
+	"github.com/qauzy/chocolate/stream"
 )
 
 type ABC struct {

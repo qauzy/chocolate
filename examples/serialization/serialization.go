@@ -3,8 +3,8 @@ package serialization
 import (
 	"fmt"
 
-	"github.com/qauzy/util/lists/arraylist"
-	"github.com/qauzy/util/maps/hashmap"
+	"github.com/qauzy/chocolate/lists/arraylist"
+	"github.com/qauzy/chocolate/maps/hashmap"
 )
 
 // ListSerializationExample demonstrates how to serialize and deserialize lists to and from JSON
