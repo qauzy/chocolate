@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_Now(t *testing.T) {
+func TestXtime_Now(t *testing.T) {
 	assert := assert.New(t)
 
 	actual1 := Now().ToDateString()
@@ -25,7 +25,7 @@ func TestError_Now(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in Now()")
 }
 
-func TestTime_Yesterday(t *testing.T) {
+func TestXtime_Yesterday(t *testing.T) {
 	assert := assert.New(t)
 
 	c1 := Yesterday()
@@ -49,7 +49,7 @@ func TestError_Yesterday(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in Yesterday()")
 }
 
-func TestTime_Tomorrow(t *testing.T) {
+func TestXtime_Tomorrow(t *testing.T) {
 	assert := assert.New(t)
 
 	c1 := Tomorrow()
@@ -73,18 +73,18 @@ func TestError_Tomorrow(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in Tomorrow()")
 }
 
-func TestTime_Time2Time(t *testing.T) {
+func TestXtime_Time2Xtime(t *testing.T) {
 	assert := assert.New(t)
 
 	expected := time.Now().Format(DateTimeFormat)
-	actual := Time2Time(time.Now()).ToDateTimeString()
+	actual := Time2Xtime(time.Now()).ToDateTimeString()
 	assert.Equal(expected, actual)
 }
 
-func TestTime_Time2Time(t *testing.T) {
+func TestXtime_Xtime2Time(t *testing.T) {
 	assert := assert.New(t)
 
 	expected := time.Now().Format(DateTimeFormat)
-	actual := Now().Time2Time().Format(DateTimeFormat)
+	actual := Now().Xtime2Time().Format(DateTimeFormat)
 	assert.Equal(expected, actual)
 }

@@ -147,9 +147,9 @@ const (
 	ShortTimeFormat     = "150405"
 )
 
-// Time defines a Time struct.
-// 定义 Time 结构体
-type Time struct {
+// Xtime defines a Xtime struct.
+// 定义 Xtime 结构体
+type Xtime struct {
 	time         time.Time
 	weekStartsAt time.Weekday
 	loc          *time.Location
@@ -157,29 +157,29 @@ type Time struct {
 	Error        error
 }
 
-// NewTime returns a new Time instance.
-// 初始化 Time 结构体
-func NewTime() Time {
-	return Time{weekStartsAt: time.Sunday, loc: time.Local, lang: NewLanguage()}
+// NewXtime returns a new Xtime instance.
+// 初始化 Xtime 结构体
+func NewXtime() Xtime {
+	return Xtime{weekStartsAt: time.Sunday, loc: time.Local, lang: NewLanguage()}
 }
 
-// Time2Time converts time.Time to Time.
-// 将 time.Time 转换成 Time
-func Time2Time(tt time.Time) Time {
-	c := NewTime()
+// Time2Xtime converts time.Time to Xtime.
+// 将 time.Time 转换成 Xtime
+func Time2Xtime(tt time.Time) Xtime {
+	c := NewXtime()
 	c.time = tt
 	return c
 }
 
-// Time2Time converts Time to time.Time.
-// 将 Time 转换成 time.Time
-func (c Time) Time2Time() time.Time {
+// Xtime2Time converts Xtime to time.Time.
+// 将 Xtime 转换成 time.Time
+func (c Xtime) Xtime2Time() time.Time {
 	return c.time.In(c.loc)
 }
 
-// Now returns a Time instance for now.
+// Now returns a Xtime instance for now.
 // 当前
-func (c Time) Now(timezone ...string) Time {
+func (c Xtime) Now(timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -190,15 +190,15 @@ func (c Time) Now(timezone ...string) Time {
 	return c
 }
 
-// Now returns a Time instance for now.
+// Now returns a Xtime instance for now.
 // 当前
-func Now(timezone ...string) Time {
-	return NewTime().Now(timezone...)
+func Now(timezone ...string) Xtime {
+	return NewXtime().Now(timezone...)
 }
 
-// Tomorrow returns a Time instance for tomorrow.
+// Tomorrow returns a Xtime instance for tomorrow.
 // 明天
-func (c Time) Tomorrow(timezone ...string) Time {
+func (c Xtime) Tomorrow(timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -213,15 +213,15 @@ func (c Time) Tomorrow(timezone ...string) Time {
 	return c
 }
 
-// Tomorrow returns a Time instance for tomorrow.
+// Tomorrow returns a Xtime instance for tomorrow.
 // 明天
-func Tomorrow(timezone ...string) Time {
-	return NewTime().Tomorrow(timezone...)
+func Tomorrow(timezone ...string) Xtime {
+	return NewXtime().Tomorrow(timezone...)
 }
 
-// Yesterday returns a Time instance for yesterday.
+// Yesterday returns a Xtime instance for yesterday.
 // 昨天
-func (c Time) Yesterday(timezone ...string) Time {
+func (c Xtime) Yesterday(timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -236,8 +236,8 @@ func (c Time) Yesterday(timezone ...string) Time {
 	return c
 }
 
-// Yesterday returns a Time instance for yesterday.
+// Yesterday returns a Xtime instance for yesterday.
 // 昨天
-func Yesterday(timezone ...string) Time {
-	return NewTime().Yesterday(timezone...)
+func Yesterday(timezone ...string) Xtime {
+	return NewXtime().Yesterday(timezone...)
 }

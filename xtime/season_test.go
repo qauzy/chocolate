@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_Season(t *testing.T) {
+func TestXtime_Season(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -41,7 +41,7 @@ func TestTime_Season(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfSeason(t *testing.T) {
+func TestXtime_StartOfSeason(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -77,7 +77,7 @@ func TestTime_StartOfSeason(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfSeason(t *testing.T) {
+func TestXtime_EndOfSeason(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -113,7 +113,7 @@ func TestTime_EndOfSeason(t *testing.T) {
 	}
 }
 
-func TestTime_IsSpring(t *testing.T) {
+func TestXtime_IsSpring(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -147,7 +147,7 @@ func TestTime_IsSpring(t *testing.T) {
 	}
 }
 
-func TestTime_IsSummer(t *testing.T) {
+func TestXtime_IsSummer(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -181,7 +181,7 @@ func TestTime_IsSummer(t *testing.T) {
 	}
 }
 
-func TestTime_IsAutumn(t *testing.T) {
+func TestXtime_IsAutumn(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -215,7 +215,7 @@ func TestTime_IsAutumn(t *testing.T) {
 	}
 }
 
-func TestTime_IsWinter(t *testing.T) {
+func TestXtime_IsWinter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

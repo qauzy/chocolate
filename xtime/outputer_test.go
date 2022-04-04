@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_String(t *testing.T) {
+func TestXtime_String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -31,7 +31,7 @@ func TestTime_String(t *testing.T) {
 	}
 }
 
-func TestTime_ToString(t *testing.T) {
+func TestXtime_ToString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -60,7 +60,7 @@ func TestTime_ToString(t *testing.T) {
 	}
 }
 
-func TestTime_ToMonthString(t *testing.T) {
+func TestXtime_ToMonthString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -100,7 +100,7 @@ func TestTime_ToMonthString(t *testing.T) {
 	}
 }
 
-func TestTime_ToShortMonthString(t *testing.T) {
+func TestXtime_ToShortMonthString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -140,7 +140,7 @@ func TestTime_ToShortMonthString(t *testing.T) {
 	}
 }
 
-func TestTime_ToWeekString(t *testing.T) {
+func TestXtime_ToWeekString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -175,7 +175,7 @@ func TestTime_ToWeekString(t *testing.T) {
 	}
 }
 
-func TestTime_ToShortWeekString(t *testing.T) {
+func TestXtime_ToShortWeekString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -210,7 +210,7 @@ func TestTime_ToShortWeekString(t *testing.T) {
 	}
 }
 
-func TestTime_ToDayDateTimeString(t *testing.T) {
+func TestXtime_ToDayDateTimeString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -239,7 +239,7 @@ func TestTime_ToDayDateTimeString(t *testing.T) {
 	}
 }
 
-func TestTime_ToDateTimeString(t *testing.T) {
+func TestXtime_ToDateTimeString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -269,7 +269,7 @@ func TestTime_ToDateTimeString(t *testing.T) {
 	}
 }
 
-func TestTime_ToShortDateTimeString(t *testing.T) {
+func TestXtime_ToShortDateTimeString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -299,7 +299,7 @@ func TestTime_ToShortDateTimeString(t *testing.T) {
 	}
 }
 
-func TestTime_ToDateString(t *testing.T) {
+func TestXtime_ToDateString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -329,7 +329,7 @@ func TestTime_ToDateString(t *testing.T) {
 	}
 }
 
-func TestTime_ToShortDateString(t *testing.T) {
+func TestXtime_ToShortDateString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -359,7 +359,7 @@ func TestTime_ToShortDateString(t *testing.T) {
 	}
 }
 
-func TestTime_ToTimeString(t *testing.T) {
+func TestXtime_ToTimeString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -389,7 +389,7 @@ func TestTime_ToTimeString(t *testing.T) {
 	}
 }
 
-func TestTime_ToShortTimeString(t *testing.T) {
+func TestXtime_ToShortTimeString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -419,7 +419,7 @@ func TestTime_ToShortTimeString(t *testing.T) {
 	}
 }
 
-func TestTime_ToAtomString(t *testing.T) {
+func TestXtime_ToAtomString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -449,7 +449,7 @@ func TestTime_ToAtomString(t *testing.T) {
 	}
 }
 
-func TestTime_ToAnsicString(t *testing.T) {
+func TestXtime_ToAnsicString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -479,7 +479,7 @@ func TestTime_ToAnsicString(t *testing.T) {
 	}
 }
 
-func TestTime_ToCookieString(t *testing.T) {
+func TestXtime_ToCookieString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -509,7 +509,7 @@ func TestTime_ToCookieString(t *testing.T) {
 	}
 }
 
-func TestTime_ToRssString(t *testing.T) {
+func TestXtime_ToRssString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -539,7 +539,7 @@ func TestTime_ToRssString(t *testing.T) {
 	}
 }
 
-func TestTime_ToW3cString(t *testing.T) {
+func TestXtime_ToW3cString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -569,7 +569,7 @@ func TestTime_ToW3cString(t *testing.T) {
 	}
 }
 
-func TestTime_ToUnixDateString(t *testing.T) {
+func TestXtime_ToUnixDateString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -599,7 +599,7 @@ func TestTime_ToUnixDateString(t *testing.T) {
 	}
 }
 
-func TestTime_ToRubyDateString(t *testing.T) {
+func TestXtime_ToRubyDateString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -629,7 +629,7 @@ func TestTime_ToRubyDateString(t *testing.T) {
 	}
 }
 
-func TestTime_ToKitchenString(t *testing.T) {
+func TestXtime_ToKitchenString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -659,7 +659,7 @@ func TestTime_ToKitchenString(t *testing.T) {
 	}
 }
 
-func TestTime_ToIso8601String(t *testing.T) {
+func TestXtime_ToIso8601String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -689,7 +689,7 @@ func TestTime_ToIso8601String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc822String(t *testing.T) {
+func TestXtime_ToRfc822String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -719,7 +719,7 @@ func TestTime_ToRfc822String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc822zString(t *testing.T) {
+func TestXtime_ToRfc822zString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -749,7 +749,7 @@ func TestTime_ToRfc822zString(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc850String(t *testing.T) {
+func TestXtime_ToRfc850String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -779,7 +779,7 @@ func TestTime_ToRfc850String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc1036String(t *testing.T) {
+func TestXtime_ToRfc1036String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -809,7 +809,7 @@ func TestTime_ToRfc1036String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc1123String(t *testing.T) {
+func TestXtime_ToRfc1123String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -839,7 +839,7 @@ func TestTime_ToRfc1123String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc1123zString(t *testing.T) {
+func TestXtime_ToRfc1123zString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -869,7 +869,7 @@ func TestTime_ToRfc1123zString(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc2822String(t *testing.T) {
+func TestXtime_ToRfc2822String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -899,7 +899,7 @@ func TestTime_ToRfc2822String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc3339String(t *testing.T) {
+func TestXtime_ToRfc3339String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -929,7 +929,7 @@ func TestTime_ToRfc3339String(t *testing.T) {
 	}
 }
 
-func TestTime_ToRfc7231String(t *testing.T) {
+func TestXtime_ToRfc7231String(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -959,7 +959,7 @@ func TestTime_ToRfc7231String(t *testing.T) {
 	}
 }
 
-func TestTime_Layout(t *testing.T) {
+func TestXtime_Layout(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1002,7 +1002,7 @@ func TestTime_Layout(t *testing.T) {
 	}
 }
 
-func TestTime_Format(t *testing.T) {
+func TestXtime_Format(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

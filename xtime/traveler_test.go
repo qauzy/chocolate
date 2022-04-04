@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_AddDuration(t *testing.T) {
+func TestXtime_AddDuration(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -44,7 +44,7 @@ func TestError_AddDuration(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in AddDuration()")
 }
 
-func TestTime_SubDuration(t *testing.T) {
+func TestXtime_SubDuration(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -75,7 +75,7 @@ func TestTime_SubDuration(t *testing.T) {
 	}
 }
 
-func TestTime_AddCenturies(t *testing.T) {
+func TestXtime_AddCenturies(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -103,7 +103,7 @@ func TestTime_AddCenturies(t *testing.T) {
 	}
 }
 
-func TestTime_AddCenturiesNoOverflow(t *testing.T) {
+func TestXtime_AddCenturiesNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -131,7 +131,7 @@ func TestTime_AddCenturiesNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubCenturies(t *testing.T) {
+func TestXtime_SubCenturies(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -159,7 +159,7 @@ func TestTime_SubCenturies(t *testing.T) {
 	}
 }
 
-func TestTime_SubCenturiesNoOverflow(t *testing.T) {
+func TestXtime_SubCenturiesNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -187,7 +187,7 @@ func TestTime_SubCenturiesNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddCentury(t *testing.T) {
+func TestXtime_AddCentury(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -214,7 +214,7 @@ func TestTime_AddCentury(t *testing.T) {
 	}
 }
 
-func TestTime_AddCenturyNoOverflow(t *testing.T) {
+func TestXtime_AddCenturyNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -241,7 +241,7 @@ func TestTime_AddCenturyNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubCentury(t *testing.T) {
+func TestXtime_SubCentury(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -268,7 +268,7 @@ func TestTime_SubCentury(t *testing.T) {
 	}
 }
 
-func TestTime_SubCenturyNoOverflow(t *testing.T) {
+func TestXtime_SubCenturyNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -295,7 +295,7 @@ func TestTime_SubCenturyNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddDecades(t *testing.T) {
+func TestXtime_AddDecades(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -323,7 +323,7 @@ func TestTime_AddDecades(t *testing.T) {
 	}
 }
 
-func TestTime_AddDecadesNoOverflow(t *testing.T) {
+func TestXtime_AddDecadesNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -351,7 +351,7 @@ func TestTime_AddDecadesNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddDecade(t *testing.T) {
+func TestXtime_AddDecade(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -378,7 +378,7 @@ func TestTime_AddDecade(t *testing.T) {
 	}
 }
 
-func TestTime_AddDecadeNoOverflow(t *testing.T) {
+func TestXtime_AddDecadeNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -405,7 +405,7 @@ func TestTime_AddDecadeNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubDecades(t *testing.T) {
+func TestXtime_SubDecades(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -433,7 +433,7 @@ func TestTime_SubDecades(t *testing.T) {
 	}
 }
 
-func TestTime_SubDecadesNoOverflow(t *testing.T) {
+func TestXtime_SubDecadesNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -461,7 +461,7 @@ func TestTime_SubDecadesNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubDecade(t *testing.T) {
+func TestXtime_SubDecade(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -488,7 +488,7 @@ func TestTime_SubDecade(t *testing.T) {
 	}
 }
 
-func TestTime_SubDecadeNoOverflow(t *testing.T) {
+func TestXtime_SubDecadeNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -515,7 +515,7 @@ func TestTime_SubDecadeNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddYears(t *testing.T) {
+func TestXtime_AddYears(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -543,7 +543,7 @@ func TestTime_AddYears(t *testing.T) {
 	}
 }
 
-func TestTime_AddYearsNoOverflow(t *testing.T) {
+func TestXtime_AddYearsNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -571,7 +571,7 @@ func TestTime_AddYearsNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubYears(t *testing.T) {
+func TestXtime_SubYears(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -599,7 +599,7 @@ func TestTime_SubYears(t *testing.T) {
 	}
 }
 
-func TestTime_SubYearsNoOverflow(t *testing.T) {
+func TestXtime_SubYearsNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -627,7 +627,7 @@ func TestTime_SubYearsNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddYear(t *testing.T) {
+func TestXtime_AddYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -654,7 +654,7 @@ func TestTime_AddYear(t *testing.T) {
 	}
 }
 
-func TestTime_AddYearNoOverflow(t *testing.T) {
+func TestXtime_AddYearNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -681,7 +681,7 @@ func TestTime_AddYearNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubYear(t *testing.T) {
+func TestXtime_SubYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -708,7 +708,7 @@ func TestTime_SubYear(t *testing.T) {
 	}
 }
 
-func TestTime_SubYearNoOverflow(t *testing.T) {
+func TestXtime_SubYearNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -735,7 +735,7 @@ func TestTime_SubYearNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddQuarters(t *testing.T) {
+func TestXtime_AddQuarters(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -765,7 +765,7 @@ func TestTime_AddQuarters(t *testing.T) {
 	}
 }
 
-func TestTime_AddQuartersNoOverflow(t *testing.T) {
+func TestXtime_AddQuartersNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -795,7 +795,7 @@ func TestTime_AddQuartersNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubQuarters(t *testing.T) {
+func TestXtime_SubQuarters(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -825,7 +825,7 @@ func TestTime_SubQuarters(t *testing.T) {
 	}
 }
 
-func TestTime_SubQuartersNoOverflow(t *testing.T) {
+func TestXtime_SubQuartersNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -855,7 +855,7 @@ func TestTime_SubQuartersNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddQuarter(t *testing.T) {
+func TestXtime_AddQuarter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -884,7 +884,7 @@ func TestTime_AddQuarter(t *testing.T) {
 	}
 }
 
-func TestTime_AddQuarterNoOverflow(t *testing.T) {
+func TestXtime_AddQuarterNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -913,7 +913,7 @@ func TestTime_AddQuarterNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubQuarter(t *testing.T) {
+func TestXtime_SubQuarter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -942,7 +942,7 @@ func TestTime_SubQuarter(t *testing.T) {
 	}
 }
 
-func TestTime_SubQuarterNoOverflow(t *testing.T) {
+func TestXtime_SubQuarterNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -971,7 +971,7 @@ func TestTime_SubQuarterNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddMonths(t *testing.T) {
+func TestXtime_AddMonths(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -999,7 +999,7 @@ func TestTime_AddMonths(t *testing.T) {
 	}
 }
 
-func TestTime_AddMonthsNoOverflow(t *testing.T) {
+func TestXtime_AddMonthsNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1027,7 +1027,7 @@ func TestTime_AddMonthsNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubMonths(t *testing.T) {
+func TestXtime_SubMonths(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1055,7 +1055,7 @@ func TestTime_SubMonths(t *testing.T) {
 	}
 }
 
-func TestTime_SubMonthsNoOverflow(t *testing.T) {
+func TestXtime_SubMonthsNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1083,7 +1083,7 @@ func TestTime_SubMonthsNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddMonth(t *testing.T) {
+func TestXtime_AddMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1110,7 +1110,7 @@ func TestTime_AddMonth(t *testing.T) {
 	}
 }
 
-func TestTime_AddMonthNoOverflow(t *testing.T) {
+func TestXtime_AddMonthNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1137,7 +1137,7 @@ func TestTime_AddMonthNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_SubMonth(t *testing.T) {
+func TestXtime_SubMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1164,7 +1164,7 @@ func TestTime_SubMonth(t *testing.T) {
 	}
 }
 
-func TestTime_SubMonthNoOverflow(t *testing.T) {
+func TestXtime_SubMonthNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1191,7 +1191,7 @@ func TestTime_SubMonthNoOverflow(t *testing.T) {
 	}
 }
 
-func TestTime_AddWeeks(t *testing.T) {
+func TestXtime_AddWeeks(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1219,7 +1219,7 @@ func TestTime_AddWeeks(t *testing.T) {
 	}
 }
 
-func TestTime_SubWeeks(t *testing.T) {
+func TestXtime_SubWeeks(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1247,7 +1247,7 @@ func TestTime_SubWeeks(t *testing.T) {
 	}
 }
 
-func TestTime_AddWeek(t *testing.T) {
+func TestXtime_AddWeek(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1274,7 +1274,7 @@ func TestTime_AddWeek(t *testing.T) {
 	}
 }
 
-func TestTime_SubWeek(t *testing.T) {
+func TestXtime_SubWeek(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1301,7 +1301,7 @@ func TestTime_SubWeek(t *testing.T) {
 	}
 }
 
-func TestTime_AddDays(t *testing.T) {
+func TestXtime_AddDays(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1329,7 +1329,7 @@ func TestTime_AddDays(t *testing.T) {
 	}
 }
 
-func TestTime_SubDays(t *testing.T) {
+func TestXtime_SubDays(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1357,7 +1357,7 @@ func TestTime_SubDays(t *testing.T) {
 	}
 }
 
-func TestTime_AddDay(t *testing.T) {
+func TestXtime_AddDay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1384,7 +1384,7 @@ func TestTime_AddDay(t *testing.T) {
 	}
 }
 
-func TestTime_SubDay(t *testing.T) {
+func TestXtime_SubDay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1411,7 +1411,7 @@ func TestTime_SubDay(t *testing.T) {
 	}
 }
 
-func TestTime_AddHours(t *testing.T) {
+func TestXtime_AddHours(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1439,7 +1439,7 @@ func TestTime_AddHours(t *testing.T) {
 	}
 }
 
-func TestTime_SubHours(t *testing.T) {
+func TestXtime_SubHours(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1467,7 +1467,7 @@ func TestTime_SubHours(t *testing.T) {
 	}
 }
 
-func TestTime_AddHour(t *testing.T) {
+func TestXtime_AddHour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1494,7 +1494,7 @@ func TestTime_AddHour(t *testing.T) {
 	}
 }
 
-func TestTime_SubHour(t *testing.T) {
+func TestXtime_SubHour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1521,7 +1521,7 @@ func TestTime_SubHour(t *testing.T) {
 	}
 }
 
-func TestTime_AddMinutes(t *testing.T) {
+func TestXtime_AddMinutes(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1549,7 +1549,7 @@ func TestTime_AddMinutes(t *testing.T) {
 	}
 }
 
-func TestTime_SubMinutes(t *testing.T) {
+func TestXtime_SubMinutes(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1577,7 +1577,7 @@ func TestTime_SubMinutes(t *testing.T) {
 	}
 }
 
-func TestTime_AddMinute(t *testing.T) {
+func TestXtime_AddMinute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1604,7 +1604,7 @@ func TestTime_AddMinute(t *testing.T) {
 	}
 }
 
-func TestTime_SubMinute(t *testing.T) {
+func TestXtime_SubMinute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1631,7 +1631,7 @@ func TestTime_SubMinute(t *testing.T) {
 	}
 }
 
-func TestTime_AddSeconds(t *testing.T) {
+func TestXtime_AddSeconds(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1659,7 +1659,7 @@ func TestTime_AddSeconds(t *testing.T) {
 	}
 }
 
-func TestTime_SubSeconds(t *testing.T) {
+func TestXtime_SubSeconds(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1687,7 +1687,7 @@ func TestTime_SubSeconds(t *testing.T) {
 	}
 }
 
-func TestTime_AddSecond(t *testing.T) {
+func TestXtime_AddSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1714,7 +1714,7 @@ func TestTime_AddSecond(t *testing.T) {
 	}
 }
 
-func TestTime_SubSecond(t *testing.T) {
+func TestXtime_SubSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

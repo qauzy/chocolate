@@ -52,7 +52,7 @@ type lunar struct {
 
 // Lunar converts the gregorian calendar to the lunar calendar.
 // 将公历转为农历
-func (c Time) Lunar() (l lunar) {
+func (c Xtime) Lunar() (l lunar) {
 	if c.IsInvalid() {
 		l.Error = c.Error
 		return

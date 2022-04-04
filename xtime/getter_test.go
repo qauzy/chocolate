@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_DaysInYear(t *testing.T) {
+func TestXtime_DaysInYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -31,7 +31,7 @@ func TestTime_DaysInYear(t *testing.T) {
 	}
 }
 
-func TestTime_DaysInMonth(t *testing.T) {
+func TestXtime_DaysInMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -65,7 +65,7 @@ func TestTime_DaysInMonth(t *testing.T) {
 	}
 }
 
-func TestTime_MonthOfYear(t *testing.T) {
+func TestXtime_MonthOfYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -99,7 +99,7 @@ func TestTime_MonthOfYear(t *testing.T) {
 	}
 }
 
-func TestTime_DayOfYear(t *testing.T) {
+func TestXtime_DayOfYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -124,7 +124,7 @@ func TestTime_DayOfYear(t *testing.T) {
 	}
 }
 
-func TestTime_DayOfMonth(t *testing.T) {
+func TestXtime_DayOfMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -149,7 +149,7 @@ func TestTime_DayOfMonth(t *testing.T) {
 	}
 }
 
-func TestTime_DayOfWeek(t *testing.T) {
+func TestXtime_DayOfWeek(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -178,7 +178,7 @@ func TestTime_DayOfWeek(t *testing.T) {
 	}
 }
 
-func TestTime_WeekOfYear(t *testing.T) {
+func TestXtime_WeekOfYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -212,7 +212,7 @@ func TestTime_WeekOfYear(t *testing.T) {
 	}
 }
 
-func TestTime_WeekOfMonth(t *testing.T) {
+func TestXtime_WeekOfMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -265,7 +265,7 @@ func TestTime_WeekOfMonth(t *testing.T) {
 	}
 }
 
-func TestTime_Century(t *testing.T) {
+func TestXtime_Century(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -289,7 +289,7 @@ func TestTime_Century(t *testing.T) {
 	}
 }
 
-func TestTime_Decade(t *testing.T) {
+func TestXtime_Decade(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -313,7 +313,7 @@ func TestTime_Decade(t *testing.T) {
 	}
 }
 
-func TestTime_Year(t *testing.T) {
+func TestXtime_Year(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -337,7 +337,7 @@ func TestTime_Year(t *testing.T) {
 	}
 }
 
-func TestTime_Quarter(t *testing.T) {
+func TestXtime_Quarter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -363,7 +363,7 @@ func TestTime_Quarter(t *testing.T) {
 	}
 }
 
-func TestTime_Month(t *testing.T) {
+func TestXtime_Month(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -387,7 +387,7 @@ func TestTime_Month(t *testing.T) {
 	}
 }
 
-func TestTime_Week(t *testing.T) {
+func TestXtime_Week(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -416,7 +416,7 @@ func TestTime_Week(t *testing.T) {
 	}
 }
 
-func TestTime_Day(t *testing.T) {
+func TestXtime_Day(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -440,7 +440,7 @@ func TestTime_Day(t *testing.T) {
 	}
 }
 
-func TestTime_Hour(t *testing.T) {
+func TestXtime_Hour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -464,7 +464,7 @@ func TestTime_Hour(t *testing.T) {
 	}
 }
 
-func TestTime_Minute(t *testing.T) {
+func TestXtime_Minute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -488,7 +488,7 @@ func TestTime_Minute(t *testing.T) {
 	}
 }
 
-func TestTime_Second(t *testing.T) {
+func TestXtime_Second(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -512,7 +512,7 @@ func TestTime_Second(t *testing.T) {
 	}
 }
 
-func TestTime_Millisecond(t *testing.T) {
+func TestXtime_Millisecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -536,7 +536,7 @@ func TestTime_Millisecond(t *testing.T) {
 	}
 }
 
-func TestTime_Microsecond(t *testing.T) {
+func TestXtime_Microsecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -560,7 +560,7 @@ func TestTime_Microsecond(t *testing.T) {
 	}
 }
 
-func TestTime_Nanosecond(t *testing.T) {
+func TestXtime_Nanosecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -584,7 +584,7 @@ func TestTime_Nanosecond(t *testing.T) {
 	}
 }
 
-func TestTime_Timestamp(t *testing.T) {
+func TestXtime_Timestamp(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -611,7 +611,7 @@ func TestTime_Timestamp(t *testing.T) {
 	}
 }
 
-func TestTime_TimestampWithSecond(t *testing.T) {
+func TestXtime_TimestampWithSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -638,7 +638,7 @@ func TestTime_TimestampWithSecond(t *testing.T) {
 	}
 }
 
-func TestTime_TimestampWithMillisecond(t *testing.T) {
+func TestXtime_TimestampWithMillisecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -665,7 +665,7 @@ func TestTime_TimestampWithMillisecond(t *testing.T) {
 	}
 }
 
-func TestTime_TimestampWithMicrosecond(t *testing.T) {
+func TestXtime_TimestampWithMicrosecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -692,7 +692,7 @@ func TestTime_TimestampWithMicrosecond(t *testing.T) {
 	}
 }
 
-func TestTime_TimestampWithNanosecond(t *testing.T) {
+func TestXtime_TimestampWithNanosecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -719,7 +719,7 @@ func TestTime_TimestampWithNanosecond(t *testing.T) {
 	}
 }
 
-func TestTime_Timezone(t *testing.T) {
+func TestXtime_Timezone(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -737,7 +737,7 @@ func TestTime_Timezone(t *testing.T) {
 	}
 }
 
-func TestTime_Location(t *testing.T) {
+func TestXtime_Location(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -755,7 +755,7 @@ func TestTime_Location(t *testing.T) {
 	}
 }
 
-func TestTime_Offset(t *testing.T) {
+func TestXtime_Offset(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -773,7 +773,7 @@ func TestTime_Offset(t *testing.T) {
 	}
 }
 
-func TestTime_Locale(t *testing.T) {
+func TestXtime_Locale(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -791,7 +791,7 @@ func TestTime_Locale(t *testing.T) {
 	}
 }
 
-func TestTime_Age(t *testing.T) {
+func TestXtime_Age(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

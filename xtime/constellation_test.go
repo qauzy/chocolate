@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_Constellation(t *testing.T) {
+func TestXtime_Constellation(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -41,7 +41,7 @@ func TestTime_Constellation(t *testing.T) {
 	}
 }
 
-func TestTime_IsAries(t *testing.T) {
+func TestXtime_IsAries(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -66,7 +66,7 @@ func TestTime_IsAries(t *testing.T) {
 	}
 }
 
-func TestTime_IsTaurus(t *testing.T) {
+func TestXtime_IsTaurus(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -91,7 +91,7 @@ func TestTime_IsTaurus(t *testing.T) {
 	}
 }
 
-func TestTime_IsGemini(t *testing.T) {
+func TestXtime_IsGemini(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -116,7 +116,7 @@ func TestTime_IsGemini(t *testing.T) {
 	}
 }
 
-func TestTime_IsCancer(t *testing.T) {
+func TestXtime_IsCancer(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -141,7 +141,7 @@ func TestTime_IsCancer(t *testing.T) {
 	}
 }
 
-func TestTime_IsLeo(t *testing.T) {
+func TestXtime_IsLeo(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -167,7 +167,7 @@ func TestTime_IsLeo(t *testing.T) {
 	}
 }
 
-func TestTime_IsVirgo(t *testing.T) {
+func TestXtime_IsVirgo(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -192,7 +192,7 @@ func TestTime_IsVirgo(t *testing.T) {
 	}
 }
 
-func TestTime_IsLibra(t *testing.T) {
+func TestXtime_IsLibra(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -217,7 +217,7 @@ func TestTime_IsLibra(t *testing.T) {
 	}
 }
 
-func TestTime_IsScorpio(t *testing.T) {
+func TestXtime_IsScorpio(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -242,7 +242,7 @@ func TestTime_IsScorpio(t *testing.T) {
 	}
 }
 
-func TestTime_IsSagittarius(t *testing.T) {
+func TestXtime_IsSagittarius(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -267,7 +267,7 @@ func TestTime_IsSagittarius(t *testing.T) {
 	}
 }
 
-func TestTime_IsCapricorn(t *testing.T) {
+func TestXtime_IsCapricorn(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -292,7 +292,7 @@ func TestTime_IsCapricorn(t *testing.T) {
 	}
 }
 
-func TestTime_IsAquarius(t *testing.T) {
+func TestXtime_IsAquarius(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -317,7 +317,7 @@ func TestTime_IsAquarius(t *testing.T) {
 	}
 }
 
-func TestTime_IsPisces(t *testing.T) {
+func TestXtime_IsPisces(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

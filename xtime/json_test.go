@@ -22,7 +22,7 @@ type Person struct {
 	DateTime4   TimestampWithNanosecond  `json:"date_time4"`
 }
 
-func TestTime_MarshalJSON(t *testing.T) {
+func TestXtime_MarshalJSON(t *testing.T) {
 	assert := assert.New(t)
 
 	person := Person{
@@ -45,7 +45,7 @@ func TestTime_MarshalJSON(t *testing.T) {
 	fmt.Printf("Person output by json:\n%s\n", data)
 }
 
-func TestTime_UnmarshalJSON(t *testing.T) {
+func TestXtime_UnmarshalJSON(t *testing.T) {
 	assert := assert.New(t)
 
 	person := new(Person)

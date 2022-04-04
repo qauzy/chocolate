@@ -4,9 +4,9 @@ import (
 	"time"
 )
 
-// StartOfCentury returns a Time instance for start of the century.
+// StartOfCentury returns a Xtime instance for start of the century.
 // 本世纪开始时间
-func (c Time) StartOfCentury() Time {
+func (c Xtime) StartOfCentury() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -14,9 +14,9 @@ func (c Time) StartOfCentury() Time {
 	return c
 }
 
-// EndOfCentury returns a Time instance for end of the century.
+// EndOfCentury returns a Xtime instance for end of the century.
 // 本世纪结束时间
-func (c Time) EndOfCentury() Time {
+func (c Xtime) EndOfCentury() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -24,9 +24,9 @@ func (c Time) EndOfCentury() Time {
 	return c
 }
 
-// StartOfDecade returns a Time instance for start of the decade.
+// StartOfDecade returns a Xtime instance for start of the decade.
 // 本年代开始时间
-func (c Time) StartOfDecade() Time {
+func (c Xtime) StartOfDecade() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -34,9 +34,9 @@ func (c Time) StartOfDecade() Time {
 	return c
 }
 
-// EndOfDecade returns a Time instance for end of the decade.
+// EndOfDecade returns a Xtime instance for end of the decade.
 // 本年代结束时间
-func (c Time) EndOfDecade() Time {
+func (c Xtime) EndOfDecade() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -44,9 +44,9 @@ func (c Time) EndOfDecade() Time {
 	return c
 }
 
-// StartOfYear returns a Time instance for start of the year.
+// StartOfYear returns a Xtime instance for start of the year.
 // 本年开始时间
-func (c Time) StartOfYear() Time {
+func (c Xtime) StartOfYear() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -54,9 +54,9 @@ func (c Time) StartOfYear() Time {
 	return c
 }
 
-// EndOfYear returns a Time instance for end of the year.
+// EndOfYear returns a Xtime instance for end of the year.
 // 本年结束时间
-func (c Time) EndOfYear() Time {
+func (c Xtime) EndOfYear() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -64,9 +64,9 @@ func (c Time) EndOfYear() Time {
 	return c
 }
 
-// StartOfQuarter returns a Time instance for start of the quarter.
+// StartOfQuarter returns a Xtime instance for start of the quarter.
 // 本季度开始时间
-func (c Time) StartOfQuarter() Time {
+func (c Xtime) StartOfQuarter() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -74,9 +74,9 @@ func (c Time) StartOfQuarter() Time {
 	return c
 }
 
-// EndOfQuarter returns a Time instance for end of the quarter.
+// EndOfQuarter returns a Xtime instance for end of the quarter.
 // 本季度结束时间
-func (c Time) EndOfQuarter() Time {
+func (c Xtime) EndOfQuarter() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -91,9 +91,9 @@ func (c Time) EndOfQuarter() Time {
 	return c
 }
 
-// StartOfMonth returns a Time instance for start of the month.
+// StartOfMonth returns a Xtime instance for start of the month.
 // 本月开始时间
-func (c Time) StartOfMonth() Time {
+func (c Xtime) StartOfMonth() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -101,9 +101,9 @@ func (c Time) StartOfMonth() Time {
 	return c
 }
 
-// EndOfMonth returns a Time instance for end of the month.
+// EndOfMonth returns a Xtime instance for end of the month.
 // 本月结束时间
-func (c Time) EndOfMonth() Time {
+func (c Xtime) EndOfMonth() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -111,9 +111,9 @@ func (c Time) EndOfMonth() Time {
 	return c
 }
 
-// StartOfWeek returns a Time instance for start of the week.
+// StartOfWeek returns a Xtime instance for start of the week.
 // 本周开始时间
-func (c Time) StartOfWeek() Time {
+func (c Xtime) StartOfWeek() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -121,9 +121,9 @@ func (c Time) StartOfWeek() Time {
 	return c.SubDays((DaysPerWeek + dayOfWeek - weekStartsAt) % DaysPerWeek).StartOfDay()
 }
 
-// EndOfWeek returns a Time instance for end of the week.
+// EndOfWeek returns a Xtime instance for end of the week.
 // 本周结束时间
-func (c Time) EndOfWeek() Time {
+func (c Xtime) EndOfWeek() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -131,9 +131,9 @@ func (c Time) EndOfWeek() Time {
 	return c.AddDays((DaysPerWeek - dayOfWeek + weekEndsAt) % DaysPerWeek).EndOfDay()
 }
 
-// StartOfDay returns a Time instance for start of the day.
+// StartOfDay returns a Xtime instance for start of the day.
 // 本日开始时间
-func (c Time) StartOfDay() Time {
+func (c Xtime) StartOfDay() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -141,9 +141,9 @@ func (c Time) StartOfDay() Time {
 	return c
 }
 
-// EndOfDay returns a Time instance for end of the day.
+// EndOfDay returns a Xtime instance for end of the day.
 // 本日结束时间
-func (c Time) EndOfDay() Time {
+func (c Xtime) EndOfDay() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -151,9 +151,9 @@ func (c Time) EndOfDay() Time {
 	return c
 }
 
-// StartOfHour returns a Time instance for start of the hour.
+// StartOfHour returns a Xtime instance for start of the hour.
 // 小时开始时间
-func (c Time) StartOfHour() Time {
+func (c Xtime) StartOfHour() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -161,9 +161,9 @@ func (c Time) StartOfHour() Time {
 	return c
 }
 
-// EndOfHour returns a Time instance for end of the hour.
+// EndOfHour returns a Xtime instance for end of the hour.
 // 小时结束时间
-func (c Time) EndOfHour() Time {
+func (c Xtime) EndOfHour() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -171,9 +171,9 @@ func (c Time) EndOfHour() Time {
 	return c
 }
 
-// StartOfMinute returns a Time instance for start of the minute.
+// StartOfMinute returns a Xtime instance for start of the minute.
 // 分钟开始时间
-func (c Time) StartOfMinute() Time {
+func (c Xtime) StartOfMinute() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -181,9 +181,9 @@ func (c Time) StartOfMinute() Time {
 	return c
 }
 
-// EndOfMinute returns a Time instance for end of the minute.
+// EndOfMinute returns a Xtime instance for end of the minute.
 // 分钟结束时间
-func (c Time) EndOfMinute() Time {
+func (c Xtime) EndOfMinute() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -191,9 +191,9 @@ func (c Time) EndOfMinute() Time {
 	return c
 }
 
-// StartOfSecond returns a Time instance for start of the second.
+// StartOfSecond returns a Xtime instance for start of the second.
 // 秒开始时间
-func (c Time) StartOfSecond() Time {
+func (c Xtime) StartOfSecond() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -201,9 +201,9 @@ func (c Time) StartOfSecond() Time {
 	return c
 }
 
-// EndOfSecond returns a Time instance for end of the second.
+// EndOfSecond returns a Xtime instance for end of the second.
 // 秒结束时间
-func (c Time) EndOfSecond() Time {
+func (c Xtime) EndOfSecond() Xtime {
 	if c.IsInvalid() {
 		return c
 	}

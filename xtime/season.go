@@ -7,7 +7,7 @@ import (
 
 // Season gets season name according to the meteorological division method, i18n is supported.
 // 获取当前季节(以气象划分)，支持i18n
-func (c Time) Season() string {
+func (c Xtime) Season() string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -34,9 +34,9 @@ func (c Time) Season() string {
 	return ""
 }
 
-// StartOfSeason returns a Time instance for start of the season.
+// StartOfSeason returns a Xtime instance for start of the season.
 // 本季节开始时间
-func (c Time) StartOfSeason() Time {
+func (c Xtime) StartOfSeason() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -48,9 +48,9 @@ func (c Time) StartOfSeason() Time {
 	return c
 }
 
-// EndOfSeason returns a Time instance for end of the season.
+// EndOfSeason returns a Xtime instance for end of the season.
 // 本季节结束时间
-func (c Time) EndOfSeason() Time {
+func (c Xtime) EndOfSeason() Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -68,7 +68,7 @@ func (c Time) EndOfSeason() Time {
 
 // IsSpring reports whether is spring.
 // 是否是春季
-func (c Time) IsSpring() bool {
+func (c Xtime) IsSpring() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -80,7 +80,7 @@ func (c Time) IsSpring() bool {
 
 // IsSummer reports whether is summer.
 // 是否是夏季
-func (c Time) IsSummer() bool {
+func (c Xtime) IsSummer() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -92,7 +92,7 @@ func (c Time) IsSummer() bool {
 
 // IsAutumn reports whether is autumn.
 // 是否是秋季
-func (c Time) IsAutumn() bool {
+func (c Xtime) IsAutumn() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -104,7 +104,7 @@ func (c Time) IsAutumn() bool {
 
 // IsWinter reports whether is winter.
 // 是否是冬季
-func (c Time) IsWinter() bool {
+func (c Xtime) IsWinter() bool {
 	if c.IsInvalid() {
 		return false
 	}

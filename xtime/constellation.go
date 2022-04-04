@@ -6,7 +6,7 @@ import (
 
 // Constellation gets constellation name, i18n is supported.
 // 获取星座，支持i18n
-func (c Time) Constellation() string {
+func (c Xtime) Constellation() string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -51,7 +51,7 @@ func (c Time) Constellation() string {
 
 // IsAries reports whether is Aries.
 // 是否是白羊座
-func (c Time) IsAries() bool {
+func (c Xtime) IsAries() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -66,7 +66,7 @@ func (c Time) IsAries() bool {
 
 // IsTaurus reports whether is Taurus.
 // 是否是金牛座
-func (c Time) IsTaurus() bool {
+func (c Xtime) IsTaurus() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -81,7 +81,7 @@ func (c Time) IsTaurus() bool {
 
 // IsGemini reports whether is Gemini.
 // 是否是双子座
-func (c Time) IsGemini() bool {
+func (c Xtime) IsGemini() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -96,7 +96,7 @@ func (c Time) IsGemini() bool {
 
 // IsCancer reports whether is Cancer.
 // 是否是巨蟹座
-func (c Time) IsCancer() bool {
+func (c Xtime) IsCancer() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -111,7 +111,7 @@ func (c Time) IsCancer() bool {
 
 // IsLeo reports whether is Leo.
 // 是否是狮子座
-func (c Time) IsLeo() bool {
+func (c Xtime) IsLeo() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -126,7 +126,7 @@ func (c Time) IsLeo() bool {
 
 // IsVirgo reports whether is Virgo.
 // 是否是处女座
-func (c Time) IsVirgo() bool {
+func (c Xtime) IsVirgo() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -141,7 +141,7 @@ func (c Time) IsVirgo() bool {
 
 // IsLibra reports whether is Libra.
 // 是否是天秤座
-func (c Time) IsLibra() bool {
+func (c Xtime) IsLibra() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -156,7 +156,7 @@ func (c Time) IsLibra() bool {
 
 // IsScorpio reports whether is Scorpio.
 // 是否是天蝎座
-func (c Time) IsScorpio() bool {
+func (c Xtime) IsScorpio() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -171,7 +171,7 @@ func (c Time) IsScorpio() bool {
 
 // IsSagittarius reports whether is Sagittarius.
 // 是否是射手座
-func (c Time) IsSagittarius() bool {
+func (c Xtime) IsSagittarius() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -186,7 +186,7 @@ func (c Time) IsSagittarius() bool {
 
 // IsCapricorn reports whether is Capricorn.
 // 是否是摩羯座
-func (c Time) IsCapricorn() bool {
+func (c Xtime) IsCapricorn() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -201,7 +201,7 @@ func (c Time) IsCapricorn() bool {
 
 // IsAquarius reports whether is Aquarius.
 // 是否是水瓶座
-func (c Time) IsAquarius() bool {
+func (c Xtime) IsAquarius() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -216,7 +216,7 @@ func (c Time) IsAquarius() bool {
 
 // IsPisces reports whether is Pisces.
 // 是否是双鱼座
-func (c Time) IsPisces() bool {
+func (c Xtime) IsPisces() bool {
 	if c.IsInvalid() {
 		return false
 	}

@@ -8,7 +8,7 @@ import (
 
 // String outputs a string in date and time format, implement Stringer interface.
 // 实现 Stringer 接口
-func (c Time) String() string {
+func (c Xtime) String() string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -17,7 +17,7 @@ func (c Time) String() string {
 
 // ToString outputs a string in "2006-01-02 15:04:05.999999999 -0700 MST" format.
 // 输出"2006-01-02 15:04:05.999999999 -0700 MST"格式字符串
-func (c Time) ToString(timezone ...string) string {
+func (c Xtime) ToString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -29,7 +29,7 @@ func (c Time) ToString(timezone ...string) string {
 
 // ToMonthString outputs a string in month format, i18n is supported.
 // 输出完整月份字符串，支持i18n
-func (c Time) ToMonthString(timezone ...string) string {
+func (c Xtime) ToMonthString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -50,7 +50,7 @@ func (c Time) ToMonthString(timezone ...string) string {
 
 // ToShortMonthString outputs a string in short month format, i18n is supported.
 // 输出缩写月份字符串，支持i18n
-func (c Time) ToShortMonthString(timezone ...string) string {
+func (c Xtime) ToShortMonthString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -71,7 +71,7 @@ func (c Time) ToShortMonthString(timezone ...string) string {
 
 // ToWeekString outputs a string in week format, i18n is supported.
 // 输出完整星期字符串，支持i18n
-func (c Time) ToWeekString(timezone ...string) string {
+func (c Xtime) ToWeekString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -92,7 +92,7 @@ func (c Time) ToWeekString(timezone ...string) string {
 
 // ToShortWeekString outputs a string in short week format, i18n is supported.
 // 输出缩写星期字符串，支持i18n
-func (c Time) ToShortWeekString(timezone ...string) string {
+func (c Xtime) ToShortWeekString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -113,7 +113,7 @@ func (c Time) ToShortWeekString(timezone ...string) string {
 
 // ToDayDateTimeString outputs a string in day, date and time format.
 // 输出天数日期时间字符串
-func (c Time) ToDayDateTimeString(timezone ...string) string {
+func (c Xtime) ToDayDateTimeString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -125,7 +125,7 @@ func (c Time) ToDayDateTimeString(timezone ...string) string {
 
 // ToDateTimeString outputs a string in date and time format.
 // 输出日期时间字符串
-func (c Time) ToDateTimeString(timezone ...string) string {
+func (c Xtime) ToDateTimeString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -137,7 +137,7 @@ func (c Time) ToDateTimeString(timezone ...string) string {
 
 // ToShortDateTimeString outputs a string in short date and time format.
 // 输出简写日期时间字符串
-func (c Time) ToShortDateTimeString(timezone ...string) string {
+func (c Xtime) ToShortDateTimeString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -149,7 +149,7 @@ func (c Time) ToShortDateTimeString(timezone ...string) string {
 
 // ToDateString outputs a string in date format.
 // 输出日期字符串
-func (c Time) ToDateString(timezone ...string) string {
+func (c Xtime) ToDateString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -161,7 +161,7 @@ func (c Time) ToDateString(timezone ...string) string {
 
 // ToShortDateString outputs a string in short date format.
 // 输出简写日期字符串
-func (c Time) ToShortDateString(timezone ...string) string {
+func (c Xtime) ToShortDateString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -173,7 +173,7 @@ func (c Time) ToShortDateString(timezone ...string) string {
 
 // ToTimeString outputs a string in time format.
 // 输出时间字符串
-func (c Time) ToTimeString(timezone ...string) string {
+func (c Xtime) ToTimeString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -185,7 +185,7 @@ func (c Time) ToTimeString(timezone ...string) string {
 
 // ToShortTimeString outputs a string in short time format.
 // 输出简写时间字符串
-func (c Time) ToShortTimeString(timezone ...string) string {
+func (c Xtime) ToShortTimeString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -197,7 +197,7 @@ func (c Time) ToShortTimeString(timezone ...string) string {
 
 // ToAtomString outputs a string in ATOM format.
 // 输出 ATOM 格式字符串
-func (c Time) ToAtomString(timezone ...string) string {
+func (c Xtime) ToAtomString(timezone ...string) string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -206,7 +206,7 @@ func (c Time) ToAtomString(timezone ...string) string {
 
 // ToAnsicString outputs a string in ANSIC format.
 // 输出 ANSIC 格式字符串
-func (c Time) ToAnsicString(timezone ...string) string {
+func (c Xtime) ToAnsicString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -218,7 +218,7 @@ func (c Time) ToAnsicString(timezone ...string) string {
 
 // ToCookieString outputs a string in COOKIE format.
 // 输出 COOKIE 格式字符串
-func (c Time) ToCookieString(timezone ...string) string {
+func (c Xtime) ToCookieString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -230,7 +230,7 @@ func (c Time) ToCookieString(timezone ...string) string {
 
 // ToRssString outputs a string in RSS format.
 // 输出 RSS 格式字符串
-func (c Time) ToRssString(timezone ...string) string {
+func (c Xtime) ToRssString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -242,7 +242,7 @@ func (c Time) ToRssString(timezone ...string) string {
 
 // ToW3cString outputs a string in W3C format.
 // 输出 W3C 格式字符串
-func (c Time) ToW3cString(timezone ...string) string {
+func (c Xtime) ToW3cString(timezone ...string) string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -251,7 +251,7 @@ func (c Time) ToW3cString(timezone ...string) string {
 
 // ToUnixDateString outputs a string in unix date format.
 // 输出 UnixDate 格式字符串
-func (c Time) ToUnixDateString(timezone ...string) string {
+func (c Xtime) ToUnixDateString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -263,7 +263,7 @@ func (c Time) ToUnixDateString(timezone ...string) string {
 
 // ToRubyDateString outputs a string in ruby date format.
 // 输出 RubyDate 格式字符串
-func (c Time) ToRubyDateString(timezone ...string) string {
+func (c Xtime) ToRubyDateString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -275,7 +275,7 @@ func (c Time) ToRubyDateString(timezone ...string) string {
 
 // ToKitchenString outputs a string in KITCHEN format.
 // 输出 KITCHEN 格式字符串
-func (c Time) ToKitchenString(timezone ...string) string {
+func (c Xtime) ToKitchenString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -287,7 +287,7 @@ func (c Time) ToKitchenString(timezone ...string) string {
 
 // ToIso8601String outputs a string in ISO8601 format.
 // 输出 ISO8601 格式字符串
-func (c Time) ToIso8601String(timezone ...string) string {
+func (c Xtime) ToIso8601String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -299,7 +299,7 @@ func (c Time) ToIso8601String(timezone ...string) string {
 
 // ToRfc822String outputs a string in RFC822 format.
 // 输出 RFC822 格式字符串
-func (c Time) ToRfc822String(timezone ...string) string {
+func (c Xtime) ToRfc822String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -311,7 +311,7 @@ func (c Time) ToRfc822String(timezone ...string) string {
 
 // ToRfc822zString outputs a string in RFC822Z format.
 // 输出 RFC822Z 格式字符串
-func (c Time) ToRfc822zString(timezone ...string) string {
+func (c Xtime) ToRfc822zString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -323,7 +323,7 @@ func (c Time) ToRfc822zString(timezone ...string) string {
 
 // ToRfc850String outputs a string in RFC850 format.
 // 输出 RFC850 格式字符串
-func (c Time) ToRfc850String(timezone ...string) string {
+func (c Xtime) ToRfc850String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -335,7 +335,7 @@ func (c Time) ToRfc850String(timezone ...string) string {
 
 // ToRfc1036String outputs a string in RFC1036 format.
 // 输出 RFC1036 格式字符串
-func (c Time) ToRfc1036String(timezone ...string) string {
+func (c Xtime) ToRfc1036String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -347,7 +347,7 @@ func (c Time) ToRfc1036String(timezone ...string) string {
 
 // ToRfc1123String outputs a string in RFC1123 format.
 // 输出 RFC1123 格式字符串
-func (c Time) ToRfc1123String(timezone ...string) string {
+func (c Xtime) ToRfc1123String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -359,7 +359,7 @@ func (c Time) ToRfc1123String(timezone ...string) string {
 
 // ToRfc1123zString outputs a string in RFC1123z format.
 // 输出 RFC1123z 格式字符串
-func (c Time) ToRfc1123zString(timezone ...string) string {
+func (c Xtime) ToRfc1123zString(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -371,7 +371,7 @@ func (c Time) ToRfc1123zString(timezone ...string) string {
 
 // ToRfc2822String outputs a string in RFC2822 format.
 // 输出 RFC2822 格式字符串
-func (c Time) ToRfc2822String(timezone ...string) string {
+func (c Xtime) ToRfc2822String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -383,7 +383,7 @@ func (c Time) ToRfc2822String(timezone ...string) string {
 
 // ToRfc3339String outputs a string in RFC3339 format.
 // 输出 RFC3339 格式字符串
-func (c Time) ToRfc3339String(timezone ...string) string {
+func (c Xtime) ToRfc3339String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -395,7 +395,7 @@ func (c Time) ToRfc3339String(timezone ...string) string {
 
 // ToRfc7231String outputs a string in RFC7231 format.
 // 输出 RFC7231 格式字符串
-func (c Time) ToRfc7231String(timezone ...string) string {
+func (c Xtime) ToRfc7231String(timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -407,7 +407,7 @@ func (c Time) ToRfc7231String(timezone ...string) string {
 
 // ToLayoutString outputs a string by layout.
 // 输出指定布局的时间字符串
-func (c Time) ToLayoutString(layout string, timezone ...string) string {
+func (c Xtime) ToLayoutString(layout string, timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -419,7 +419,7 @@ func (c Time) ToLayoutString(layout string, timezone ...string) string {
 
 // Layout outputs a string by layout, it is shorthand for ToLayoutString.
 // 输出指定布局的时间字符串, 是 ToLayoutString 的简写
-func (c Time) Layout(layout string, timezone ...string) string {
+func (c Xtime) Layout(layout string, timezone ...string) string {
 	if c.IsInvalid() {
 		return ""
 	}
@@ -428,7 +428,7 @@ func (c Time) Layout(layout string, timezone ...string) string {
 
 // ToFormatString outputs a string by format.
 // 输出指定格式的时间字符串
-func (c Time) ToFormatString(format string, timezone ...string) string {
+func (c Xtime) ToFormatString(format string, timezone ...string) string {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -494,7 +494,7 @@ func (c Time) ToFormatString(format string, timezone ...string) string {
 
 // Format outputs a string by format, it is shorthand for ToFormatString.
 // 输出指定格式的时间字符串, 是 ToFormatString 的简写
-func (c Time) Format(format string, timezone ...string) string {
+func (c Xtime) Format(format string, timezone ...string) string {
 	if c.IsInvalid() {
 		return ""
 	}

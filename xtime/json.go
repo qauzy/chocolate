@@ -8,37 +8,42 @@ import (
 
 // DateTime defines a DateTime struct.
 type DateTime struct {
-	Time
+	Xtime
 }
 
 // Date defines a Date struct.
 type Date struct {
-	Time
+	Xtime
+}
+
+// Time defines a Time struct.
+type Time struct {
+	Xtime
 }
 
 // Timestamp defines a Timestamp struct.
 type Timestamp struct {
-	Time
+	Xtime
 }
 
 // TimestampWithSecond defines a TimestampWithSecond struct.
 type TimestampWithSecond struct {
-	Time
+	Xtime
 }
 
 // TimestampWithMillisecond defines a TimestampWithMillisecond struct.
 type TimestampWithMillisecond struct {
-	Time
+	Xtime
 }
 
 // TimestampWithMicrosecond defines a TimestampWithMicrosecond struct.
 type TimestampWithMicrosecond struct {
-	Time
+	Xtime
 }
 
 // TimestampWithNanosecond defines a TimestampWithNanosecond struct.
 type TimestampWithNanosecond struct {
-	Time
+	Xtime
 }
 
 // MarshalJSON implements the interface MarshalJSON for json.Marshal.
@@ -78,7 +83,7 @@ func (t Time) MarshalJSON() ([]byte, error) {
 func (t *Time) UnmarshalJSON(b []byte) error {
 	c := ParseByFormat(string(bytes.Trim(b, `"`)), "H:i:s")
 	if c.Error == nil {
-		*t = c
+		*t = Time{c}
 	}
 	return nil
 }

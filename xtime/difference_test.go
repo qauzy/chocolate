@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_DiffInYears(t *testing.T) {
+func TestXtime_DiffInYears(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -29,7 +29,7 @@ func TestTime_DiffInYears(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInYearsWithAbs(t *testing.T) {
+func TestXtime_DiffInYearsWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -51,7 +51,7 @@ func TestTime_DiffInYearsWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInMonths(t *testing.T) {
+func TestXtime_DiffInMonths(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -74,7 +74,7 @@ func TestTime_DiffInMonths(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInMonthsWithAbs(t *testing.T) {
+func TestXtime_DiffInMonthsWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -96,7 +96,7 @@ func TestTime_DiffInMonthsWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInWeeks(t *testing.T) {
+func TestXtime_DiffInWeeks(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -123,7 +123,7 @@ func TestTime_DiffInWeeks(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInWeeksWithAbs(t *testing.T) {
+func TestXtime_DiffInWeeksWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -150,7 +150,7 @@ func TestTime_DiffInWeeksWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInDays(t *testing.T) {
+func TestXtime_DiffInDays(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -177,7 +177,7 @@ func TestTime_DiffInDays(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInDaysWithAbs(t *testing.T) {
+func TestXtime_DiffInDaysWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -204,7 +204,7 @@ func TestTime_DiffInDaysWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInHours(t *testing.T) {
+func TestXtime_DiffInHours(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -231,7 +231,7 @@ func TestTime_DiffInHours(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInHoursWithAbs(t *testing.T) {
+func TestXtime_DiffInHoursWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -258,7 +258,7 @@ func TestTime_DiffInHoursWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInMinutes(t *testing.T) {
+func TestXtime_DiffInMinutes(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -285,7 +285,7 @@ func TestTime_DiffInMinutes(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInMinutesWithAbs(t *testing.T) {
+func TestXtime_DiffInMinutesWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -312,7 +312,7 @@ func TestTime_DiffInMinutesWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInSeconds(t *testing.T) {
+func TestXtime_DiffInSeconds(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -333,7 +333,7 @@ func TestTime_DiffInSeconds(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInSecondsWithAbs(t *testing.T) {
+func TestXtime_DiffInSecondsWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -354,11 +354,11 @@ func TestTime_DiffInSecondsWithAbs(t *testing.T) {
 	}
 }
 
-func TestTime_DiffInString(t *testing.T) {
+func TestXtime_DiffInString(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time   // 输入值
+		input    Xtime  // 输入值
 		expected string // 期望值
 	}{
 		{Now(), "just now"},
@@ -414,11 +414,11 @@ func TestLangError_DiffInString(t *testing.T) {
 	assert.Equal(t, "", c.DiffInString())
 }
 
-func TestTime_DiffInStringWithAbs(t *testing.T) {
+func TestXtime_DiffInStringWithAbs(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time   // 输入值
+		input    Xtime  // 输入值
 		expected string // 期望值
 	}{
 		{Now(), "just now"},
@@ -475,11 +475,11 @@ func TestLangError_DiffInStringWithAbs(t *testing.T) {
 	assert.Equal(t, "", c.DiffInStringWithAbs())
 }
 
-func TestTime_DiffForHumans(t *testing.T) {
+func TestXtime_DiffForHumans(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time   // 输入值
+		input    Xtime  // 输入值
 		expected string // 期望值
 	}{
 		{Now(), "just now"},

@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_Parse(t *testing.T) {
+func TestXtime_Parse(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -49,7 +49,7 @@ func TestError_Parse(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in Parse()")
 }
 
-func TestTime_ParseByFormat(t *testing.T) {
+func TestXtime_ParseByFormat(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -93,7 +93,7 @@ func TestError_ParseByFormat(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in ParseByFormat()")
 }
 
-func TestTime_ParseByLayout(t *testing.T) {
+func TestXtime_ParseByLayout(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

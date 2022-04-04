@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestTime_SetTimezone(t *testing.T) {
+func TestXtime_SetTimezone(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -36,7 +36,7 @@ func TestError_SetTimezone(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in SetTimezone()")
 }
 
-func TestTime_SetLocale(t *testing.T) {
+func TestXtime_SetLocale(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -73,7 +73,7 @@ func TestError_SetLocale(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in SetLocale()")
 }
 
-func TestTime_SetLanguage(t *testing.T) {
+func TestXtime_SetLanguage(t *testing.T) {
 	lang := NewLanguage()
 	resources := map[string]string{
 		"seasons": "spring|summer|autumn|winter",
@@ -117,7 +117,7 @@ func TestError_SetLanguage(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in SetLanguage()")
 }
 
-func TestTime_SetYear(t *testing.T) {
+func TestXtime_SetYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -139,7 +139,7 @@ func TestTime_SetYear(t *testing.T) {
 	}
 }
 
-func TestTime_SetYearNoOverflow(t *testing.T) {
+func TestXtime_SetYearNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -173,7 +173,7 @@ func TestError_SetYearNoOverflow(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetYearNoOverflow()")
 }
 
-func TestTime_SetMonth(t *testing.T) {
+func TestXtime_SetMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -194,7 +194,7 @@ func TestTime_SetMonth(t *testing.T) {
 	}
 }
 
-func TestTime_SetMonthNoOverflow(t *testing.T) {
+func TestXtime_SetMonthNoOverflow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -227,7 +227,7 @@ func TestError_SetMonthNoOverflow(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetMonthNoOverflow()")
 }
 
-func TestTime_SetWeekStartsAt(t *testing.T) {
+func TestXtime_SetWeekStartsAt(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -276,7 +276,7 @@ func TestTime_SetWeekStartsAt(t *testing.T) {
 	}
 }
 
-func TestTime_SetDay(t *testing.T) {
+func TestXtime_SetDay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -303,7 +303,7 @@ func TestError_SetDay(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetDay()")
 }
 
-func TestTime_SetHour(t *testing.T) {
+func TestXtime_SetHour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -328,7 +328,7 @@ func TestError_SetHour(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetHour()")
 }
 
-func TestTime_SetMinute(t *testing.T) {
+func TestXtime_SetMinute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -353,7 +353,7 @@ func TestError_SetMinute(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetMinute()")
 }
 
-func TestTime_SetSecond(t *testing.T) {
+func TestXtime_SetSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -378,7 +378,7 @@ func TestError_SetSecond(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetSecond()")
 }
 
-func TestTime_SetMillisecond(t *testing.T) {
+func TestXtime_SetMillisecond(t *testing.T) {
 	assert := assert.New(t)
 	tests := []struct {
 		input       string // 输入值
@@ -402,7 +402,7 @@ func TestError_SetMillisecond(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetMillisecond()")
 }
 
-func TestTime_SetMicrosecond(t *testing.T) {
+func TestXtime_SetMicrosecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -427,7 +427,7 @@ func TestError_SetMicrosecond(t *testing.T) {
 	assert.NotNil(t, c.Error, "It should catch an exception in SetMicrosecond()")
 }
 
-func TestTime_SetNanosecond(t *testing.T) {
+func TestXtime_SetNanosecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

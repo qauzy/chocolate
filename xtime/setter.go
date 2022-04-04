@@ -6,7 +6,7 @@ import (
 
 // SetTimezone sets timezone.
 // 设置时区
-func (c Time) SetTimezone(name string) Time {
+func (c Xtime) SetTimezone(name string) Xtime {
 	if c.Error != nil {
 		return c
 	}
@@ -16,13 +16,13 @@ func (c Time) SetTimezone(name string) Time {
 
 // SetTimezone sets timezone.
 // 设置时区
-func SetTimezone(name string) Time {
-	return NewTime().SetTimezone(name)
+func SetTimezone(name string) Xtime {
+	return NewXtime().SetTimezone(name)
 }
 
 // SetLocale sets locale.
 // 设置语言区域
-func (c Time) SetLocale(locale string) Time {
+func (c Xtime) SetLocale(locale string) Xtime {
 	if c.Error != nil {
 		return c
 	}
@@ -33,8 +33,8 @@ func (c Time) SetLocale(locale string) Time {
 
 // SetLocale sets locale.
 // 设置语言区域
-func SetLocale(locale string) Time {
-	c := NewTime()
+func SetLocale(locale string) Xtime {
+	c := NewXtime()
 	c.lang.SetLocale(locale)
 	c.Error = c.lang.Error
 	return c
@@ -42,7 +42,7 @@ func SetLocale(locale string) Time {
 
 // SetLanguage sets language.
 // 设置语言对象
-func (c Time) SetLanguage(lang *Language) Time {
+func (c Xtime) SetLanguage(lang *Language) Xtime {
 	if c.Error != nil {
 		return c
 	}
@@ -52,8 +52,8 @@ func (c Time) SetLanguage(lang *Language) Time {
 
 // SetLanguage sets language.
 // 设置语言对象
-func SetLanguage(lang *Language) Time {
-	c := NewTime()
+func SetLanguage(lang *Language) Xtime {
+	c := NewXtime()
 	lang.SetLocale(lang.locale)
 	c.lang, c.Error = lang, lang.Error
 	return c
@@ -61,7 +61,7 @@ func SetLanguage(lang *Language) Time {
 
 // SetYear sets year.
 // 设置年份
-func (c Time) SetYear(year int) Time {
+func (c Xtime) SetYear(year int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -71,7 +71,7 @@ func (c Time) SetYear(year int) Time {
 
 // SetYearNoOverflow sets year without overflowing month.
 // 设置年份(月份不溢出)
-func (c Time) SetYearNoOverflow(year int) Time {
+func (c Xtime) SetYearNoOverflow(year int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -80,7 +80,7 @@ func (c Time) SetYearNoOverflow(year int) Time {
 
 // SetMonth sets month.
 // 设置月份
-func (c Time) SetMonth(month int) Time {
+func (c Xtime) SetMonth(month int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -90,7 +90,7 @@ func (c Time) SetMonth(month int) Time {
 
 // SetMonthNoOverflow sets month without overflowing month.
 // 设置月份(月份不溢出)
-func (c Time) SetMonthNoOverflow(month int) Time {
+func (c Xtime) SetMonthNoOverflow(month int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -99,7 +99,7 @@ func (c Time) SetMonthNoOverflow(month int) Time {
 
 // SetWeekStartsAt sets start day of the week.
 // 设置一周的开始日期
-func (c Time) SetWeekStartsAt(day string) Time {
+func (c Xtime) SetWeekStartsAt(day string) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -124,7 +124,7 @@ func (c Time) SetWeekStartsAt(day string) Time {
 
 // SetDay sets day.
 // 设置日期
-func (c Time) SetDay(day int) Time {
+func (c Xtime) SetDay(day int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -134,7 +134,7 @@ func (c Time) SetDay(day int) Time {
 
 // SetHour sets hour.
 // 设置小时
-func (c Time) SetHour(hour int) Time {
+func (c Xtime) SetHour(hour int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -144,7 +144,7 @@ func (c Time) SetHour(hour int) Time {
 
 // SetMinute sets minute.
 // 设置分钟
-func (c Time) SetMinute(minute int) Time {
+func (c Xtime) SetMinute(minute int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -154,7 +154,7 @@ func (c Time) SetMinute(minute int) Time {
 
 // SetSecond sets second.
 // 设置秒数
-func (c Time) SetSecond(second int) Time {
+func (c Xtime) SetSecond(second int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -164,7 +164,7 @@ func (c Time) SetSecond(second int) Time {
 
 // SetMillisecond sets millisecond.
 // 设置毫秒
-func (c Time) SetMillisecond(millisecond int) Time {
+func (c Xtime) SetMillisecond(millisecond int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -174,7 +174,7 @@ func (c Time) SetMillisecond(millisecond int) Time {
 
 // SetMicrosecond sets microsecond.
 // 设置微秒
-func (c Time) SetMicrosecond(microsecond int) Time {
+func (c Xtime) SetMicrosecond(microsecond int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}
@@ -184,7 +184,7 @@ func (c Time) SetMicrosecond(microsecond int) Time {
 
 // SetNanosecond sets nanosecond.
 // 设置纳秒
-func (c Time) SetNanosecond(nanosecond int) Time {
+func (c Xtime) SetNanosecond(nanosecond int) Xtime {
 	if c.IsInvalid() {
 		return c
 	}

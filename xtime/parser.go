@@ -6,9 +6,9 @@ import (
 	"time"
 )
 
-// Parse parses a standard string as a Time instance.
-// 将标准格式时间字符串解析成 Time 实例
-func (c Time) Parse(value string, timezone ...string) Time {
+// Parse parses a standard string as a Xtime instance.
+// 将标准格式时间字符串解析成 Xtime 实例
+func (c Xtime) Parse(value string, timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -41,15 +41,15 @@ func (c Time) Parse(value string, timezone ...string) Time {
 	return c
 }
 
-// Parse parses a standard string as a Time instance.
-// 将标准时间字符串解析成 Time 实例
-func Parse(value string, timezone ...string) Time {
-	return NewTime().Parse(value, timezone...)
+// Parse parses a standard string as a Xtime instance.
+// 将标准时间字符串解析成 Xtime 实例
+func Parse(value string, timezone ...string) Xtime {
+	return NewXtime().Parse(value, timezone...)
 }
 
-// ParseByFormat parses a string as a Time instance by format.
+// ParseByFormat parses a string as a Xtime instance by format.
 // 通过格式化字符将字符串解析成 xtime 实例
-func (c Time) ParseByFormat(value string, format string, timezone ...string) Time {
+func (c Xtime) ParseByFormat(value string, format string, timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -67,15 +67,15 @@ func (c Time) ParseByFormat(value string, format string, timezone ...string) Tim
 	return c
 }
 
-// ParseByFormat parses a string as a Time instance by format.
+// ParseByFormat parses a string as a Xtime instance by format.
 // 通过布局字符将字符串解析成 xtime 实例
-func ParseByFormat(value string, format string, timezone ...string) Time {
-	return NewTime().ParseByFormat(value, format, timezone...)
+func ParseByFormat(value string, format string, timezone ...string) Xtime {
+	return NewXtime().ParseByFormat(value, format, timezone...)
 }
 
-// ParseByLayout parses a string as a Time instance by layout.
+// ParseByLayout parses a string as a Xtime instance by layout.
 // 通过布局字符将字符串解析成 xtime 实例
-func (c Time) ParseByLayout(value string, layout string, timezone ...string) Time {
+func (c Xtime) ParseByLayout(value string, layout string, timezone ...string) Xtime {
 	if len(timezone) > 0 {
 		c.loc, c.Error = getLocationByTimezone(timezone[len(timezone)-1])
 	}
@@ -94,8 +94,8 @@ func (c Time) ParseByLayout(value string, layout string, timezone ...string) Tim
 	return c
 }
 
-// ParseByLayout parses a string as a Time instance by layout.
-// 将布局时间字符串解析成 Time 实例
-func ParseByLayout(value string, layout string, timezone ...string) Time {
-	return NewTime().ParseByLayout(value, layout, timezone...)
+// ParseByLayout parses a string as a Xtime instance by layout.
+// 将布局时间字符串解析成 Xtime 实例
+func ParseByLayout(value string, layout string, timezone ...string) Xtime {
+	return NewXtime().ParseByLayout(value, layout, timezone...)
 }

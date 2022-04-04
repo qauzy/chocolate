@@ -11,7 +11,7 @@ func TestLanguage_SetLocale(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input1   Time   // 输入值
+		input1   Xtime  // 输入值
 		input2   string // 输入值
 		expected string // 期望值
 	}{

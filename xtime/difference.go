@@ -6,30 +6,30 @@ import (
 
 // DiffInYears gets the difference in years.
 // 相差多少年
-func (c Time) DiffInYears(carbon ...Time) int64 {
+func (c Xtime) DiffInYears(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return c.DiffInMonths(end) / MonthsPerYear
 }
 
 // DiffInYearsWithAbs gets the difference in years with absolute value.
 // 相差多少年(绝对值)
-func (c Time) DiffInYearsWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInYearsWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInYears(end))
 }
 
 // DiffInMonths gets the difference in months.
 // 相差多少月
-func (c Time) DiffInMonths(carbon ...Time) int64 {
+func (c Xtime) DiffInMonths(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	dy, dm, dd := end.Year()-c.Year(), end.Month()-c.Month(), end.Day()-c.Day()
 	if dd < 0 {
@@ -49,120 +49,120 @@ func (c Time) DiffInMonths(carbon ...Time) int64 {
 
 // DiffInMonthsWithAbs gets the difference in months with absolute value.
 // 相差多少月(绝对值)
-func (c Time) DiffInMonthsWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInMonthsWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInMonths(end))
 }
 
 // DiffInWeeks gets the difference in weeks.
 // 相差多少周
-func (c Time) DiffInWeeks(carbon ...Time) int64 {
+func (c Xtime) DiffInWeeks(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return c.DiffInDays(end) / DaysPerWeek
 }
 
 // DiffInWeeksWithAbs gets the difference in weeks with absolute value.
 // 相差多少周(绝对值)
-func (c Time) DiffInWeeksWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInWeeksWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInWeeks(end))
 }
 
 // DiffInDays gets the difference in days.
 // 相差多少天
-func (c Time) DiffInDays(carbon ...Time) int64 {
+func (c Xtime) DiffInDays(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return c.DiffInSeconds(end) / SecondsPerDay
 }
 
 // DiffInDaysWithAbs gets the difference in days with absolute value.
 // 相差多少天(绝对值)
-func (c Time) DiffInDaysWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInDaysWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInDays(end))
 }
 
 // DiffInHours gets the difference in hours.
 // 相差多少小时
-func (c Time) DiffInHours(carbon ...Time) int64 {
+func (c Xtime) DiffInHours(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return c.DiffInSeconds(end) / SecondsPerHour
 }
 
 // DiffInHoursWithAbs gets the difference in hours with absolute value.
 // 相差多少小时(绝对值)
-func (c Time) DiffInHoursWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInHoursWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInHours(end))
 }
 
 // DiffInMinutes gets the difference in minutes.
 // 相差多少分钟
-func (c Time) DiffInMinutes(carbon ...Time) int64 {
+func (c Xtime) DiffInMinutes(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return c.DiffInSeconds(end) / SecondsPerMinute
 }
 
 // DiffInMinutesWithAbs gets the difference in minutes with absolute value.
 // 相差多少分钟(绝对值)
-func (c Time) DiffInMinutesWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInMinutesWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInMinutes(end))
 }
 
 // DiffInSeconds gets the difference in seconds.
 // 相差多少秒
-func (c Time) DiffInSeconds(carbon ...Time) int64 {
+func (c Xtime) DiffInSeconds(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return end.Timestamp() - c.Timestamp()
 }
 
 // DiffInSecondsWithAbs gets the difference in seconds with absolute value.
 // 相差多少秒(绝对值)
-func (c Time) DiffInSecondsWithAbs(carbon ...Time) int64 {
+func (c Xtime) DiffInSecondsWithAbs(xtime ...Xtime) int64 {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	return getAbsValue(c.DiffInSeconds(end))
 }
 
 // DiffInString gets the difference in string, i18n is supported.
 // 相差字符串，支持i18n
-func (c Time) DiffInString(carbon ...Time) string {
+func (c Xtime) DiffInString(xtime ...Xtime) string {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	if c.Error != nil || end.Error != nil {
 		return ""
@@ -173,10 +173,10 @@ func (c Time) DiffInString(carbon ...Time) string {
 
 // DiffInStringWithAbs gets the difference in string with absolute value, i18n is supported.
 // 相差字符串，支持i18n(绝对值)
-func (c Time) DiffInStringWithAbs(carbon ...Time) string {
+func (c Xtime) DiffInStringWithAbs(xtime ...Xtime) string {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	if c.Error != nil || end.Error != nil {
 		return ""
@@ -187,10 +187,10 @@ func (c Time) DiffInStringWithAbs(carbon ...Time) string {
 
 // DiffForHumans gets the difference in a human-readable format, i18n is supported.
 // 获取对人类友好的可读格式时间差，支持i18n
-func (c Time) DiffForHumans(carbon ...Time) string {
+func (c Xtime) DiffForHumans(xtime ...Xtime) string {
 	end := c.Now()
-	if len(carbon) > 0 {
-		end = carbon[len(carbon)-1]
+	if len(xtime) > 0 {
+		end = xtime[len(xtime)-1]
 	}
 	if c.Error != nil || end.Error != nil {
 		return ""
@@ -200,13 +200,13 @@ func (c Time) DiffForHumans(carbon ...Time) string {
 	if unit == "now" {
 		return translation
 	}
-	if c.Lt(end) && len(carbon) == 0 {
+	if c.Lt(end) && len(xtime) == 0 {
 		return strings.Replace(c.lang.resources["ago"], "%s", translation, 1)
 	}
-	if c.Lt(end) && len(carbon) > 0 {
+	if c.Lt(end) && len(xtime) > 0 {
 		return strings.Replace(c.lang.resources["before"], "%s", translation, 1)
 	}
-	if c.Gt(end) && len(carbon) == 0 {
+	if c.Gt(end) && len(xtime) == 0 {
 		return strings.Replace(c.lang.resources["from_now"], "%s", translation, 1)
 	}
 	return strings.Replace(c.lang.resources["after"], "%s", translation, 1)
@@ -214,7 +214,7 @@ func (c Time) DiffForHumans(carbon ...Time) string {
 
 // diff gets the difference for unit and value.
 // 获取相差单位和差值
-func (c Time) diff(end Time) (unit string, value int64) {
+func (c Xtime) diff(end Xtime) (unit string, value int64) {
 	switch true {
 	case c.DiffInYearsWithAbs(end) > 0:
 		unit = "year"

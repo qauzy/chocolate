@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_CreateFromTimestamp(t *testing.T) {
+func TestXtime_CreateFromTimestamp(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -45,7 +45,7 @@ func TestError_CreateFromTimestamp(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in CreateFromTimestamp()")
 }
 
-func TestTime_CreateFromDateTime(t *testing.T) {
+func TestXtime_CreateFromDateTime(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -81,7 +81,7 @@ func TestError_CreateFromDateTime(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in CreateFromDateTime()")
 }
 
-func TestTime_CreateFromDate(t *testing.T) {
+func TestXtime_CreateFromDate(t *testing.T) {
 	assert := assert.New(t)
 
 	clock := Now(PRC).ToTimeString()
@@ -118,7 +118,7 @@ func TestError_CreateFromDate(t *testing.T) {
 	assert.NotNil(t, c2.Error, "It should catch an exception in CreateFromDate()")
 }
 
-func TestTime_CreateFromTime(t *testing.T) {
+func TestXtime_CreateFromTime(t *testing.T) {
 	assert := assert.New(t)
 
 	date := Now(PRC).ToDateString()

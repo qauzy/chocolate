@@ -6,13 +6,13 @@ import (
 
 // IsZero reports whether is zero time.
 // 是否是零值时间
-func (c Time) IsZero() bool {
+func (c Xtime) IsZero() bool {
 	return c.time.IsZero()
 }
 
 // IsInvalid reports whether is invalid time.
 // 是否是无效时间
-func (c Time) IsInvalid() bool {
+func (c Xtime) IsInvalid() bool {
 	if c.Error != nil || c.IsZero() {
 		return true
 	}
@@ -21,7 +21,7 @@ func (c Time) IsInvalid() bool {
 
 // IsNow reports whether is now time.
 // 是否是当前时间
-func (c Time) IsNow() bool {
+func (c Xtime) IsNow() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -30,7 +30,7 @@ func (c Time) IsNow() bool {
 
 // IsFuture reports whether is future time.
 // 是否是未来时间
-func (c Time) IsFuture() bool {
+func (c Xtime) IsFuture() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -39,7 +39,7 @@ func (c Time) IsFuture() bool {
 
 // IsPast reports whether is past time.
 // 是否是过去时间
-func (c Time) IsPast() bool {
+func (c Xtime) IsPast() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -48,7 +48,7 @@ func (c Time) IsPast() bool {
 
 // IsLeapYear reports whether is a leap year.
 // 是否是闰年
-func (c Time) IsLeapYear() bool {
+func (c Xtime) IsLeapYear() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -61,7 +61,7 @@ func (c Time) IsLeapYear() bool {
 
 // IsLongYear reports whether is a long year, see https://en.wikipedia.org/wiki/ISO_8601#Week_dates.
 // 是否是长年
-func (c Time) IsLongYear() bool {
+func (c Xtime) IsLongYear() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -71,7 +71,7 @@ func (c Time) IsLongYear() bool {
 
 // IsJanuary reports whether is January.
 // 是否是一月
-func (c Time) IsJanuary() bool {
+func (c Xtime) IsJanuary() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -80,7 +80,7 @@ func (c Time) IsJanuary() bool {
 
 // IsFebruary reports whether is February.
 // 是否是二月
-func (c Time) IsFebruary() bool {
+func (c Xtime) IsFebruary() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -89,7 +89,7 @@ func (c Time) IsFebruary() bool {
 
 // IsMarch reports whether is March.
 // 是否是三月
-func (c Time) IsMarch() bool {
+func (c Xtime) IsMarch() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -98,7 +98,7 @@ func (c Time) IsMarch() bool {
 
 // IsApril reports whether is April.
 // 是否是四月
-func (c Time) IsApril() bool {
+func (c Xtime) IsApril() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -107,7 +107,7 @@ func (c Time) IsApril() bool {
 
 // IsMay reports whether is May.
 // 是否是五月
-func (c Time) IsMay() bool {
+func (c Xtime) IsMay() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -116,7 +116,7 @@ func (c Time) IsMay() bool {
 
 // IsJune reports whether is June.
 // 是否是六月
-func (c Time) IsJune() bool {
+func (c Xtime) IsJune() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -125,7 +125,7 @@ func (c Time) IsJune() bool {
 
 // IsJuly reports whether is July.
 // 是否是七月
-func (c Time) IsJuly() bool {
+func (c Xtime) IsJuly() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -134,7 +134,7 @@ func (c Time) IsJuly() bool {
 
 // IsAugust reports whether is August.
 // 是否是八月
-func (c Time) IsAugust() bool {
+func (c Xtime) IsAugust() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -143,7 +143,7 @@ func (c Time) IsAugust() bool {
 
 // IsSeptember reports whether is September.
 // 是否是九月
-func (c Time) IsSeptember() bool {
+func (c Xtime) IsSeptember() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -152,7 +152,7 @@ func (c Time) IsSeptember() bool {
 
 // IsOctober reports whether is October.
 // 是否是十月
-func (c Time) IsOctober() bool {
+func (c Xtime) IsOctober() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -161,7 +161,7 @@ func (c Time) IsOctober() bool {
 
 // IsNovember reports whether is November.
 // 是否是十一月
-func (c Time) IsNovember() bool {
+func (c Xtime) IsNovember() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -170,7 +170,7 @@ func (c Time) IsNovember() bool {
 
 // IsDecember reports whether is December.
 // 是否是十二月
-func (c Time) IsDecember() bool {
+func (c Xtime) IsDecember() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -179,7 +179,7 @@ func (c Time) IsDecember() bool {
 
 // IsMonday reports whether is Monday.
 // 是否是周一
-func (c Time) IsMonday() bool {
+func (c Xtime) IsMonday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -188,7 +188,7 @@ func (c Time) IsMonday() bool {
 
 // IsTuesday reports whether is Tuesday.
 // 是否是周二
-func (c Time) IsTuesday() bool {
+func (c Xtime) IsTuesday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -197,7 +197,7 @@ func (c Time) IsTuesday() bool {
 
 // IsWednesday reports whether is Wednesday.
 // 是否是周三
-func (c Time) IsWednesday() bool {
+func (c Xtime) IsWednesday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -206,7 +206,7 @@ func (c Time) IsWednesday() bool {
 
 // IsThursday reports whether is Thursday.
 // 是否是周四
-func (c Time) IsThursday() bool {
+func (c Xtime) IsThursday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -215,7 +215,7 @@ func (c Time) IsThursday() bool {
 
 // IsFriday reports whether is Friday.
 // 是否是周五
-func (c Time) IsFriday() bool {
+func (c Xtime) IsFriday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -224,7 +224,7 @@ func (c Time) IsFriday() bool {
 
 // IsSaturday reports whether is Saturday.
 // 是否是周六
-func (c Time) IsSaturday() bool {
+func (c Xtime) IsSaturday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -233,7 +233,7 @@ func (c Time) IsSaturday() bool {
 
 // IsSunday reports whether is Sunday.
 // 是否是周日
-func (c Time) IsSunday() bool {
+func (c Xtime) IsSunday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -242,7 +242,7 @@ func (c Time) IsSunday() bool {
 
 // IsWeekday reports whether is weekday.
 // 是否是工作日
-func (c Time) IsWeekday() bool {
+func (c Xtime) IsWeekday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -251,7 +251,7 @@ func (c Time) IsWeekday() bool {
 
 // IsWeekend reports whether is weekend.
 // 是否是周末
-func (c Time) IsWeekend() bool {
+func (c Xtime) IsWeekend() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -260,7 +260,7 @@ func (c Time) IsWeekend() bool {
 
 // IsYesterday reports whether is yesterday.
 // 是否是昨天
-func (c Time) IsYesterday() bool {
+func (c Xtime) IsYesterday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -269,7 +269,7 @@ func (c Time) IsYesterday() bool {
 
 // IsToday reports whether is today.
 // 是否是今天
-func (c Time) IsToday() bool {
+func (c Xtime) IsToday() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -278,7 +278,7 @@ func (c Time) IsToday() bool {
 
 // IsTomorrow reports whether is tomorrow.
 // 是否是明天
-func (c Time) IsTomorrow() bool {
+func (c Xtime) IsTomorrow() bool {
 	if c.IsInvalid() {
 		return false
 	}
@@ -287,7 +287,7 @@ func (c Time) IsTomorrow() bool {
 
 // Compare compares by an operator.
 // 时间比较
-func (c Time) Compare(operator string, t Time) bool {
+func (c Xtime) Compare(operator string, t Xtime) bool {
 	switch operator {
 	case "=":
 		return c.Eq(t)
@@ -307,43 +307,43 @@ func (c Time) Compare(operator string, t Time) bool {
 
 // Gt reports whether greater than.
 // 是否大于
-func (c Time) Gt(t Time) bool {
+func (c Xtime) Gt(t Xtime) bool {
 	return c.time.After(t.time)
 }
 
 // Lt reports whether less than.
 // 是否小于
-func (c Time) Lt(t Time) bool {
+func (c Xtime) Lt(t Xtime) bool {
 	return c.time.Before(t.time)
 }
 
 // Eq reports whether equal.
 // 是否等于
-func (c Time) Eq(t Time) bool {
+func (c Xtime) Eq(t Xtime) bool {
 	return c.time.Equal(t.time)
 }
 
 // Ne reports whether not equal.
 // 是否不等于
-func (c Time) Ne(t Time) bool {
+func (c Xtime) Ne(t Xtime) bool {
 	return !c.Eq(t)
 }
 
 // Gte reports whether greater than or equal.
 // 是否大于等于
-func (c Time) Gte(t Time) bool {
+func (c Xtime) Gte(t Xtime) bool {
 	return c.Gt(t) || c.Eq(t)
 }
 
 // Lte reports whether less than or equal.
 // 是否小于等于
-func (c Time) Lte(t Time) bool {
+func (c Xtime) Lte(t Xtime) bool {
 	return c.Lt(t) || c.Eq(t)
 }
 
 // Between reports whether between two times, excluded the start and end time.
 // 是否在两个时间之间(不包括这两个时间)
-func (c Time) Between(start Time, end Time) bool {
+func (c Xtime) Between(start Xtime, end Xtime) bool {
 	if c.Gt(start) && c.Lt(end) {
 		return true
 	}
@@ -352,7 +352,7 @@ func (c Time) Between(start Time, end Time) bool {
 
 // BetweenIncludedStart reports whether between two times, included the start time.
 // 是否在两个时间之间(包括开始时间)
-func (c Time) BetweenIncludedStart(start Time, end Time) bool {
+func (c Xtime) BetweenIncludedStart(start Xtime, end Xtime) bool {
 	if c.Gte(start) && c.Lt(end) {
 		return true
 	}
@@ -361,7 +361,7 @@ func (c Time) BetweenIncludedStart(start Time, end Time) bool {
 
 // BetweenIncludedEnd reports whether between two times, included the end time.
 // 是否在两个时间之间(包括结束时间)
-func (c Time) BetweenIncludedEnd(start Time, end Time) bool {
+func (c Xtime) BetweenIncludedEnd(start Xtime, end Xtime) bool {
 	if c.Gt(start) && c.Lte(end) {
 		return true
 	}
@@ -370,7 +370,7 @@ func (c Time) BetweenIncludedEnd(start Time, end Time) bool {
 
 // BetweenIncludedBoth reports whether between two times, included the start and end time.
 // 是否在两个时间之间(包括这两个时间)
-func (c Time) BetweenIncludedBoth(start Time, end Time) bool {
+func (c Xtime) BetweenIncludedBoth(start Xtime, end Xtime) bool {
 	if c.Gte(start) && c.Lte(end) {
 		return true
 	}

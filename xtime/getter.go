@@ -4,7 +4,7 @@ import "time"
 
 // DaysInYear gets total days in year.
 // 获取本年的总天数
-func (c Time) DaysInYear() int {
+func (c Xtime) DaysInYear() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -16,7 +16,7 @@ func (c Time) DaysInYear() int {
 
 // DaysInMonth gets total days in month.
 // 获取本月的总天数
-func (c Time) DaysInMonth() int {
+func (c Xtime) DaysInMonth() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -25,7 +25,7 @@ func (c Time) DaysInMonth() int {
 
 // MonthOfYear gets month of year.
 // 获取本年的第几月
-func (c Time) MonthOfYear() int {
+func (c Xtime) MonthOfYear() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -34,7 +34,7 @@ func (c Time) MonthOfYear() int {
 
 // DayOfYear gets day of year.
 // 获取本年的第几天
-func (c Time) DayOfYear() int {
+func (c Xtime) DayOfYear() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -43,7 +43,7 @@ func (c Time) DayOfYear() int {
 
 // DayOfMonth gets day of month.
 // 获取本月的第几天
-func (c Time) DayOfMonth() int {
+func (c Xtime) DayOfMonth() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -52,7 +52,7 @@ func (c Time) DayOfMonth() int {
 
 // DayOfWeek gets day of week.
 // 获取本周的第几天
-func (c Time) DayOfWeek() int {
+func (c Xtime) DayOfWeek() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -65,7 +65,7 @@ func (c Time) DayOfWeek() int {
 
 // WeekOfYear gets week of year, see https://en.wikipedia.org/wiki/ISO_8601#Week_dates.
 // 获取本年的第几周
-func (c Time) WeekOfYear() int {
+func (c Xtime) WeekOfYear() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -75,7 +75,7 @@ func (c Time) WeekOfYear() int {
 
 // WeekOfMonth gets week of month.
 // 获取本月的第几周
-func (c Time) WeekOfMonth() int {
+func (c Xtime) WeekOfMonth() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -88,7 +88,7 @@ func (c Time) WeekOfMonth() int {
 
 // Century gets current century.
 // 获取当前世纪
-func (c Time) Century() int {
+func (c Xtime) Century() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -97,7 +97,7 @@ func (c Time) Century() int {
 
 // Decade gets current decade.
 // 获取当前年代
-func (c Time) Decade() int {
+func (c Xtime) Decade() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -106,7 +106,7 @@ func (c Time) Decade() int {
 
 // Year gets current year.
 // 获取当前年
-func (c Time) Year() int {
+func (c Xtime) Year() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -115,7 +115,7 @@ func (c Time) Year() int {
 
 // Quarter gets current quarter.
 // 获取当前季度
-func (c Time) Quarter() (quarter int) {
+func (c Xtime) Quarter() (quarter int) {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -134,7 +134,7 @@ func (c Time) Quarter() (quarter int) {
 
 // Month gets current month.
 // 获取当前月
-func (c Time) Month() int {
+func (c Xtime) Month() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -143,7 +143,7 @@ func (c Time) Month() int {
 
 // Week gets current week, start from 0.
 // 获取当前周(从0开始)
-func (c Time) Week() int {
+func (c Xtime) Week() int {
 	if c.IsInvalid() {
 		return -1
 	}
@@ -152,7 +152,7 @@ func (c Time) Week() int {
 
 // Day gets current day.
 // 获取当前日
-func (c Time) Day() int {
+func (c Xtime) Day() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -161,7 +161,7 @@ func (c Time) Day() int {
 
 // Hour gets current hour.
 // 获取当前小时
-func (c Time) Hour() int {
+func (c Xtime) Hour() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -170,7 +170,7 @@ func (c Time) Hour() int {
 
 // Minute gets current minute.
 // 获取当前分钟数
-func (c Time) Minute() int {
+func (c Xtime) Minute() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -179,7 +179,7 @@ func (c Time) Minute() int {
 
 // Second gets current second.
 // 获取当前秒数
-func (c Time) Second() int {
+func (c Xtime) Second() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -188,7 +188,7 @@ func (c Time) Second() int {
 
 // Millisecond gets current millisecond.
 // 获取当前毫秒数，3位数字
-func (c Time) Millisecond() int {
+func (c Xtime) Millisecond() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -197,7 +197,7 @@ func (c Time) Millisecond() int {
 
 // Microsecond gets current microsecond.
 // 获取当前微秒数，6位数字
-func (c Time) Microsecond() int {
+func (c Xtime) Microsecond() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -206,7 +206,7 @@ func (c Time) Microsecond() int {
 
 // Nanosecond gets current nanosecond.
 // 获取当前纳秒数，9位数字
-func (c Time) Nanosecond() int {
+func (c Xtime) Nanosecond() int {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -215,7 +215,7 @@ func (c Time) Nanosecond() int {
 
 // Timestamp gets timestamp with second, it is shorthand for TimestampWithSecond.
 // 获取秒级时间戳, 是 TimestampWithSecond 的简写
-func (c Time) Timestamp() int64 {
+func (c Xtime) Timestamp() int64 {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -224,7 +224,7 @@ func (c Time) Timestamp() int64 {
 
 // TimestampWithSecond gets timestamp with second.
 // 输出秒级时间戳
-func (c Time) TimestampWithSecond() int64 {
+func (c Xtime) TimestampWithSecond() int64 {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -233,7 +233,7 @@ func (c Time) TimestampWithSecond() int64 {
 
 // TimestampWithMillisecond gets timestamp with millisecond.
 // 获取毫秒级时间戳
-func (c Time) TimestampWithMillisecond() int64 {
+func (c Xtime) TimestampWithMillisecond() int64 {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -242,7 +242,7 @@ func (c Time) TimestampWithMillisecond() int64 {
 
 // TimestampWithMicrosecond gets timestamp with microsecond.
 // 获取微秒级时间戳
-func (c Time) TimestampWithMicrosecond() int64 {
+func (c Xtime) TimestampWithMicrosecond() int64 {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -251,7 +251,7 @@ func (c Time) TimestampWithMicrosecond() int64 {
 
 // TimestampWithNanosecond gets timestamp with nanosecond.
 // 获取纳秒级时间戳
-func (c Time) TimestampWithNanosecond() int64 {
+func (c Xtime) TimestampWithNanosecond() int64 {
 	if c.IsInvalid() {
 		return 0
 	}
@@ -260,33 +260,33 @@ func (c Time) TimestampWithNanosecond() int64 {
 
 // Location gets location name.
 // 获取位置
-func (c Time) Location() string {
+func (c Xtime) Location() string {
 	return c.loc.String()
 }
 
 // Timezone gets timezone name.
 // 获取时区
-func (c Time) Timezone() string {
+func (c Xtime) Timezone() string {
 	name, _ := c.time.Zone()
 	return name
 }
 
 // Offset gets offset seconds from the UTC timezone.
 // 获取距离UTC时区的偏移量，单位秒
-func (c Time) Offset() int {
+func (c Xtime) Offset() int {
 	_, offset := c.time.Zone()
 	return offset
 }
 
 // Locale gets locale name.
 // 获取语言区域
-func (c Time) Locale() string {
+func (c Xtime) Locale() string {
 	return c.lang.locale
 }
 
 // Age gets age.
 // 获取年龄
-func (c Time) Age() int {
+func (c Xtime) Age() int {
 	if c.IsInvalid() {
 		return 0
 	}

@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_StartOfCentury(t *testing.T) {
+func TestXtime_StartOfCentury(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -34,7 +34,7 @@ func TestTime_StartOfCentury(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfCentury(t *testing.T) {
+func TestXtime_EndOfCentury(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -61,7 +61,7 @@ func TestTime_EndOfCentury(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfDecade(t *testing.T) {
+func TestXtime_StartOfDecade(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -89,7 +89,7 @@ func TestTime_StartOfDecade(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfDecade(t *testing.T) {
+func TestXtime_EndOfDecade(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -117,7 +117,7 @@ func TestTime_EndOfDecade(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfYear(t *testing.T) {
+func TestXtime_StartOfYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -144,7 +144,7 @@ func TestTime_StartOfYear(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfYear(t *testing.T) {
+func TestXtime_EndOfYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -171,7 +171,7 @@ func TestTime_EndOfYear(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfQuarter(t *testing.T) {
+func TestXtime_StartOfQuarter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -205,7 +205,7 @@ func TestTime_StartOfQuarter(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfQuarter(t *testing.T) {
+func TestXtime_EndOfQuarter(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -239,7 +239,7 @@ func TestTime_EndOfQuarter(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfMonth(t *testing.T) {
+func TestXtime_StartOfMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -273,7 +273,7 @@ func TestTime_StartOfMonth(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfMonth(t *testing.T) {
+func TestXtime_EndOfMonth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -307,7 +307,7 @@ func TestTime_EndOfMonth(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfWeek(t *testing.T) {
+func TestXtime_StartOfWeek(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -333,7 +333,7 @@ func TestTime_StartOfWeek(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfWeek(t *testing.T) {
+func TestXtime_EndOfWeek(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -359,7 +359,7 @@ func TestTime_EndOfWeek(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfDay(t *testing.T) {
+func TestXtime_StartOfDay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -393,7 +393,7 @@ func TestTime_StartOfDay(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfDay(t *testing.T) {
+func TestXtime_EndOfDay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -427,7 +427,7 @@ func TestTime_EndOfDay(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfHour(t *testing.T) {
+func TestXtime_StartOfHour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -461,7 +461,7 @@ func TestTime_StartOfHour(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfHour(t *testing.T) {
+func TestXtime_EndOfHour(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -495,7 +495,7 @@ func TestTime_EndOfHour(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfMinute(t *testing.T) {
+func TestXtime_StartOfMinute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -529,7 +529,7 @@ func TestTime_StartOfMinute(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfMinute(t *testing.T) {
+func TestXtime_EndOfMinute(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -563,7 +563,7 @@ func TestTime_EndOfMinute(t *testing.T) {
 	}
 }
 
-func TestTime_StartOfSecond(t *testing.T) {
+func TestXtime_StartOfSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -597,7 +597,7 @@ func TestTime_StartOfSecond(t *testing.T) {
 	}
 }
 
-func TestTime_EndOfSecond(t *testing.T) {
+func TestXtime_EndOfSecond(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {

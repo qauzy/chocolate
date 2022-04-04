@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTime_IsZero(t *testing.T) {
+func TestXtime_IsZero(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -35,7 +35,7 @@ func TestError_IsZero(t *testing.T) {
 	assert.True(t, c.IsZero(), "It should catch an exception in IsZero()")
 }
 
-func TestTime_IsInvalid(t *testing.T) {
+func TestXtime_IsInvalid(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -63,12 +63,12 @@ func TestError_IsInvalid(t *testing.T) {
 	assert.True(t, c.IsInvalid(), "It should catch an exception in IsInvalid()")
 }
 
-func TestTime_IsNow(t *testing.T) {
+func TestXtime_IsNow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
 		{Parse(""), false},
 		{Parse("0"), false},
@@ -88,12 +88,12 @@ func TestTime_IsNow(t *testing.T) {
 	}
 }
 
-func TestTime_IsFuture(t *testing.T) {
+func TestXtime_IsFuture(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
 		{Parse(""), false},
 		{Parse("0"), false},
@@ -113,12 +113,12 @@ func TestTime_IsFuture(t *testing.T) {
 	}
 }
 
-func TestTime_IsPast(t *testing.T) {
+func TestXtime_IsPast(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
 		{Parse(""), false},
 		{Parse("0"), false},
@@ -138,7 +138,7 @@ func TestTime_IsPast(t *testing.T) {
 	}
 }
 
-func TestTime_IsLeapYear(t *testing.T) {
+func TestXtime_IsLeapYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -167,7 +167,7 @@ func TestTime_IsLeapYear(t *testing.T) {
 	}
 }
 
-func TestTime_IsLongYear(t *testing.T) {
+func TestXtime_IsLongYear(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -196,7 +196,7 @@ func TestTime_IsLongYear(t *testing.T) {
 	}
 }
 
-func TestTime_IsJanuary(t *testing.T) {
+func TestXtime_IsJanuary(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -230,7 +230,7 @@ func TestTime_IsJanuary(t *testing.T) {
 	}
 }
 
-func TestTime_IsFebruary(t *testing.T) {
+func TestXtime_IsFebruary(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -264,7 +264,7 @@ func TestTime_IsFebruary(t *testing.T) {
 	}
 }
 
-func TestTime_IsMarch(t *testing.T) {
+func TestXtime_IsMarch(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -298,7 +298,7 @@ func TestTime_IsMarch(t *testing.T) {
 	}
 }
 
-func TestTime_IsApril(t *testing.T) {
+func TestXtime_IsApril(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -332,7 +332,7 @@ func TestTime_IsApril(t *testing.T) {
 	}
 }
 
-func TestTime_IsMay(t *testing.T) {
+func TestXtime_IsMay(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -366,7 +366,7 @@ func TestTime_IsMay(t *testing.T) {
 	}
 }
 
-func TestTime_IsJune(t *testing.T) {
+func TestXtime_IsJune(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -400,7 +400,7 @@ func TestTime_IsJune(t *testing.T) {
 	}
 }
 
-func TestTime_IsJuly(t *testing.T) {
+func TestXtime_IsJuly(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -434,7 +434,7 @@ func TestTime_IsJuly(t *testing.T) {
 	}
 }
 
-func TestTime_IsAugust(t *testing.T) {
+func TestXtime_IsAugust(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -468,7 +468,7 @@ func TestTime_IsAugust(t *testing.T) {
 	}
 }
 
-func TestTime_IsSeptember(t *testing.T) {
+func TestXtime_IsSeptember(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -502,7 +502,7 @@ func TestTime_IsSeptember(t *testing.T) {
 	}
 }
 
-func TestTime_IsOctober(t *testing.T) {
+func TestXtime_IsOctober(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -536,7 +536,7 @@ func TestTime_IsOctober(t *testing.T) {
 	}
 }
 
-func TestTime_IsNovember(t *testing.T) {
+func TestXtime_IsNovember(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -570,7 +570,7 @@ func TestTime_IsNovember(t *testing.T) {
 	}
 }
 
-func TestTime_IsDecember(t *testing.T) {
+func TestXtime_IsDecember(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -604,7 +604,7 @@ func TestTime_IsDecember(t *testing.T) {
 	}
 }
 
-func TestTime_IsMonday(t *testing.T) {
+func TestXtime_IsMonday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -633,7 +633,7 @@ func TestTime_IsMonday(t *testing.T) {
 	}
 }
 
-func TestTime_IsTuesday(t *testing.T) {
+func TestXtime_IsTuesday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -662,7 +662,7 @@ func TestTime_IsTuesday(t *testing.T) {
 	}
 }
 
-func TestTime_IsWednesday(t *testing.T) {
+func TestXtime_IsWednesday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -691,7 +691,7 @@ func TestTime_IsWednesday(t *testing.T) {
 	}
 }
 
-func TestTime_IsThursday(t *testing.T) {
+func TestXtime_IsThursday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -720,7 +720,7 @@ func TestTime_IsThursday(t *testing.T) {
 	}
 }
 
-func TestTime_IsFriday(t *testing.T) {
+func TestXtime_IsFriday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -749,7 +749,7 @@ func TestTime_IsFriday(t *testing.T) {
 	}
 }
 
-func TestTime_IsSaturday(t *testing.T) {
+func TestXtime_IsSaturday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -778,7 +778,7 @@ func TestTime_IsSaturday(t *testing.T) {
 	}
 }
 
-func TestTime_IsSunday(t *testing.T) {
+func TestXtime_IsSunday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -807,7 +807,7 @@ func TestTime_IsSunday(t *testing.T) {
 	}
 }
 
-func TestTime_IsWeekday(t *testing.T) {
+func TestXtime_IsWeekday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -836,7 +836,7 @@ func TestTime_IsWeekday(t *testing.T) {
 	}
 }
 
-func TestTime_IsWeekend(t *testing.T) {
+func TestXtime_IsWeekend(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -865,14 +865,14 @@ func TestTime_IsWeekend(t *testing.T) {
 	}
 }
 
-func TestTime_IsYesterday(t *testing.T) {
+func TestXtime_IsYesterday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
-		{NewTime(), false},
+		{NewXtime(), false},
 		{Now(), false},
 		{Yesterday(), true},
 		{Tomorrow(), false},
@@ -885,14 +885,14 @@ func TestTime_IsYesterday(t *testing.T) {
 	}
 }
 
-func TestTime_IsToday(t *testing.T) {
+func TestXtime_IsToday(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
-		{NewTime(), false},
+		{NewXtime(), false},
 		{Now(), true},
 		{Yesterday(), false},
 		{Tomorrow(), false},
@@ -905,14 +905,14 @@ func TestTime_IsToday(t *testing.T) {
 	}
 }
 
-func TestTime_IsTomorrow(t *testing.T) {
+func TestXtime_IsTomorrow(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
-		input    Time // 输入值
-		expected bool // 期望值
+		input    Xtime // 输入值
+		expected bool  // 期望值
 	}{
-		{NewTime(), false},
+		{NewXtime(), false},
 		{Now(), false},
 		{Yesterday(), false},
 		{Tomorrow(), true},
@@ -925,7 +925,7 @@ func TestTime_IsTomorrow(t *testing.T) {
 	}
 }
 
-func TestTime_Compare(t *testing.T) {
+func TestXtime_Compare(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -956,7 +956,7 @@ func TestTime_Compare(t *testing.T) {
 	}
 }
 
-func TestTime_Gt(t *testing.T) {
+func TestXtime_Gt(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -977,7 +977,7 @@ func TestTime_Gt(t *testing.T) {
 	}
 }
 
-func TestTime_Lt(t *testing.T) {
+func TestXtime_Lt(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -998,7 +998,7 @@ func TestTime_Lt(t *testing.T) {
 	}
 }
 
-func TestTime_Eq(t *testing.T) {
+func TestXtime_Eq(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1019,7 +1019,7 @@ func TestTime_Eq(t *testing.T) {
 	}
 }
 
-func TestTime_Ne(t *testing.T) {
+func TestXtime_Ne(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1040,7 +1040,7 @@ func TestTime_Ne(t *testing.T) {
 	}
 }
 
-func TestTime_Gte(t *testing.T) {
+func TestXtime_Gte(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1061,7 +1061,7 @@ func TestTime_Gte(t *testing.T) {
 	}
 }
 
-func TestTime_Lte(t *testing.T) {
+func TestXtime_Lte(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1082,7 +1082,7 @@ func TestTime_Lte(t *testing.T) {
 	}
 }
 
-func TestTime_Between(t *testing.T) {
+func TestXtime_Between(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1106,7 +1106,7 @@ func TestTime_Between(t *testing.T) {
 	}
 }
 
-func TestTime_BetweenIncludedStart(t *testing.T) {
+func TestXtime_BetweenIncludedStart(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1130,7 +1130,7 @@ func TestTime_BetweenIncludedStart(t *testing.T) {
 	}
 }
 
-func TestTime_BetweenIncludedEnd(t *testing.T) {
+func TestXtime_BetweenIncludedEnd(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
@@ -1154,7 +1154,7 @@ func TestTime_BetweenIncludedEnd(t *testing.T) {
 	}
 }
 
-func TestTime_BetweenIncludedBoth(t *testing.T) {
+func TestXtime_BetweenIncludedBoth(t *testing.T) {
 	assert := assert.New(t)
 
 	tests := []struct {
