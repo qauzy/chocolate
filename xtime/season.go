@@ -1,0 +1,115 @@
+package xtime
+
+import (
+	"strings"
+	"time"
+)
+
+// Season gets season name according to the meteorological division method, i18n is supported.
+// 获取当前季节(以气象划分)，支持i18n
+func (c Time) Season() string {
+	if c.IsInvalid() {
+		return ""
+	}
+	if len(c.lang.resources) == 0 {
+		c.lang.SetLocale(defaultLocale)
+	}
+	index := -1
+	switch {
+	case c.Month() == 3 || c.Month() == 4 || c.Month() == 5:
+		index = 0
+	case c.Month() == 6 || c.Month() == 7 || c.Month() == 8:
+		index = 1
+	case c.Month() == 9 || c.Month() == 10 || c.Month() == 11:
+		index = 2
+	case c.Month() == 12 || c.Month() == 1 || c.Month() == 2:
+		index = 3
+	}
+	if seasons, ok := c.lang.resources["seasons"]; ok {
+		slice := strings.Split(seasons, "|")
+		if len(slice) == 4 {
+			return slice[index]
+		}
+	}
+	return ""
+}
+
+// StartOfSeason returns a Time instance for start of the season.
+// 本季节开始时间
+func (c Time) StartOfSeason() Time {
+	if c.IsInvalid() {
+		return c
+	}
+	if c.Month() == 1 || c.Month() == 2 {
+		c.time = time.Date(c.Year()-1, time.Month(12), 1, 0, 0, 0, 0, c.loc)
+		return c
+	}
+	c.time = time.Date(c.Year(), time.Month(c.Month()/3*3), 1, 0, 0, 0, 0, c.loc)
+	return c
+}
+
+// EndOfSeason returns a Time instance for end of the season.
+// 本季节结束时间
+func (c Time) EndOfSeason() Time {
+	if c.IsInvalid() {
+		return c
+	}
+	if c.Month() == 1 || c.Month() == 2 {
+		c.time = time.Date(c.Year(), time.Month(2), 1, 23, 59, 59, 999999999, c.loc).AddDate(0, 1, -1)
+		return c
+	}
+	if c.Month() == 12 {
+		c.time = time.Date(c.Year()+1, time.Month(2), 1, 23, 59, 59, 999999999, c.loc).AddDate(0, 1, -1)
+		return c
+	}
+	c.time = time.Date(c.Year(), time.Month(c.Month()/3*3+2), 1, 23, 59, 59, 999999999, c.loc).AddDate(0, 1, -1)
+	return c
+}
+
+// IsSpring reports whether is spring.
+// 是否是春季
+func (c Time) IsSpring() bool {
+	if c.IsInvalid() {
+		return false
+	}
+	if c.Month() == 3 || c.Month() == 4 || c.Month() == 5 {
+		return true
+	}
+	return false
+}
+
+// IsSummer reports whether is summer.
+// 是否是夏季
+func (c Time) IsSummer() bool {
+	if c.IsInvalid() {
+		return false
+	}
+	if c.Month() == 6 || c.Month() == 7 || c.Month() == 8 {
+		return true
+	}
+	return false
+}
+
+// IsAutumn reports whether is autumn.
+// 是否是秋季
+func (c Time) IsAutumn() bool {
+	if c.IsInvalid() {
+		return false
+	}
+	if c.Month() == 9 || c.Month() == 10 || c.Month() == 11 {
+		return true
+	}
+	return false
+}
+
+// IsWinter reports whether is winter.
+// 是否是冬季
+func (c Time) IsWinter() bool {
+	if c.IsInvalid() {
+		return false
+	}
+	if c.Month() == 12 || c.Month() == 1 || c.Month() == 2 {
+		return true
+	}
+	return false
+}
