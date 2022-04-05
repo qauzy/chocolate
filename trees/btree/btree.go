@@ -25,7 +25,7 @@ import (
 )
 
 func assertTreeImplementation() {
-	var _ trees.Tree = (*Tree)(nil)
+	var _ trees.Tree = (*Tree[int, int])(nil)
 }
 
 // Tree holds elements of the B-tree
@@ -126,8 +126,8 @@ func (tree *Tree[K, V]) Keys() []K {
 }
 
 // Values returns all values in-order based on the key.
-func (tree *Tree[K, V]) Values() []interface{} {
-	values := make([]interface{}, tree.size)
+func (tree *Tree[K, V]) Values() []V {
+	values := make([]V, tree.size)
 	it := tree.Iterator()
 	for i := 0; it.Next(); i++ {
 		values[i] = it.Value()
@@ -398,7 +398,7 @@ func (tree *Tree[K, V]) splitRoot() {
 	tree.Root = newRoot
 }
 
-func setParent[K, V](nodes []*Node[K, V], parent *Node[K, V]) {
+func setParent[K comparable, V any](nodes []*Node[K, V], parent *Node[K, V]) {
 	for _, node := range nodes {
 		node.Parent = parent
 	}
