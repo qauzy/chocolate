@@ -11,14 +11,14 @@ func assertIteratorImplementation() {
 }
 
 // Iterator holding the iterator's state
-type Iterator struct {
-	list    *List
+type Iterator[T comparable] struct {
+	list    *List[T]
 	index   int
-	element *element
+	element *element[T]
 }
 
 // Iterator returns a stateful iterator whose values can be fetched by an index.
-func (list *List) Iterator() Iterator {
+func (list *List[T]) Iterator() Iterator {
 	return Iterator{list: list, index: -1, element: nil}
 }
 

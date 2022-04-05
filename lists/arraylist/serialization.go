@@ -14,12 +14,12 @@ import (
 //}
 
 // ToJSON outputs the JSON representation of list's Elements.
-func (list *List[T]) ToJSON() ([]byte, error) {
+func (list List[T]) ToJSON() ([]byte, error) {
 	return json.Marshal(list)
 }
 
 // FromJSON populates list's Elements from the input JSON representation.
-func (list *List[T]) FromJSON(data []byte) error {
+func (list List[T]) FromJSON(data []byte) error {
 	err := json.Unmarshal(data, &list)
 
 	return err

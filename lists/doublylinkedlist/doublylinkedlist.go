@@ -27,14 +27,14 @@ type List[T comparable] struct {
 	size  int
 }
 
-type element[T any] struct {
+type element[T comparable] struct {
 	value T
 	prev  *element[T]
 	next  *element[T]
 }
 
 // New instantiates a new list and adds the passed values, if any, to the list
-func New[T any](values ...T) *List[T] {
+func New[T comparable](values ...T) *List[T] {
 	list := &List[T]{}
 	if len(values) > 0 {
 		list.Add(values...)
@@ -63,7 +63,7 @@ func (list *List[T]) Append(values ...T) {
 }
 
 // Prepend prepends a values (or more)
-func (list *List[T]) Prepend(values ...interface{}) {
+func (list *List[T]) Prepend(values ...T) {
 	// in reverse to keep passed order i.e. ["c","d"] -> Prepend(["a","b"]) -> ["a","b","c",d"]
 	for v := len(values) - 1; v >= 0; v-- {
 		newElement := &element[T]{value: values[v], next: list.first}

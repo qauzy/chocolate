@@ -15,9 +15,9 @@ type Iterator[T comparable] struct {
 }
 
 // Iterator returns a stateful iterator whose values can be fetched by an index.
-func (list1 List[T]) Iterator() Iterator[T] {
+func (list List[T]) Iterator() Iterator[T] {
 
-	return Iterator[T]{list: list1, index: -1}
+	return Iterator[T]{list: list, index: -1}
 }
 
 // Next moves the iterator to the next element and returns true if there was a next element in the container.
@@ -25,7 +25,7 @@ func (list1 List[T]) Iterator() Iterator[T] {
 // If Next() was called for the first time, then it will point the iterator to the first element if it exists.
 // Modifies the state of the iterator.
 func (iterator *Iterator[T]) Next() bool {
-	if iterator.index < len(iterator.list) {
+	if iterator.index < len([]T(iterator.list)) {
 		iterator.index++
 	}
 	return iterator.list.withinRange(iterator.index)
@@ -62,7 +62,7 @@ func (iterator *Iterator[T]) Begin() {
 // End moves the iterator past the last element (one-past-the-end).
 // Call Prev() to fetch the last element if any.
 func (iterator *Iterator[T]) End() {
-	iterator.index = len(iterator.list)
+	iterator.index = len([]T(iterator.list))
 }
 
 // First moves the iterator to the first element and returns true if there was a first element in the container.

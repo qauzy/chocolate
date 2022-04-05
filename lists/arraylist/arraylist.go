@@ -71,7 +71,7 @@ func New[TP comparable](values ...TP) List[TP] {
 // Add appends a value at the end of the list
 func (list List[T]) Add(values ...T) {
 	for _, value := range values {
-		list = append(list, value)
+		list = append([]T(list), value)
 	}
 }
 
@@ -94,7 +94,7 @@ func (list List[T]) Remove(index int) {
 	}
 
 	//list.Elements[index] =                                    // cleanup reference
-	copy(list[index:], list[index+1:]) // shift to the left by one (slow operation, need ways to optimize this)
+	copy([]T(list)[index:], list[index+1:]) // shift to the left by one (slow operation, need ways to optimize this)
 
 }
 
@@ -106,7 +106,7 @@ func (list List[T]) Contains(values ...T) bool {
 
 	for _, searchValue := range values {
 		found := false
-		for _, element := range list {
+		for _, element := range []T(list) {
 			if element == searchValue {
 				found = true
 				break
@@ -122,12 +122,12 @@ func (list List[T]) Contains(values ...T) bool {
 // Values returns all Elements in the list.
 func (list List[T]) Values() []T {
 
-	return []T(list)
+	return list
 }
 
 //IndexOf returns index of provided element
 func (list List[T]) IndexOf(value T) int {
-	if len(list) == 0 {
+	if len([]T(list)) == 0 {
 		return -1
 	}
 	for index, element := range list {
@@ -140,12 +140,12 @@ func (list List[T]) IndexOf(value T) int {
 
 // Empty returns true if list does not contain any Elements.
 func (list List[T]) Empty() bool {
-	return len(list) == 0
+	return len([]T(list)) == 0
 }
 
 // Size returns number of Elements within the list.
 func (list List[T]) Size() int {
-	return len(list)
+	return len([]T(list))
 }
 
 func (list List[T]) Stream() *stream.Stream[T] {
@@ -179,15 +179,15 @@ func (list List[T]) Insert(index int, values ...T) {
 
 	if !list.withinRange(index) {
 		// Append
-		if index == len(list) {
+		if index == len([]T(list)) {
 			list.Add(values...)
 		}
 		return
 	}
 
 	l := len(values)
-	copy(list[index+l:], list[index:len(list)-l])
-	copy(list[index:], values)
+	copy([]T(list)[index+l:], list[index:len([]T(list))-l])
+	copy([]T(list)[index:], values)
 }
 
 // Set the value at specified index
@@ -197,7 +197,7 @@ func (list List[T]) Set(index int, value T) {
 
 	if !list.withinRange(index) {
 		// Append
-		for index >= len(list) {
+		for index >= len([]T(list)) {
 			list.Add(value)
 		}
 
@@ -220,5 +220,5 @@ func (list List[T]) String() string {
 
 // Check that the index is within bounds of the list
 func (list List[T]) withinRange(index int) bool {
-	return index >= 0 && index < len(list)
+	return index >= 0 && index < len([]T(list))
 }
