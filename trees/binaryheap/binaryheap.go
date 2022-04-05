@@ -21,7 +21,7 @@ import (
 )
 
 func assertTreeImplementation() {
-	var _ trees.Tree = (*Heap[int])(nil)
+	var _ trees.Tree[int] = (*Heap[int])(nil)
 }
 
 // Heap[T] holds elements in an array-list

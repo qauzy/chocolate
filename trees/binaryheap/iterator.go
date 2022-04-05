@@ -7,7 +7,7 @@ package binaryheap
 import "github.com/qauzy/chocolate/containers"
 
 func assertIteratorImplementation() {
-	var _ containers.ReverseIteratorWithIndex = (*Iterator[int])(nil)
+	var _ containers.ReverseIteratorWithIndex[int] = (*Iterator[int])(nil)
 }
 
 // Iterator returns a stateful iterator whose values can be fetched by an index.
