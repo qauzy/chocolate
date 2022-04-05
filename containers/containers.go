@@ -13,7 +13,7 @@
 // Serialization provides serializers (marshalers) and deserializers (unmarshalers).
 package containers
 
-import "github.com/qauzy/util/utils"
+import "github.com/qauzy/chocolate/utils"
 
 // Container is base interface that all data structures implement.
 type Container[T comparable] interface {

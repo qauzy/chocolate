@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/util/sets/hashset"
+	"github.com/qauzy/chocolate/sets/hashset"
 )
 
 // HashSetExample to demonstrate basic usage of HashSet

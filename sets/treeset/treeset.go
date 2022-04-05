@@ -11,9 +11,9 @@ package treeset
 
 import (
 	"fmt"
-	"github.com/qauzy/util/sets"
-	rbt "github.com/qauzy/util/trees/redblacktree"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/sets"
+	rbt "github.com/qauzy/chocolate/trees/redblacktree"
+	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 

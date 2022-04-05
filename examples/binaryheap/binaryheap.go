@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/qauzy/util/trees/binaryheap"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/trees/binaryheap"
+	"github.com/qauzy/chocolate/utils"
 )
 
 // BinaryHeapExample to demonstrate basic usage of BinaryHeap

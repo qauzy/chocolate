@@ -3,7 +3,7 @@ package LocalDateTime
 import (
 	"database/sql/driver"
 	"errors"
-	"github.com/qauzy/util/timex/LocalDate"
+	"github.com/qauzy/chocolate/timex/LocalDate"
 	"time"
 )
 

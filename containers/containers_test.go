@@ -7,7 +7,7 @@
 package containers
 
 import (
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/utils"
 	"testing"
 )
 

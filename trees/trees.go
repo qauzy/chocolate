@@ -9,7 +9,7 @@
 // Reference: https://en.wikipedia.org/wiki/Tree_%28data_structure%29
 package trees
 
-import "github.com/qauzy/util/containers"
+import "github.com/qauzy/chocolate/containers"
 
 // Tree interface that all trees implement
 type Tree interface {

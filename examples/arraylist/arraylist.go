@@ -10,8 +10,8 @@ import (
 	"go/parser"
 	"go/token"
 
-	"github.com/qauzy/util/lists/arraylist"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/lists/arraylist"
+	"github.com/qauzy/chocolate/utils"
 )
 
 var srcCode = `

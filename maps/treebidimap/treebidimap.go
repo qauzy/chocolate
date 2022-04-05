@@ -19,9 +19,9 @@ package treebidimap
 
 import (
 	"fmt"
-	"github.com/qauzy/util/maps"
-	"github.com/qauzy/util/trees/redblacktree"
-	"github.com/qauzy/util/utils"
+	"github.com/qauzy/chocolate/maps"
+	"github.com/qauzy/chocolate/trees/redblacktree"
+	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 

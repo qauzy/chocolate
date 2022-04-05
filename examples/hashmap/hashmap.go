@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/qauzy/util/maps/hashmap"
+	"github.com/qauzy/chocolate/maps/hashmap"
 )
 
 // HashMapExample to demonstrate basic usage of HashMap

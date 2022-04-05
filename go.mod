@@ -1,4 +1,4 @@
-module github.com/qauzy/util
+module github.com/qauzy/chocolate
 
 go 1.18
 

@@ -4,7 +4,7 @@
 
 package main
 
-import "github.com/qauzy/util/maps/hashbidimap"
+import "github.com/qauzy/chocolate/maps/hashbidimap"
 
 // HashBidiMapExample to demonstrate basic usage of HashMap
 func main() {

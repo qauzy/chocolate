@@ -11,8 +11,8 @@ package hashset
 
 import (
 	"fmt"
-	"github.com/qauzy/util/sets"
-	"github.com/qauzy/util/stream"
+	"github.com/qauzy/chocolate/sets"
+	"github.com/qauzy/chocolate/stream"
 	"strings"
 )
 
