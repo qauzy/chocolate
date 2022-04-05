@@ -10,7 +10,7 @@ import (
 )
 
 func TestMapPut(t *testing.T) {
-	m := New()
+	m := New[int, string]()
 	m.Put(5, "e")
 	m.Put(6, "f")
 	m.Put(7, "g")
@@ -23,10 +23,10 @@ func TestMapPut(t *testing.T) {
 	if actualValue := m.Size(); actualValue != 7 {
 		t.Errorf("Got %v expected %v", actualValue, 7)
 	}
-	if actualValue, expectedValue := m.Keys(), []interface{}{1, 2, 3, 4, 5, 6, 7}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Keys(), []int{1, 2, 3, 4, 5, 6, 7}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := m.Values(), []interface{}{"a", "b", "c", "d", "e", "f", "g"}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Values(), []string{"a", "b", "c", "d", "e", "f", "g"}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 
@@ -39,12 +39,12 @@ func TestMapPut(t *testing.T) {
 		{5, "e", true},
 		{6, "f", true},
 		{7, "g", true},
-		{8, nil, false},
+		{8, "", false},
 	}
 
 	for _, test := range tests1 {
 		// retrievals
-		actualValue, actualFound := m.Get(test[0])
+		actualValue, actualFound := m.Get(test[0].(int))
 		if actualValue != test[1] || actualFound != test[2] {
 			t.Errorf("Got %v expected %v", actualValue, test[1])
 		}
@@ -52,7 +52,7 @@ func TestMapPut(t *testing.T) {
 }
 
 func TestMapRemove(t *testing.T) {
-	m := New()
+	m := New[int, string]()
 	m.Put(5, "e")
 	m.Put(6, "f")
 	m.Put(7, "g")
@@ -68,11 +68,11 @@ func TestMapRemove(t *testing.T) {
 	m.Remove(8)
 	m.Remove(5)
 
-	if actualValue, expectedValue := m.Keys(), []interface{}{1, 2, 3, 4}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Keys(), []int{1, 2, 3, 4}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 
-	if actualValue, expectedValue := m.Values(), []interface{}{"a", "b", "c", "d"}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Values(), []string{"a", "b", "c", "d"}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 	if actualValue := m.Size(); actualValue != 4 {
@@ -91,7 +91,7 @@ func TestMapRemove(t *testing.T) {
 	}
 
 	for _, test := range tests2 {
-		actualValue, actualFound := m.Get(test[0])
+		actualValue, actualFound := m.Get(test[0].(int))
 		if actualValue != test[1] || actualFound != test[2] {
 			t.Errorf("Got %v expected %v", actualValue, test[1])
 		}
@@ -104,7 +104,7 @@ func TestMapRemove(t *testing.T) {
 	m.Remove(2)
 	m.Remove(2)
 
-	if actualValue, expectedValue := fmt.Sprintf("%s", m.Keys()), "[]"; actualValue != expectedValue {
+	if actualValue, expectedValue := fmt.Sprintf("%v", m.Keys()), "[]"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 	if actualValue, expectedValue := fmt.Sprintf("%s", m.Values()), "[]"; actualValue != expectedValue {
@@ -119,17 +119,17 @@ func TestMapRemove(t *testing.T) {
 }
 
 func TestMapSerialization(t *testing.T) {
-	m := New()
+	m := New[string, float64]()
 	m.Put("a", 1.0)
 	m.Put("b", 2.0)
 	m.Put("c", 3.0)
 
 	var err error
 	assert := func() {
-		if actualValue, expectedValue := m.Keys(), []interface{}{"a", "b", "c"}; !sameElements(actualValue, expectedValue) {
+		if actualValue, expectedValue := m.Keys(), []string{"a", "b", "c"}; !sameElements(actualValue, expectedValue) {
 			t.Errorf("Got %v expected %v", actualValue, expectedValue)
 		}
-		if actualValue, expectedValue := m.Values(), []interface{}{1.0, 2.0, 3.0}; !sameElements(actualValue, expectedValue) {
+		if actualValue, expectedValue := m.Values(), []float64{1.0, 2.0, 3.0}; !sameElements(actualValue, expectedValue) {
 			t.Errorf("Got %v expected %v", actualValue, expectedValue)
 		}
 		if actualValue, expectedValue := m.Size(), 3; actualValue != expectedValue {
@@ -149,7 +149,7 @@ func TestMapSerialization(t *testing.T) {
 	assert()
 }
 
-func sameElements(a []interface{}, b []interface{}) bool {
+func sameElements[T comparable](a []T, b []T) bool {
 	if len(a) != len(b) {
 		return false
 	}
@@ -168,7 +168,7 @@ func sameElements(a []interface{}, b []interface{}) bool {
 	return true
 }
 
-func benchmarkGet(b *testing.B, m *Map, size int) {
+func benchmarkGet(b *testing.B, m *Map[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			m.Get(n)
@@ -176,7 +176,7 @@ func benchmarkGet(b *testing.B, m *Map, size int) {
 	}
 }
 
-func benchmarkPut(b *testing.B, m *Map, size int) {
+func benchmarkPut(b *testing.B, m *Map[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			m.Put(n, struct{}{})
@@ -184,7 +184,7 @@ func benchmarkPut(b *testing.B, m *Map, size int) {
 	}
 }
 
-func benchmarkRemove(b *testing.B, m *Map, size int) {
+func benchmarkRemove(b *testing.B, m *Map[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			m.Remove(n)
@@ -195,7 +195,7 @@ func benchmarkRemove(b *testing.B, m *Map, size int) {
 func BenchmarkHashMapGet100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -206,7 +206,7 @@ func BenchmarkHashMapGet100(b *testing.B) {
 func BenchmarkHashMapGet1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -217,7 +217,7 @@ func BenchmarkHashMapGet1000(b *testing.B) {
 func BenchmarkHashMapGet10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -228,7 +228,7 @@ func BenchmarkHashMapGet10000(b *testing.B) {
 func BenchmarkHashMapGet100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -239,7 +239,7 @@ func BenchmarkHashMapGet100000(b *testing.B) {
 func BenchmarkHashMapPut100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	m := New()
+	m := New[int, struct{}]()
 	b.StartTimer()
 	benchmarkPut(b, m, size)
 }
@@ -247,7 +247,7 @@ func BenchmarkHashMapPut100(b *testing.B) {
 func BenchmarkHashMapPut1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -258,7 +258,7 @@ func BenchmarkHashMapPut1000(b *testing.B) {
 func BenchmarkHashMapPut10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -269,7 +269,7 @@ func BenchmarkHashMapPut10000(b *testing.B) {
 func BenchmarkHashMapPut100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -280,7 +280,7 @@ func BenchmarkHashMapPut100000(b *testing.B) {
 func BenchmarkHashMapRemove100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -291,7 +291,7 @@ func BenchmarkHashMapRemove100(b *testing.B) {
 func BenchmarkHashMapRemove1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -302,7 +302,7 @@ func BenchmarkHashMapRemove1000(b *testing.B) {
 func BenchmarkHashMapRemove10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}
@@ -313,7 +313,7 @@ func BenchmarkHashMapRemove10000(b *testing.B) {
 func BenchmarkHashMapRemove100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	m := New()
+	m := New[int, struct{}]()
 	for n := 0; n < size; n++ {
 		m.Put(n, struct{}{})
 	}

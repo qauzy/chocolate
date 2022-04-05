@@ -208,7 +208,7 @@ func (list *List[T]) Sort(comparator utils.Comparator) {
 // Swap swaps values of two elements at the given indices.
 func (list *List[T]) Swap(i, j int) {
 	if list.withinRange(i) && list.withinRange(j) && i != j {
-		var element1, element2 *element
+		var element1, element2 *element[T]
 		for e, currentElement := 0, list.first; element1 == nil || element2 == nil; e, currentElement = e+1, currentElement.next {
 			switch e {
 			case i:
@@ -257,7 +257,7 @@ func (list *List[T]) Insert(index int, values ...T) {
 	} else {
 		oldNextElement := beforeElement.next
 		for _, value := range values {
-			newElement := &element{value: value}
+			newElement := &element[T]{value: value}
 			beforeElement.next = newElement
 			beforeElement = newElement
 		}

@@ -11,14 +11,15 @@ package arraylist
 
 import (
 	"fmt"
+	"github.com/qauzy/chocolate/lists"
 	"github.com/qauzy/chocolate/stream"
 	"github.com/qauzy/chocolate/utils"
 	"strings"
 )
 
-//func assertListImplementation() {
-//	var _ *lists.List = (*List)(nil)
-//}
+func assertListImplementation() {
+	var _ lists.List[int] = (*List[int])(nil)
+}
 
 // List holds the Elements in a slice
 type List[T comparable] []T

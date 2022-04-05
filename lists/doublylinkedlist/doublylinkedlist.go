@@ -11,13 +11,14 @@ package doublylinkedlist
 
 import (
 	"fmt"
+	"github.com/qauzy/chocolate/lists"
 	"strings"
 
 	"github.com/qauzy/chocolate/utils"
 )
 
 func assertListImplementation() {
-	//var _ lists.List[T] = (*List)(nil)
+	var _ lists.List[int] = (*List[int])(nil)
 }
 
 // List holds the elements, where each element points to the next and previous element
@@ -80,7 +81,7 @@ func (list *List[T]) Prepend(values ...T) {
 
 // Get returns the element at index.
 // Second return parameter is true if index is within bounds of the array and array is not empty, otherwise false.
-func (list *List[T]) Get(index int) (interface{}, bool) {
+func (list *List[T]) Get(index int) (T, bool) {
 
 	if !list.withinRange(index) {
 		return nil, false
@@ -145,7 +146,7 @@ func (list *List[T]) Remove(index int) {
 // All values have to be present in the set for the method to return true.
 // Performance time complexity of n^2.
 // Returns true if no arguments are passed at all, i.e. set is always super-set of empty set.
-func (list *List[T]) Contains(values ...interface{}) bool {
+func (list *List[T]) Contains(values ...T) bool {
 
 	if len(values) == 0 {
 		return true
