@@ -17,7 +17,7 @@ type Stack[T any] interface {
 	Pop() (value T, ok bool)
 	Peek() (value T, ok bool)
 
-	containers.Container
+	containers.Container[T]
 	// Empty() bool
 	// Size() int
 	// Clear()

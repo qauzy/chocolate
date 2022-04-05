@@ -22,7 +22,7 @@ import (
 
 // Stack holds elements in an array-list
 type Stack[T comparable] struct {
-	list *arraylist.List[T]
+	list arraylist.List[T]
 }
 
 // New instantiates a new empty stack
