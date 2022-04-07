@@ -8,6 +8,7 @@ import (
 type StreamHelper[V any] interface {
 	GetStream() *Stream[V]
 }
+type AA[TP any] func(x interface{}) []TP
 
 func If(condition bool, trueResult interface{}, falseResult interface{}) interface{} {
 	if condition {
@@ -50,12 +51,12 @@ func (s *Stream[T]) Collect(r interface{}) {
 	json.Unmarshal(bytes, &r)
 }
 
-// func (s *Stream[T]) FindAny() (T, bool) {
-// 	if len(s.list) > 0 {
-// 		return s.list[0], true
-// 	}
-// 	return T(nil), false
-// }
+func (s *Stream[T]) FindAny() (T, bool) {
+	if len([]T(s.list)) > 0 {
+		return s.list[0], true
+	}
+	return T{}, false
+}
 
 func (s *Stream[T]) AnyMatch(fn func(each T) bool) bool {
 	for _, x := range s.list {
@@ -66,35 +67,30 @@ func (s *Stream[T]) AnyMatch(fn func(each T) bool) bool {
 	return false
 }
 
-// func (s *Stream[T]) Map(sh StreamHelper) *Stream[interface{}] {
-
-// 	ns := new(Stream[interface{}])
-// 	for _, x := range s.list {
-// 		ii, ok := x.(it)
-// 		if ok {
-// 			ns.list = append(ns.list, ii.Get())
-// 		}
-
-// 	}
-// 	return ns
-// }
-
-func (s *Stream[T]) Count() int {
-	return len(s.list)
+func Map[T1 any, T2 any](s *Stream[T1], fn func(x T1) T2) *Stream[T2] {
+	ns := new(Stream[T2])
+	for _, x := range s.list {
+		ns.list = append([]T2(ns.list), fn(x))
+	}
+	return ns
 }
 
-// func (s *Stream[T]) Distinct() []T {
-// 	m := make(map[interface{}][]T)
-// 	for _, x := range s.list {
-// 		m[x] = nil
-// 	}
+func (s *Stream[T]) Count() int {
+	return len([]T(s.list))
+}
 
-// 	r := make([]T, 0, 0)
-// 	for k := range m {
-// 		r = append(r, k)
-// 	}
-// 	return r
-// }
+func (s *Stream[T]) Distinct() []T {
+	m := make(map[interface{}][]T)
+	for _, x := range s.list {
+		m[x] = nil
+	}
+
+	r := make([]T, 0, 0)
+	for k := range m {
+		r = append(r, k)
+	}
+	return r
+}
 
 func (s *Stream[T]) GroupByInt(fn func(each interface{}) int64, r interface{}) {
 	m := make(map[int64][]interface{})
@@ -166,7 +162,7 @@ func (s *Stream[T]) Average(fn func(each interface{}) interface{}) float64 {
 			break
 		}
 	}
-	return r / float64(len(s.list))
+	return r / float64(len([]T(s.list)))
 }
 
 func (s *Stream[T]) Max(fn func(each interface{}) interface{}) float64 {
@@ -206,7 +202,7 @@ func (s *Stream[T]) Min(fn func(each T) interface{}) float64 {
 }
 
 func (s *Stream[T]) Reduce(initialValue T, fn func(pre T, cur T) T) T {
-	for i := 0; i < len(s.list); i++ {
+	for i := 0; i < len([]T(s.list)); i++ {
 		initialValue = fn(initialValue, s.list[i])
 	}
 	return initialValue
