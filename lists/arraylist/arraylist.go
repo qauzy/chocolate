@@ -76,6 +76,12 @@ func (list List[T]) Add(values ...T) {
 	}
 }
 
+func (list List[T]) ForEach(fn func(each T)) {
+	for _, x := range []T(list) {
+		fn(x)
+	}
+}
+
 // Get returns the element at index.
 // Second return parameter is true if index is within bounds of the array and array is not empty, otherwise false.
 func (list List[T]) Get(index int) (T, bool) {
