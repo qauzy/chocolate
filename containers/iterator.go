@@ -31,7 +31,7 @@ type IteratorWithIndex[T comparable] interface {
 }
 
 // IteratorWithKey is a stateful iterator for ordered containers whose elements are key value pairs.
-type IteratorWithKey[T comparable] interface {
+type IteratorWithKey[K comparable, V any] interface {
 	// Next moves the iterator to the next element and returns true if there was a next element in the container.
 	// If Next() returns true, then next element's key and value can be retrieved by Key() and Value().
 	// If Next() was called for the first time, then it will point the iterator to the first element if it exists.
@@ -40,11 +40,11 @@ type IteratorWithKey[T comparable] interface {
 
 	// Value returns the current element's value.
 	// Does not modify the state of the iterator.
-	Value() T
+	Value() V
 
 	// Key returns the current element's key.
 	// Does not modify the state of the iterator.
-	Key() T
+	Key() K
 
 	// Begin resets the iterator to its initial state (one-before-first)
 	// Call Next() to fetch the first element if any.
@@ -90,7 +90,7 @@ type ReverseIteratorWithIndex[T comparable] interface {
 // Prev() function to enable traversal in reverse
 //
 // Last() function to move the iterator to the last element.
-type ReverseIteratorWithKey[T comparable] interface {
+type ReverseIteratorWithKey[K comparable, V any] interface {
 	// Prev moves the iterator to the previous element and returns true if there was a previous element in the container.
 	// If Prev() returns true, then previous element's key and value can be retrieved by Key() and Value().
 	// Modifies the state of the iterator.
@@ -105,5 +105,5 @@ type ReverseIteratorWithKey[T comparable] interface {
 	// Modifies the state of the iterator.
 	Last() bool
 
-	IteratorWithKey[T]
+	IteratorWithKey[K, V]
 }

@@ -5,10 +5,9 @@ import (
 	"math"
 )
 
-type StreamHelper[V any] interface {
-	GetStream() *Stream[V]
+type StreamHelper[T any, V any] interface {
+	Map(func(x T)) *Stream[V]
 }
-type AA[TP any] func(x interface{}) []TP
 
 func If(condition bool, trueResult interface{}, falseResult interface{}) interface{} {
 	if condition {
@@ -51,11 +50,11 @@ func (s *Stream[T]) Collect(r interface{}) {
 	json.Unmarshal(bytes, &r)
 }
 
-func (s *Stream[T]) FindAny() (T, bool) {
+func (s *Stream[T]) FindAny() (t T, b bool) {
 	if len([]T(s.list)) > 0 {
 		return s.list[0], true
 	}
-	return T{}, false
+	return
 }
 
 func (s *Stream[T]) AnyMatch(fn func(each T) bool) bool {
@@ -165,7 +164,7 @@ func (s *Stream[T]) Average(fn func(each interface{}) interface{}) float64 {
 	return r / float64(len([]T(s.list)))
 }
 
-func (s *Stream[T]) Max(fn func(each interface{}) interface{}) float64 {
+func (s *Stream[T]) Max(fn func(each T) T) float64 {
 	var r float64 = math.MinInt64
 	for _, x := range s.list {
 		p := fn(x)

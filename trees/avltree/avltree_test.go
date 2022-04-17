@@ -9,7 +9,7 @@ import (
 )
 
 func TestAVLTreePut(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(5, "e")
 	tree.Put(6, "f")
 	tree.Put(7, "g")
@@ -25,7 +25,11 @@ func TestAVLTreePut(t *testing.T) {
 	if actualValue, expectedValue := fmt.Sprintf("%d%d%d%d%d%d%d", tree.Keys()...), "1234567"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s%s%s%s", tree.Values()...), "abcdefg"; actualValue != expectedValue {
+	var values1 []interface{}
+	for v := range tree.Values() {
+		values1 = append(values1, v)
+	}
+	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s%s%s%s", values1...), "abcdefg"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 
@@ -50,7 +54,7 @@ func TestAVLTreePut(t *testing.T) {
 }
 
 func TestAVLTreeRemove(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(5, "e")
 	tree.Put(6, "f")
 	tree.Put(7, "g")
@@ -69,10 +73,18 @@ func TestAVLTreeRemove(t *testing.T) {
 	if actualValue, expectedValue := fmt.Sprintf("%d%d%d%d", tree.Keys()...), "1234"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s", tree.Values()...), "abcd"; actualValue != expectedValue {
+	var values1 []interface{}
+	for v := range tree.Values() {
+		values1 = append(values1, v)
+	}
+	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s", values1...), "abcd"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s", tree.Values()...), "abcd"; actualValue != expectedValue {
+	var values2 []interface{}
+	for v := range tree.Values() {
+		values2 = append(values2, v)
+	}
+	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s", values2...), "abcd"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 	if actualValue := tree.Size(); actualValue != 4 {
@@ -117,7 +129,7 @@ func TestAVLTreeRemove(t *testing.T) {
 }
 
 func TestAVLTreeLeftAndRight(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 
 	if actualValue := tree.Left(); actualValue != nil {
 		t.Errorf("Got %v expected %v", actualValue, nil)
@@ -151,7 +163,7 @@ func TestAVLTreeLeftAndRight(t *testing.T) {
 }
 
 func TestAVLTreeCeilingAndFloor(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 
 	if node, found := tree.Floor(0); node != nil || found {
 		t.Errorf("Got %v expected %v", node, "<nil>")
@@ -184,7 +196,7 @@ func TestAVLTreeCeilingAndFloor(t *testing.T) {
 }
 
 func TestAVLTreeIteratorNextOnEmpty(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	it := tree.Iterator()
 	for it.Next() {
 		t.Errorf("Shouldn't iterate on empty tree")
@@ -192,7 +204,7 @@ func TestAVLTreeIteratorNextOnEmpty(t *testing.T) {
 }
 
 func TestAVLTreeIteratorPrevOnEmpty(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	it := tree.Iterator()
 	for it.Prev() {
 		t.Errorf("Shouldn't iterate on empty tree")
@@ -200,7 +212,7 @@ func TestAVLTreeIteratorPrevOnEmpty(t *testing.T) {
 }
 
 func TestAVLTreeIterator1Next(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(5, "e")
 	tree.Put(6, "f")
 	tree.Put(7, "g")
@@ -238,7 +250,7 @@ func TestAVLTreeIterator1Next(t *testing.T) {
 }
 
 func TestAVLTreeIterator1Prev(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(5, "e")
 	tree.Put(6, "f")
 	tree.Put(7, "g")
@@ -278,7 +290,7 @@ func TestAVLTreeIterator1Prev(t *testing.T) {
 }
 
 func TestAVLTreeIterator2Next(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(3, "c")
 	tree.Put(1, "a")
 	tree.Put(2, "b")
@@ -304,7 +316,7 @@ func TestAVLTreeIterator2Next(t *testing.T) {
 }
 
 func TestAVLTreeIterator2Prev(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(3, "c")
 	tree.Put(1, "a")
 	tree.Put(2, "b")
@@ -332,7 +344,7 @@ func TestAVLTreeIterator2Prev(t *testing.T) {
 }
 
 func TestAVLTreeIterator3Next(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(1, "a")
 	it := tree.Iterator()
 	count := 0
@@ -356,7 +368,7 @@ func TestAVLTreeIterator3Next(t *testing.T) {
 }
 
 func TestAVLTreeIterator3Prev(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(1, "a")
 	it := tree.Iterator()
 	for it.Next() {
@@ -382,7 +394,7 @@ func TestAVLTreeIterator3Prev(t *testing.T) {
 }
 
 func TestAVLTreeIterator4Next(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, int]()
 	tree.Put(13, 5)
 	tree.Put(8, 3)
 	tree.Put(17, 7)
@@ -425,7 +437,7 @@ func TestAVLTreeIterator4Next(t *testing.T) {
 }
 
 func TestAVLTreeIterator4Prev(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, int]()
 	tree.Put(13, 5)
 	tree.Put(8, 3)
 	tree.Put(17, 7)
@@ -470,19 +482,19 @@ func TestAVLTreeIterator4Prev(t *testing.T) {
 }
 
 func TestAVLTreeIteratorBegin(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(3, "c")
 	tree.Put(1, "a")
 	tree.Put(2, "b")
 	it := tree.Iterator()
 
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
 	it.Begin()
 
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
@@ -491,7 +503,7 @@ func TestAVLTreeIteratorBegin(t *testing.T) {
 
 	it.Begin()
 
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
@@ -502,15 +514,15 @@ func TestAVLTreeIteratorBegin(t *testing.T) {
 }
 
 func TestAVLTreeIteratorEnd(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	it := tree.Iterator()
 
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
 	it.End()
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
@@ -518,7 +530,7 @@ func TestAVLTreeIteratorEnd(t *testing.T) {
 	tree.Put(1, "a")
 	tree.Put(2, "b")
 	it.End()
-	if it.Key() != nil {
+	if it.Key() != 0 {
 		t.Errorf("Got %v expected %v", it.Key(), nil)
 	}
 
@@ -529,7 +541,7 @@ func TestAVLTreeIteratorEnd(t *testing.T) {
 }
 
 func TestAVLTreeIteratorFirst(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(3, "c")
 	tree.Put(1, "a")
 	tree.Put(2, "b")
@@ -543,7 +555,7 @@ func TestAVLTreeIteratorFirst(t *testing.T) {
 }
 
 func TestAVLTreeIteratorLast(t *testing.T) {
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, string]()
 	tree.Put(3, "c")
 	tree.Put(1, "a")
 	tree.Put(2, "b")
@@ -557,7 +569,7 @@ func TestAVLTreeIteratorLast(t *testing.T) {
 }
 
 func TestAVLTreeSerialization(t *testing.T) {
-	tree := NewWithStringComparator()
+	tree := NewWithStringComparator[string, string]()
 	tree.Put("c", "3")
 	tree.Put("b", "2")
 	tree.Put("a", "1")
@@ -567,10 +579,10 @@ func TestAVLTreeSerialization(t *testing.T) {
 		if actualValue, expectedValue := tree.Size(), 3; actualValue != expectedValue {
 			t.Errorf("Got %v expected %v", actualValue, expectedValue)
 		}
-		if actualValue := tree.Keys(); actualValue[0].(string) != "a" || actualValue[1].(string) != "b" || actualValue[2].(string) != "c" {
+		if actualValue := tree.Keys(); actualValue[0] != "a" || actualValue[1] != "b" || actualValue[2] != "c" {
 			t.Errorf("Got %v expected %v", actualValue, "[a,b,c]")
 		}
-		if actualValue := tree.Values(); actualValue[0].(string) != "1" || actualValue[1].(string) != "2" || actualValue[2].(string) != "3" {
+		if actualValue := tree.Values(); actualValue[0] != "1" || actualValue[1] != "2" || actualValue[2] != "3" {
 			t.Errorf("Got %v expected %v", actualValue, "[1,2,3]")
 		}
 		if err != nil {
@@ -587,7 +599,7 @@ func TestAVLTreeSerialization(t *testing.T) {
 	assert()
 }
 
-func benchmarkGet(b *testing.B, tree *Tree, size int) {
+func benchmarkGet(b *testing.B, tree *Tree[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			tree.Get(n)
@@ -595,7 +607,7 @@ func benchmarkGet(b *testing.B, tree *Tree, size int) {
 	}
 }
 
-func benchmarkPut(b *testing.B, tree *Tree, size int) {
+func benchmarkPut(b *testing.B, tree *Tree[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			tree.Put(n, struct{}{})
@@ -603,7 +615,7 @@ func benchmarkPut(b *testing.B, tree *Tree, size int) {
 	}
 }
 
-func benchmarkRemove(b *testing.B, tree *Tree, size int) {
+func benchmarkRemove(b *testing.B, tree *Tree[int, struct{}], size int) {
 	for i := 0; i < b.N; i++ {
 		for n := 0; n < size; n++ {
 			tree.Remove(n)
@@ -614,7 +626,7 @@ func benchmarkRemove(b *testing.B, tree *Tree, size int) {
 func BenchmarkAVLTreeGet100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -625,7 +637,7 @@ func BenchmarkAVLTreeGet100(b *testing.B) {
 func BenchmarkAVLTreeGet1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -636,7 +648,7 @@ func BenchmarkAVLTreeGet1000(b *testing.B) {
 func BenchmarkAVLTreeGet10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -647,7 +659,7 @@ func BenchmarkAVLTreeGet10000(b *testing.B) {
 func BenchmarkAVLTreeGet100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -658,7 +670,7 @@ func BenchmarkAVLTreeGet100000(b *testing.B) {
 func BenchmarkAVLTreePut100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	b.StartTimer()
 	benchmarkPut(b, tree, size)
 }
@@ -666,7 +678,7 @@ func BenchmarkAVLTreePut100(b *testing.B) {
 func BenchmarkAVLTreePut1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -677,7 +689,7 @@ func BenchmarkAVLTreePut1000(b *testing.B) {
 func BenchmarkAVLTreePut10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -688,7 +700,7 @@ func BenchmarkAVLTreePut10000(b *testing.B) {
 func BenchmarkAVLTreePut100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -699,7 +711,7 @@ func BenchmarkAVLTreePut100000(b *testing.B) {
 func BenchmarkAVLTreeRemove100(b *testing.B) {
 	b.StopTimer()
 	size := 100
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -710,7 +722,7 @@ func BenchmarkAVLTreeRemove100(b *testing.B) {
 func BenchmarkAVLTreeRemove1000(b *testing.B) {
 	b.StopTimer()
 	size := 1000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -721,7 +733,7 @@ func BenchmarkAVLTreeRemove1000(b *testing.B) {
 func BenchmarkAVLTreeRemove10000(b *testing.B) {
 	b.StopTimer()
 	size := 10000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
@@ -732,7 +744,7 @@ func BenchmarkAVLTreeRemove10000(b *testing.B) {
 func BenchmarkAVLTreeRemove100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	tree := NewWithIntComparator()
+	tree := NewWithIntComparator[int, struct{}]()
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}
