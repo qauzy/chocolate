@@ -2,10 +2,9 @@ package stream
 
 import (
 	"encoding/json"
-	"math"
 )
 
-type StreamHelper[T any, V any] interface {
+type StreamHelper[T comparable, V comparable] interface {
 	Map(func(x T)) *Stream[V]
 }
 
@@ -16,11 +15,11 @@ func If(condition bool, trueResult interface{}, falseResult interface{}) interfa
 	return falseResult
 }
 
-type Stream[T any] struct {
+type Stream[T comparable] struct {
 	list []T
 }
 
-func Of[T any](arrs ...T) *Stream[T] {
+func Of[T comparable](arrs ...T) *Stream[T] {
 
 	st := new(Stream[T])
 	st.list = arrs
@@ -51,7 +50,7 @@ func (s *Stream[T]) Collect(r interface{}) {
 }
 
 func (s *Stream[T]) FindAny() (t T, b bool) {
-	if len([]T(s.list)) > 0 {
+	if len(s.list) > 0 {
 		return s.list[0], true
 	}
 	return
@@ -66,20 +65,44 @@ func (s *Stream[T]) AnyMatch(fn func(each T) bool) bool {
 	return false
 }
 
-func Map[T1 any, T2 any](s *Stream[T1], fn func(x T1) T2) *Stream[T2] {
+func (s *Stream[T]) MapToInt(fn func(each T) int) *IntStream {
+	var dst []int
+	for _, x := range s.list {
+		dst = append(dst, fn(x))
+	}
+	return &IntStream{dst}
+}
+
+func (s *Stream[T]) MapToLong(fn func(each T) int64) int64 {
+	var dst int64
+	for _, x := range s.list {
+		dst = fn(x)
+	}
+	return dst
+}
+
+func (s *Stream[T]) MapToDouble(fn func(each T) float64) float64 {
+	var dst float64
+	for _, x := range s.list {
+		dst = fn(x)
+	}
+	return dst
+}
+
+func Map[T1 comparable, T2 comparable](s *Stream[T1], fn func(x T1) T2) *Stream[T2] {
 	ns := new(Stream[T2])
 	for _, x := range s.list {
-		ns.list = append([]T2(ns.list), fn(x))
+		ns.list = append(ns.list, fn(x))
 	}
 	return ns
 }
 
 func (s *Stream[T]) Count() int {
-	return len([]T(s.list))
+	return len(s.list)
 }
 
 func (s *Stream[T]) Distinct() []T {
-	m := make(map[interface{}][]T)
+	m := make(map[T][]T)
 	for _, x := range s.list {
 		m[x] = nil
 	}
@@ -128,7 +151,7 @@ func (s *Stream[T]) GroupByString(fn func(each interface{}) string, r interface{
 
 }
 
-func (s *Stream[T]) Sum(fn func(each interface{}) interface{}) float64 {
+func (s *Stream[T]) Sum(fn func(each T) T) interface{} {
 	var r float64 = 0
 	for _, x := range s.list {
 		p := fn(x)
@@ -164,44 +187,26 @@ func (s *Stream[T]) Average(fn func(each interface{}) interface{}) float64 {
 	return r / float64(len([]T(s.list)))
 }
 
-func (s *Stream[T]) Max(fn func(each T) T) float64 {
-	var r float64 = math.MinInt64
+func (s *Stream[T]) Max(max func(a, b T) T) T {
+	var r T
 	for _, x := range s.list {
-		p := fn(x)
-		switch p.(type) {
-		case string:
-			break
-		case int:
-			r = math.Max(r, (float64)(p.(int)))
-			break
-		case float64:
-			r = math.Max(r, p.(float64))
-			break
-		}
+		r = max(r, x)
+
 	}
 	return r
 }
 
-func (s *Stream[T]) Min(fn func(each T) interface{}) float64 {
-	var r = math.MaxFloat64
+func (s *Stream[T]) Min(min func(a, b T) T) T {
+	var r T
 	for _, x := range s.list {
-		p := fn(x)
-		switch p.(type) {
-		case string:
-			break
-		case int:
-			r = math.Min(r, (float64)(p.(int)))
-			break
-		case float64:
-			r = math.Min(r, p.(float64))
-			break
-		}
+		r = min(r, x)
+
 	}
 	return r
 }
 
 func (s *Stream[T]) Reduce(initialValue T, fn func(pre T, cur T) T) T {
-	for i := 0; i < len([]T(s.list)); i++ {
+	for i := 0; i < len(s.list); i++ {
 		initialValue = fn(initialValue, s.list[i])
 	}
 	return initialValue
