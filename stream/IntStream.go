@@ -1,5 +1,7 @@
 package stream
 
+import "github.com/qauzy/chocolate/optional"
+
 type IntStream struct {
 	list []int
 }
@@ -27,9 +29,18 @@ func (s *IntStream) ForEach(fn func(each int)) {
 //	json.Unmarshal(bytes, &r)
 //}
 
-func (s *IntStream) FindAny() (t int, b bool) {
+func (s *IntStream) FindAny() (t optional.Int) {
+
 	if len(s.list) > 0 {
-		return s.list[0], true
+		return optional.NewInt(s.list[0])
+	}
+	return
+}
+
+func (s *IntStream) FindFirst() (t optional.Int) {
+	for _, x := range s.list {
+		return optional.NewInt(x)
+		break
 	}
 	return
 }
@@ -43,13 +54,14 @@ func (s *IntStream) AnyMatch(fn func(each int) bool) bool {
 	return false
 }
 
-//func (s *IntStream) MapToLong(fn func(each int) int64) int64 {
-//	var dst []int64
-//	for _, x := range s.list {
-//		dst = append(dst,fn(x))
-//	}
-//	return dst
-//}
+func (s *IntStream) MapToLong(fn func(each int) int64) *LongStream {
+	var dst []int64
+	for _, x := range s.list {
+		dst = append(dst, fn(x))
+	}
+	return &LongStream{dst}
+}
+
 //
 //func (s *IntStream) MapToDouble(fn func(each int) float64) float64 {
 //	var dst float64
@@ -102,16 +114,6 @@ func (s *IntStream) Max() int {
 			r = x
 		}
 
-	}
-	return r
-}
-
-func (s *IntStream) FindFirst() int {
-	var r int
-
-	for _, x := range s.list {
-		r = x
-		break
 	}
 	return r
 }

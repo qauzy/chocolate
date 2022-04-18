@@ -151,24 +151,6 @@ func (s *Stream[T]) GroupByString(fn func(each interface{}) string, r interface{
 
 }
 
-func (s *Stream[T]) Sum(fn func(each T) T) interface{} {
-	var r float64 = 0
-	for _, x := range s.list {
-		p := fn(x)
-		switch p.(type) {
-		case string:
-			break
-		case int:
-			r = r + (float64)(p.(int))
-			break
-		case float64:
-			r = r + p.(float64)
-			break
-		}
-	}
-	return r
-}
-
 func (s *Stream[T]) Average(fn func(each interface{}) interface{}) float64 {
 	var r float64 = 0
 	for _, x := range s.list {
