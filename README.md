@@ -1,6 +1,6 @@
 [![GoDoc](https://godoc.org/github.com/qauzy/chocolate?status.svg)](https://godoc.org/github.com/qauzy/chocolate) [![Build Status](https://travis-ci.org/qauzy/gods.svg)](https://travis-ci.org/qauzy/gods) [![Go Report Card](https://goreportcard.com/badge/github.com/qauzy/chocolate)](https://goreportcard.com/report/github.com/qauzy/chocolate) [![PyPI](https://img.shields.io/pypi/l/Django.svg?maxAge=2592000)](https://github.com/qauzy/chocolate/blob/master/LICENSE)
 
-# GoDS (Go Data Structures)
+# chocolate (toolbox for Go)
 
 Implementation of various data structures and algorithms in Go.
 

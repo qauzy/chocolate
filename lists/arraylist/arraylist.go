@@ -70,9 +70,10 @@ func New[TP comparable](values ...TP) List[TP] {
 //}
 
 // Add appends a value at the end of the list
-func (list List[T]) Add(values ...T) {
+func (list *List[T]) Add(values ...T) {
 	for _, value := range values {
-		list = append([]T(list), value)
+		*list = append(*list, value)
+
 	}
 }
 
@@ -94,14 +95,14 @@ func (list List[T]) Get(index int) (T, bool) {
 }
 
 // Remove removes the element at the given index from the list.
-func (list List[T]) Remove(index int) {
+func (list *List[T]) Remove(index int) {
 
 	if !list.withinRange(index) {
 		return
 	}
 
 	//list.Elements[index] =                                    // cleanup reference
-	copy([]T(list)[index:], list[index+1:]) // shift to the left by one (slow operation, need ways to optimize this)
+	copy((*list)[index:], (*list)[index+1:]) // shift to the left by one (slow operation, need ways to optimize this)
 
 }
 
@@ -160,41 +161,41 @@ func (list List[T]) Stream() *stream.Stream[T] {
 }
 
 // Clear removes all Elements from the list.
-func (list List[T]) Clear() {
-	list = make(List[T], 0)
+func (list *List[T]) Clear() {
+	*list = make(List[T], 0)
 }
 
 // Sort sorts values (in-place) using.
-func (list List[T]) Sort(comparator utils.Comparator) {
-	if len(list) < 2 {
+func (list *List[T]) Sort(comparator utils.Comparator) {
+	if len(*list) < 2 {
 		return
 	}
-	utils.Sort(list, comparator)
+	utils.Sort(*list, comparator)
 }
 
 // Swap swaps the two values at the specified positions.
-func (list List[T]) Swap(i, j int) {
+func (list *List[T]) Swap(i, j int) {
 	if list.withinRange(i) && list.withinRange(j) {
-		list[i], list[j] = list[j], list[i]
+		(*list)[i], (*list)[j] = (*list)[j], (*list)[i]
 	}
 }
 
 // Insert inserts values at specified index position shifting the value at that position (if any) and any subsequent Elements to the right.
 // Does not do anything if position is negative or bigger than list's size
 // Note: position equal to list's size is valid, i.e. append.
-func (list List[T]) Insert(index int, values ...T) {
+func (list *List[T]) Insert(index int, values ...T) {
 
 	if !list.withinRange(index) {
 		// Append
-		if index == len([]T(list)) {
+		if index == len(*list) {
 			list.Add(values...)
 		}
 		return
 	}
 
 	l := len(values)
-	copy([]T(list)[index+l:], list[index:len([]T(list))-l])
-	copy([]T(list)[index:], values)
+	copy((*list)[index+l:], (*list)[index:len(*list)-l])
+	copy((*list)[index:], values)
 }
 
 // Set the value at specified index
