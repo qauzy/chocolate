@@ -11,7 +11,7 @@ import (
 
 // IteratorWithKeyExample to demonstrate basic usage of IteratorWithKey
 func main() {
-	m := treemap.NewWithIntComparator()
+	m := treemap.NewWithIntComparator[int, string]()
 	m.Put(1, "a")
 	m.Put(2, "b")
 	m.Put(3, "a")

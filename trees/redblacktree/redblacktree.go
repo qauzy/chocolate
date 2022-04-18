@@ -31,7 +31,7 @@ const (
 type Tree[K comparable, V any] struct {
 	Root       *Node[K, V]
 	size       int
-	Comparator utils.Comparator
+	Comparator utils.Comparator[K]
 }
 
 // Node is a single element within the tree
@@ -45,18 +45,18 @@ type Node[K comparable, V any] struct {
 }
 
 // NewWith instantiates a red-black tree with the custom comparator.
-func NewWith[K comparable, V any](comparator utils.Comparator) *Tree[K, V] {
+func NewWith[K comparable, V any](comparator utils.Comparator[K]) *Tree[K, V] {
 	return &Tree[K, V]{Comparator: comparator}
 }
 
 // NewWithIntComparator instantiates a red-black tree with the IntComparator, i.e. keys are of type int.
-func NewWithIntComparator[K comparable, V any]() *Tree[K, V] {
-	return &Tree[K, V]{Comparator: utils.IntComparator}
+func NewWithIntComparator[V comparable]() *Tree[int, V] {
+	return &Tree[int, V]{Comparator: utils.IntComparator}
 }
 
 // NewWithStringComparator instantiates a red-black tree with the StringComparator, i.e. keys are of type string.
-func NewWithStringComparator[K comparable, V any]() *Tree[K, V] {
-	return &Tree[K, V]{Comparator: utils.StringComparator}
+func NewWithStringComparator[V comparable]() *Tree[string, V] {
+	return &Tree[string, V]{Comparator: utils.StringComparator}
 }
 
 // Put inserts node into the tree.
@@ -156,8 +156,8 @@ func (tree *Tree[K, V]) Size() int {
 }
 
 // Keys returns all keys in-order
-func (tree *Tree[K, V]) Keys() []interface{} {
-	keys := make([]interface{}, tree.size)
+func (tree *Tree[K, V]) Keys() []K {
+	keys := make([]K, tree.size)
 	it := tree.Iterator()
 	for i := 0; it.Next(); i++ {
 		keys[i] = it.Key()
@@ -167,7 +167,7 @@ func (tree *Tree[K, V]) Keys() []interface{} {
 
 // Values returns all values in-order based on the key.
 func (tree *Tree[K, V]) Values() []V {
-	values := make([]interface{}, tree.size)
+	values := make([]V, tree.size)
 	it := tree.Iterator()
 	for i := 0; it.Next(); i++ {
 		values[i] = it.Value()
@@ -274,7 +274,7 @@ func (node *Node[K, V]) String() string {
 	return fmt.Sprintf("%v", node.Key)
 }
 
-func output[K comparable, V any](node *Node[K, V], prefix string, isTail bool, str *string) {
+func output[K comparable, V comparable](node *Node[K, V], prefix string, isTail bool, str *string) {
 	if node.Right != nil {
 		newPrefix := prefix
 		if isTail {
