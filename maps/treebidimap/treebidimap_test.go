@@ -24,10 +24,10 @@ func TestMapPut(t *testing.T) {
 	if actualValue := m.Size(); actualValue != 7 {
 		t.Errorf("Got %v expected %v", actualValue, 7)
 	}
-	if actualValue, expectedValue := m.Keys(), []interface{}{1, 2, 3, 4, 5, 6, 7}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Keys(), []int{1, 2, 3, 4, 5, 6, 7}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := m.Values(), []interface{}{"a", "b", "c", "d", "e", "f", "g"}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Values(), []string{"a", "b", "c", "d", "e", "f", "g"}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 
@@ -45,7 +45,7 @@ func TestMapPut(t *testing.T) {
 
 	for _, test := range tests1 {
 		// retrievals
-		actualValue, actualFound := m.Get(test[0])
+		actualValue, actualFound := m.Get(test[0].(int))
 		if actualValue != test[1] || actualFound != test[2] {
 			t.Errorf("Got %v expected %v", actualValue, test[1])
 		}
@@ -69,11 +69,11 @@ func TestMapRemove(t *testing.T) {
 	m.Remove(8)
 	m.Remove(5)
 
-	if actualValue, expectedValue := m.Keys(), []interface{}{1, 2, 3, 4}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Keys(), []int{1, 2, 3, 4}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 
-	if actualValue, expectedValue := m.Values(), []interface{}{"a", "b", "c", "d"}; !sameElements(actualValue, expectedValue) {
+	if actualValue, expectedValue := m.Values(), []string{"a", "b", "c", "d"}; !sameElements(actualValue, expectedValue) {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 	if actualValue := m.Size(); actualValue != 4 {
@@ -92,7 +92,7 @@ func TestMapRemove(t *testing.T) {
 	}
 
 	for _, test := range tests2 {
-		actualValue, actualFound := m.Get(test[0])
+		actualValue, actualFound := m.Get(test[0].(int))
 		if actualValue != test[1] || actualFound != test[2] {
 			t.Errorf("Got %v expected %v", actualValue, test[1])
 		}
@@ -144,14 +144,14 @@ func TestMapGetKey(t *testing.T) {
 
 	for _, test := range tests1 {
 		// retrievals
-		actualValue, actualFound := m.GetKey(test[1])
+		actualValue, actualFound := m.GetKey(test[1].(string))
 		if actualValue != test[0] || actualFound != test[2] {
 			t.Errorf("Got %v expected %v", actualValue, test[0])
 		}
 	}
 }
 
-func sameElements(a []interface{}, b []interface{}) bool {
+func sameElements[T comparable](a []T, b []T) bool {
 	if len(a) != len(b) {
 		return false
 	}

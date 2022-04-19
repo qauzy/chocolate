@@ -57,5 +57,5 @@ type EnumerableWithKey[K comparable, V any] interface {
 	// Find passes each element of the container to the given function and returns
 	// the first (key,value) for which the function is true or nil,nil otherwise if no element
 	// matches the criteria.
-	Find(func(key K, value V) bool) (interface{}, interface{})
+	Find(func(key K, value V) bool) (K, V)
 }
