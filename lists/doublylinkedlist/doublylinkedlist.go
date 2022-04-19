@@ -81,10 +81,10 @@ func (list *List[T]) Prepend(values ...T) {
 
 // Get returns the element at index.
 // Second return parameter is true if index is within bounds of the array and array is not empty, otherwise false.
-func (list *List[T]) Get(index int) (T, bool) {
+func (list *List[T]) Get(index int) (t T, b bool) {
 
 	if !list.withinRange(index) {
-		return nil, false
+		return
 	}
 
 	// determine traveral direction, last to first or first to last

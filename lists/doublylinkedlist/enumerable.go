@@ -75,5 +75,6 @@ func (list *List[T]) Find(f func(index int, value T) bool) (index int, value T) 
 			return iterator.Index(), iterator.Value()
 		}
 	}
-	return -1, nil
+	index = -1
+	return
 }

@@ -4,10 +4,12 @@
 
 package arraystack
 
-//func assertSerializationImplementation() {
-//	var _ containers.JSONSerializer = (*Stack)(nil)
-//	var _ containers.JSONDeserializer = (*Stack)(nil)
-//}
+import "github.com/qauzy/chocolate/containers"
+
+func assertSerializationImplementation() {
+	var _ containers.JSONSerializer = (*Stack[int])(nil)
+	var _ containers.JSONDeserializer = (*Stack[int])(nil)
+}
 
 // ToJSON outputs the JSON representation of the stack.
 func (stack *Stack[T]) ToJSON() ([]byte, error) {

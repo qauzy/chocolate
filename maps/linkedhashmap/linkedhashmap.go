@@ -49,8 +49,8 @@ func (m *Map[K, V]) Put(key K, value V) {
 // Second return parameter is true if key was found, otherwise false.
 // Key should adhere to the comparator's type assertion, otherwise method panics.
 func (m *Map[K, V]) Get(key K) (value V, found bool) {
-	value = m.table[key]
-	found = value != nil
+	value, found = m.table[key]
+
 	return
 }
 

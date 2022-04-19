@@ -12,13 +12,14 @@ package arraystack
 import (
 	"fmt"
 	"github.com/qauzy/chocolate/lists/arraylist"
+	"github.com/qauzy/chocolate/stacks"
 	"strings"
 )
 
 //
-//func assertStackImplementation() {
-//	var _ stacks.Stack[int] = (*Stack[int])(nil)
-//}
+func assertStackImplementation() {
+	var _ stacks.Stack[int] = (*Stack[int])(nil)
+}
 
 // Stack holds elements in an array-list
 type Stack[T comparable] struct {
