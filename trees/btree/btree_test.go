@@ -32,7 +32,7 @@ func TestBTreeGet1(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if value, found := tree.Get(test[0]); value != test[1] || found != test[2] {
+		if value, found := tree.Get(test[0].(int)); value != test[1] || found != test[2] {
 			t.Errorf("Got %v,%v expected %v,%v", value, found, test[1], test[2])
 		}
 	}
@@ -215,7 +215,7 @@ func TestBTreePut3(t *testing.T) {
 }
 
 func TestBTreePut4(t *testing.T) {
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	assertValidTree(t, tree, 0)
 
 	tree.Put(6, nil)
@@ -310,14 +310,14 @@ func TestBTreePut4(t *testing.T) {
 
 func TestBTreeRemove1(t *testing.T) {
 	// empty
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Remove(1)
 	assertValidTree(t, tree, 0)
 }
 
 func TestBTreeRemove2(t *testing.T) {
 	// leaf node (no underflow)
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 
@@ -332,7 +332,7 @@ func TestBTreeRemove2(t *testing.T) {
 func TestBTreeRemove3(t *testing.T) {
 	// merge with right (underflow)
 	{
-		tree := NewWithIntComparator(3)
+		tree := NewWithIntComparator[*int](3)
 		tree.Put(1, nil)
 		tree.Put(2, nil)
 		tree.Put(3, nil)
@@ -343,7 +343,7 @@ func TestBTreeRemove3(t *testing.T) {
 	}
 	// merge with left (underflow)
 	{
-		tree := NewWithIntComparator(3)
+		tree := NewWithIntComparator[*int](3)
 		tree.Put(1, nil)
 		tree.Put(2, nil)
 		tree.Put(3, nil)
@@ -356,7 +356,7 @@ func TestBTreeRemove3(t *testing.T) {
 
 func TestBTreeRemove4(t *testing.T) {
 	// rotate left (underflow)
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 	tree.Put(3, nil)
@@ -376,7 +376,7 @@ func TestBTreeRemove4(t *testing.T) {
 
 func TestBTreeRemove5(t *testing.T) {
 	// rotate right (underflow)
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 	tree.Put(3, nil)
@@ -397,7 +397,7 @@ func TestBTreeRemove5(t *testing.T) {
 func TestBTreeRemove6(t *testing.T) {
 	// root height reduction after a series of underflows on right side
 	// use simulator: https://www.cs.usfca.edu/~galles/visualization/BTree.html
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 	tree.Put(3, nil)
@@ -426,7 +426,7 @@ func TestBTreeRemove6(t *testing.T) {
 func TestBTreeRemove7(t *testing.T) {
 	// root height reduction after a series of underflows on left side
 	// use simulator: https://www.cs.usfca.edu/~galles/visualization/BTree.html
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 	tree.Put(3, nil)
@@ -485,7 +485,7 @@ func TestBTreeRemove7(t *testing.T) {
 
 func TestBTreeRemove8(t *testing.T) {
 	// use simulator: https://www.cs.usfca.edu/~galles/visualization/BTree.html
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	tree.Put(1, nil)
 	tree.Put(2, nil)
 	tree.Put(3, nil)
@@ -522,7 +522,7 @@ func TestBTreeRemove9(t *testing.T) {
 	orders := []int{3, 4, 5, 6, 7, 8, 9, 10, 20, 100, 500, 1000, 5000, 10000}
 	for _, order := range orders {
 
-		tree := NewWithIntComparator(order)
+		tree := NewWithIntComparator[int](order)
 
 		{
 			for i := 1; i <= max; i++ {
@@ -659,10 +659,10 @@ func TestBTreeIteratorValuesAndKeys(t *testing.T) {
 	tree.Put(7, "g")
 	tree.Put(2, "b")
 	tree.Put(1, "x") // override
-	if actualValue, expectedValue := fmt.Sprintf("%d%d%d%d%d%d%d", tree.Keys()...), "1234567"; actualValue != expectedValue {
+	if actualValue, expectedValue := fmt.Sprintf("%d%d%d%d%d%d%d", tree.Keys()[0], tree.Keys()[1], tree.Keys()[2], tree.Keys()[3], tree.Keys()[4], tree.Keys()[5], tree.Keys()[6]), "1234567"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
-	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s%s%s%s", tree.Values()...), "xbcdefg"; actualValue != expectedValue {
+	if actualValue, expectedValue := fmt.Sprintf("%s%s%s%s%s%s%s", tree.Values()[0], tree.Values()[1], tree.Values()[2], tree.Values()[3], tree.Values()[4], tree.Values()[5], tree.Values()[6]), "xbcdefg"; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 	if actualValue := tree.Size(); actualValue != 7 {
@@ -671,7 +671,7 @@ func TestBTreeIteratorValuesAndKeys(t *testing.T) {
 }
 
 func TestBTreeIteratorNextOnEmpty(t *testing.T) {
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	it := tree.Iterator()
 	for it.Next() {
 		t.Errorf("Shouldn't iterate on empty tree")
@@ -679,7 +679,7 @@ func TestBTreeIteratorNextOnEmpty(t *testing.T) {
 }
 
 func TestBTreeIteratorPrevOnEmpty(t *testing.T) {
-	tree := NewWithIntComparator(3)
+	tree := NewWithIntComparator[*int](3)
 	it := tree.Iterator()
 	for it.Prev() {
 		t.Errorf("Shouldn't iterate on empty tree")
@@ -1011,13 +1011,13 @@ func TestBTreeIteratorLast(t *testing.T) {
 
 func TestBTree_search(t *testing.T) {
 	{
-		tree := NewWithIntComparator[[]*Entry](3)
-		tree.Root = &Node[int, []*Entry]{Entries: []*Entry{}, Children: make([]*Node, 0)}
+		tree := NewWithIntComparator[int](3)
+		tree.Root = &Node[int, int]{Entries: []*Entry[int, int]{}, Children: make([]*Node[int, int], 0)}
 		tests := [][]interface{}{
 			{0, 0, false},
 		}
 		for _, test := range tests {
-			index, found := tree.search(tree.Root, test[0])
+			index, found := tree.search(tree.Root, test[0].(int))
 			if actualValue, expectedValue := index, test[1]; actualValue != expectedValue {
 				t.Errorf("Got %v expected %v", actualValue, expectedValue)
 			}
@@ -1027,8 +1027,8 @@ func TestBTree_search(t *testing.T) {
 		}
 	}
 	{
-		tree := NewWithIntComparator(3)
-		tree.Root = &Node{Entries: []*Entry{{2, 0}, {4, 1}, {6, 2}}, Children: []*Node{}}
+		tree := NewWithIntComparator[int](3)
+		tree.Root = &Node[int, int]{Entries: []*Entry[int, int]{{2, 0}, {4, 1}, {6, 2}}, Children: []*Node[int, int]{}}
 		tests := [][]interface{}{
 			{0, 0, false},
 			{1, 0, false},
@@ -1040,7 +1040,7 @@ func TestBTree_search(t *testing.T) {
 			{7, 3, false},
 		}
 		for _, test := range tests {
-			index, found := tree.search(tree.Root, test[0])
+			index, found := tree.search(tree.Root, test[0].(int))
 			if actualValue, expectedValue := index, test[1]; actualValue != expectedValue {
 				t.Errorf("Got %v expected %v", actualValue, expectedValue)
 			}
@@ -1051,13 +1051,13 @@ func TestBTree_search(t *testing.T) {
 	}
 }
 
-func assertValidTree[T any](t *testing.T, tree *Tree[T], expectedSize int) {
+func assertValidTree[T comparable](t *testing.T, tree *Tree[int, T], expectedSize int) {
 	if actualValue, expectedValue := tree.size, expectedSize; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v for tree size", actualValue, expectedValue)
 	}
 }
 
-func assertValidTreeNode[K comparable, V any](t *testing.T, node *Node[K, V], expectedEntries int, expectedChildren int, keys []int, hasParent bool) {
+func assertValidTreeNode[V any](t *testing.T, node *Node[int, V], expectedEntries int, expectedChildren int, keys []int, hasParent bool) {
 	if actualValue, expectedValue := node.Parent != nil, hasParent; actualValue != expectedValue {
 		t.Errorf("Got %v expected %v for hasParent", actualValue, expectedValue)
 	}
@@ -1250,7 +1250,7 @@ func BenchmarkBTreeRemove10000(b *testing.B) {
 func BenchmarkBTreeRemove100000(b *testing.B) {
 	b.StopTimer()
 	size := 100000
-	tree := NewWithIntComparator(128)
+	tree := NewWithIntComparator[struct{}](128)
 	for n := 0; n < size; n++ {
 		tree.Put(n, struct{}{})
 	}

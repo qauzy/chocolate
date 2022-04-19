@@ -92,7 +92,7 @@ func (tree *Tree[K, V]) Get(key K) (value V, found bool) {
 	if found {
 		return node.Entries[index].Value, true
 	}
-	return nil, false
+	return
 }
 
 // Remove remove the node from the tree by key.
@@ -173,19 +173,19 @@ func (tree *Tree[K, V]) Right() *Node[K, V] {
 }
 
 // RightKey returns the right-most (max) key or nil if tree is empty.
-func (tree *Tree[K, V]) RightKey() K {
+func (tree *Tree[K, V]) RightKey() (k K) {
 	if right := tree.Right(); right != nil {
 		return right.Entries[len(right.Entries)-1].Key
 	}
-	return nil
+	return
 }
 
 // RightValue returns the right-most value or nil if tree is empty.
-func (tree *Tree[K, V]) RightValue() V {
+func (tree *Tree[K, V]) RightValue() (v V) {
 	if right := tree.Right(); right != nil {
 		return right.Entries[len(right.Entries)-1].Value
 	}
-	return nil
+	return
 }
 
 // String returns a string representation of container (for debugging purposes)

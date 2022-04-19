@@ -12,8 +12,8 @@ package trees
 import "github.com/qauzy/chocolate/containers"
 
 // Tree interface that all trees implement
-type Tree[T comparable] interface {
-	containers.Container[T]
+type Tree[K comparable, V any] interface {
+	containers.Container[V]
 	// Empty() bool
 	// Size() int
 	// Clear()

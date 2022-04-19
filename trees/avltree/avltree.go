@@ -16,7 +16,7 @@ import (
 )
 
 func assertTreeImplementation() {
-	var _ trees.Tree[int] = new(Tree[int, int])
+	var _ trees.Tree[int, int] = new(Tree[int, int])
 }
 
 // Tree holds elements of the AVL tree.
