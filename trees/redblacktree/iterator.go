@@ -7,11 +7,11 @@ package redblacktree
 import "github.com/qauzy/chocolate/containers"
 
 func assertIteratorImplementation() {
-	var _ containers.ReverseIteratorWithKey[int] = (*Iterator[int, int])(nil)
+	var _ containers.ReverseIteratorWithKey[int, int] = (*Iterator[int, int])(nil)
 }
 
 // Iterator holding the iterator's state
-type Iterator[K comparable, V any] struct {
+type Iterator[K comparable, V comparable] struct {
 	tree     *Tree[K, V]
 	node     *Node[K, V]
 	position position

@@ -7,11 +7,11 @@ package doublylinkedlist
 import "github.com/qauzy/chocolate/containers"
 
 func assertEnumerableImplementation() {
-	var _ containers.EnumerableWithIndex = (*List[int])(nil)
+	var _ containers.EnumerableWithIndex[int] = (*List[int])(nil)
 }
 
 // Each calls the given function once for each element, passing that element's index and value.
-func (list *List[T]) Each(f func(index int, value interface{})) {
+func (list *List[T]) Each(f func(index int, value T)) {
 	iterator := list.Iterator()
 	for iterator.Next() {
 		f(iterator.Index(), iterator.Value())
@@ -30,7 +30,7 @@ func (list *List[T]) Map(f func(index int, value T) T) *List[T] {
 }
 
 // Select returns a new container containing all elements for which the given function returns a true value.
-func (list *List[T]) Select(f func(index int, value interface{}) bool) *List[T] {
+func (list *List[T]) Select(f func(index int, value T) bool) *List[T] {
 	newList := &List[T]{}
 	iterator := list.Iterator()
 	for iterator.Next() {
@@ -43,7 +43,7 @@ func (list *List[T]) Select(f func(index int, value interface{}) bool) *List[T] 
 
 // Any passes each element of the container to the given function and
 // returns true if the function ever returns true for any element.
-func (list *List[T]) Any(f func(index int, value interface{}) bool) bool {
+func (list *List[T]) Any(f func(index int, value T) bool) bool {
 	iterator := list.Iterator()
 	for iterator.Next() {
 		if f(iterator.Index(), iterator.Value()) {
@@ -55,7 +55,7 @@ func (list *List[T]) Any(f func(index int, value interface{}) bool) bool {
 
 // All passes each element of the container to the given function and
 // returns true if the function returns true for all elements.
-func (list *List[T]) All(f func(index int, value interface{}) bool) bool {
+func (list *List[T]) All(f func(index int, value T) bool) bool {
 	iterator := list.Iterator()
 	for iterator.Next() {
 		if !f(iterator.Index(), iterator.Value()) {
@@ -68,7 +68,7 @@ func (list *List[T]) All(f func(index int, value interface{}) bool) bool {
 // Find passes each element of the container to the given function and returns
 // the first (index,value) for which the function is true or -1,nil otherwise
 // if no element matches the criteria.
-func (list *List[T]) Find(f func(index int, value interface{}) bool) (index int, value interface{}) {
+func (list *List[T]) Find(f func(index int, value T) bool) (index int, value T) {
 	iterator := list.Iterator()
 	for iterator.Next() {
 		if f(iterator.Index(), iterator.Value()) {

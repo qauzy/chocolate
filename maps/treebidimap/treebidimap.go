@@ -32,7 +32,7 @@ func assertMapImplementation() {
 // Map holds the elements in two red-black trees.
 type Map[K comparable, V comparable] struct {
 	forwardMap      redblacktree.Tree[K, V]
-	inverseMap      redblacktree.Tree[K, V]
+	inverseMap      redblacktree.Tree[V, K]
 	keyComparator   utils.Comparator[K]
 	valueComparator utils.Comparator[V]
 }
@@ -46,7 +46,7 @@ type data struct {
 func NewWith[K comparable, V comparable](keyComparator utils.Comparator[K], valueComparator utils.Comparator[V]) *Map[K, V] {
 	return &Map[K, V]{
 		forwardMap:      *redblacktree.NewWith[K, V](keyComparator),
-		inverseMap:      *redblacktree.NewWith[K, V](valueComparator),
+		inverseMap:      *redblacktree.NewWith[V, K](valueComparator),
 		keyComparator:   keyComparator,
 		valueComparator: valueComparator,
 	}
@@ -63,7 +63,7 @@ func NewWithStringComparators() *Map[string, string] {
 }
 
 // Put inserts element into the map.
-func (m *Map[K, V]) Put(key interface{}, value interface{}) {
+func (m *Map[K, V]) Put(key K, value V) {
 	if d, ok := m.forwardMap.Get(key); ok {
 		m.inverseMap.Remove(d.(*data).value)
 	}
@@ -77,7 +77,7 @@ func (m *Map[K, V]) Put(key interface{}, value interface{}) {
 
 // Get searches the element in the map by key and returns its value or nil if key is not found in map.
 // Second return parameter is true if key was found, otherwise false.
-func (m *Map[K, V]) Get(key interface{}) (value interface{}, found bool) {
+func (m *Map[K, V]) Get(key K) (value V, found bool) {
 	if d, ok := m.forwardMap.Get(key); ok {
 		return d.(*data).value, true
 	}
@@ -86,7 +86,7 @@ func (m *Map[K, V]) Get(key interface{}) (value interface{}, found bool) {
 
 // GetKey searches the element in the map by value and returns its key or nil if value is not found in map.
 // Second return parameter is true if value was found, otherwise false.
-func (m *Map[K, V]) GetKey(value interface{}) (key interface{}, found bool) {
+func (m *Map[K, V]) GetKey(value V) (key K, found bool) {
 	if d, ok := m.inverseMap.Get(value); ok {
 		return d.(*data).key, true
 	}
@@ -94,7 +94,7 @@ func (m *Map[K, V]) GetKey(value interface{}) (key interface{}, found bool) {
 }
 
 // Remove removes the element from the map by key.
-func (m *Map[K, V]) Remove(key interface{}) {
+func (m *Map[K, V]) Remove(key K) {
 	if d, found := m.forwardMap.Get(key); found {
 		m.forwardMap.Remove(key)
 		m.inverseMap.Remove(d.(*data).value)
@@ -118,7 +118,7 @@ func (m *Map[K, V]) Keys() []K {
 
 // Values returns all values (ordered).
 func (m *Map[K, V]) Values() []V {
-	return m.inverseMap.Values()
+	return m.forwardMap.Values()
 }
 
 // Clear removes all elements from the map.

@@ -7,7 +7,6 @@ package redblacktree
 import (
 	"encoding/json"
 	"github.com/qauzy/chocolate/containers"
-	"github.com/qauzy/chocolate/utils"
 )
 
 func assertSerializationImplementation() {
@@ -20,7 +19,7 @@ func (tree *Tree[K, V]) ToJSON() ([]byte, error) {
 	elements := make(map[K]V)
 	it := tree.Iterator()
 	for it.Next() {
-		elements[utils.ToString(it.Key())] = it.Value()
+		elements[it.Key()] = it.Value()
 	}
 	return json.Marshal(&elements)
 }

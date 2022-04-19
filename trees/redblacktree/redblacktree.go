@@ -28,7 +28,7 @@ const (
 )
 
 // Tree holds elements of the red-black tree
-type Tree[K comparable, V any] struct {
+type Tree[K comparable, V comparable] struct {
 	Root       *Node[K, V]
 	size       int
 	Comparator utils.Comparator[K]
@@ -45,7 +45,7 @@ type Node[K comparable, V any] struct {
 }
 
 // NewWith instantiates a red-black tree with the custom comparator.
-func NewWith[K comparable, V any](comparator utils.Comparator[K]) *Tree[K, V] {
+func NewWith[K comparable, V comparable](comparator utils.Comparator[K]) *Tree[K, V] {
 	return &Tree[K, V]{Comparator: comparator}
 }
 
@@ -110,7 +110,7 @@ func (tree *Tree[K, V]) Get(key K) (value V, found bool) {
 	if node != nil {
 		return node.Value, true
 	}
-	return nil, false
+	return
 }
 
 // Remove remove the node from the tree by key.

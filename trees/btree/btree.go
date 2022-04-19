@@ -30,10 +30,10 @@ func assertTreeImplementation() {
 
 // Tree holds elements of the B-tree
 type Tree[K comparable, V any] struct {
-	Root       *Node[K, V]      // Root node
-	Comparator utils.Comparator // Key comparator
-	size       int              // Total number of keys in the tree
-	m          int              // order (maximum number of children)
+	Root       *Node[K, V]         // Root node
+	Comparator utils.Comparator[K] // Key comparator
+	size       int                 // Total number of keys in the tree
+	m          int                 // order (maximum number of children)
 }
 
 // Node is a single element within the tree
@@ -50,7 +50,7 @@ type Entry[K comparable, V any] struct {
 }
 
 // NewWith instantiates a B-tree with the order (maximum number of children) and a custom key comparator.
-func NewWith[K comparable, V any](order int, comparator utils.Comparator) *Tree[K, V] {
+func NewWith[K comparable, V any](order int, comparator utils.Comparator[K]) *Tree[K, V] {
 	if order < 3 {
 		panic("Invalid order, should be at least 3")
 	}
@@ -58,13 +58,13 @@ func NewWith[K comparable, V any](order int, comparator utils.Comparator) *Tree[
 }
 
 // NewWithIntComparator instantiates a B-tree with the order (maximum number of children) and the IntComparator, i.e. keys are of type int.
-func NewWithIntComparator[K comparable, V any](order int) *Tree[K, V] {
-	return NewWith[K, V](order, utils.IntComparator)
+func NewWithIntComparator[V any](order int) *Tree[int, V] {
+	return NewWith[int, V](order, utils.IntComparator)
 }
 
 // NewWithStringComparator instantiates a B-tree with the order (maximum number of children) and the StringComparator, i.e. keys are of type string.
-func NewWithStringComparator[K comparable, V any](order int) *Tree[K, V] {
-	return NewWith[K, V](order, utils.StringComparator)
+func NewWithStringComparator[V any](order int) *Tree[string, V] {
+	return NewWith[string, V](order, utils.StringComparator)
 }
 
 // Put inserts key-value pair node into the tree.

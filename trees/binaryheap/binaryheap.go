@@ -27,22 +27,22 @@ func assertTreeImplementation() {
 // Heap[T] holds elements in an array-list
 type Heap[T comparable] struct {
 	list       arraylist.List[T]
-	Comparator utils.Comparator
+	Comparator utils.Comparator[T]
 }
 
 // NewWith instantiates a new empty heap tree with the custom comparator.
-func NewWith[T comparable](comparator utils.Comparator) *Heap[T] {
+func NewWith[T comparable](comparator utils.Comparator[T]) *Heap[T] {
 	return &Heap[T]{list: arraylist.New[T](), Comparator: comparator}
 }
 
 // NewWithIntComparator instantiates a new empty heap with the IntComparator, i.e. elements are of type int.
-func NewWithIntComparator[T comparable]() *Heap[T] {
-	return &Heap[T]{list: arraylist.New[T](), Comparator: utils.IntComparator}
+func NewWithIntComparator() *Heap[int] {
+	return &Heap[int]{list: arraylist.New[int](), Comparator: utils.IntComparator}
 }
 
 // NewWithStringComparator instantiates a new empty heap with the StringComparator, i.e. elements are of type string.
-func NewWithStringComparator[T comparable]() *Heap[T] {
-	return &Heap[T]{list: arraylist.New[T](), Comparator: utils.StringComparator}
+func NewWithStringComparator() *Heap[string] {
+	return &Heap[string]{list: arraylist.New[string](), Comparator: utils.StringComparator}
 }
 
 // Push adds a value onto the heap and bubbles it up accordingly.

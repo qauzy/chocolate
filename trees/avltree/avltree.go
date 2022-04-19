@@ -21,9 +21,9 @@ func assertTreeImplementation() {
 
 // Tree holds elements of the AVL tree.
 type Tree[K comparable, V any] struct {
-	Root       *Node[K, V]      // Root node
-	Comparator utils.Comparator // Key comparator
-	size       int              // Total number of keys in the tree
+	Root       *Node[K, V]         // Root node
+	Comparator utils.Comparator[K] // Key comparator
+	size       int                 // Total number of keys in the tree
 }
 
 // Node is a single element within the tree
@@ -36,18 +36,18 @@ type Node[K comparable, V any] struct {
 }
 
 // NewWith instantiates an AVL tree with the custom comparator.
-func NewWith[K comparable, V any](comparator utils.Comparator) *Tree[K, V] {
+func NewWith[K comparable, V any](comparator utils.Comparator[K]) *Tree[K, V] {
 	return &Tree[K, V]{Comparator: comparator}
 }
 
 // NewWithIntComparator instantiates an AVL tree with the IntComparator, i.e. keys are of type int.
-func NewWithIntComparator[K comparable, V any]() *Tree[K, V] {
-	return &Tree[K, V]{Comparator: utils.IntComparator}
+func NewWithIntComparator[V any]() *Tree[int, V] {
+	return &Tree[int, V]{Comparator: utils.IntComparator}
 }
 
 // NewWithStringComparator instantiates an AVL tree with the StringComparator, i.e. keys are of type string.
-func NewWithStringComparator[K comparable, V any]() *Tree[K, V] {
-	return &Tree[K, V]{Comparator: utils.StringComparator}
+func NewWithStringComparator[V any]() *Tree[string, V] {
+	return &Tree[string, V]{Comparator: utils.StringComparator}
 }
 
 // Put inserts node into the tree.

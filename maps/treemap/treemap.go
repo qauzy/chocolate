@@ -24,35 +24,35 @@ func assertMapImplementation() {
 }
 
 // Map holds the elements in a red-black tree
-type Map[K comparable, V any] struct {
+type Map[K comparable, V comparable] struct {
 	tree *rbt.Tree[K, V]
 }
 
 // NewWith instantiates a tree map with the custom comparator.
-func NewWith[K comparable, V any](comparator utils.Comparator[K]) *Map[K, V] {
+func NewWith[K comparable, V comparable](comparator utils.Comparator[K]) *Map[K, V] {
 	return &Map[K, V]{tree: rbt.NewWith[K, V](comparator)}
 }
 
 // NewWithIntComparator instantiates a tree map with the IntComparator, i.e. keys are of type int.
-func NewWithIntComparator[K comparable, V any]() *Map[K, V] {
-	return &Map[K, V]{tree: rbt.NewWithIntComparator[K, V]()}
+func NewWithIntComparator[V comparable]() *Map[int, V] {
+	return &Map[int, V]{tree: rbt.NewWithIntComparator[V]()}
 }
 
 // NewWithStringComparator instantiates a tree map with the StringComparator, i.e. keys are of type string.
-func NewWithStringComparator[K comparable, V any]() *Map[K, V] {
-	return &Map[K, V]{tree: rbt.NewWithStringComparator[K, V]()}
+func NewWithStringComparator[V comparable]() *Map[string, V] {
+	return &Map[string, V]{tree: rbt.NewWithStringComparator[V]()}
 }
 
 // Put inserts key-value pair into the map.
 // Key should adhere to the comparator's type assertion, otherwise method panics.
-func (m *Map[K, V]) Put(key K, value interface{}) {
+func (m *Map[K, V]) Put(key K, value V) {
 	m.tree.Put(key, value)
 }
 
 // Get searches the element in the map by key and returns its value or nil if key is not found in tree.
 // Second return parameter is true if key was found, otherwise false.
 // Key should adhere to the comparator's type assertion, otherwise method panics.
-func (m *Map[K, V]) Get(key K) (value interface{}, found bool) {
+func (m *Map[K, V]) Get(key K) (value V, found bool) {
 	return m.tree.Get(key)
 }
 
@@ -89,7 +89,7 @@ func (m *Map[K, V]) Clear() {
 
 // Min returns the minimum key and its value from the tree map.
 // Returns nil, nil if map is empty.
-func (m *Map[K, V]) Min() (key K, value interface{}) {
+func (m *Map[K, V]) Min() (key K, value V) {
 	if node := m.tree.Left(); node != nil {
 		return node.Key, node.Value
 	}
@@ -98,7 +98,7 @@ func (m *Map[K, V]) Min() (key K, value interface{}) {
 
 // Max returns the maximum key and its value from the tree map.
 // Returns nil, nil if map is empty.
-func (m *Map[K, V]) Max() (key K, value interface{}) {
+func (m *Map[K, V]) Max() (key K, value V) {
 	if node := m.tree.Right(); node != nil {
 		return node.Key, node.Value
 	}
