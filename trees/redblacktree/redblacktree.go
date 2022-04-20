@@ -18,7 +18,7 @@ import (
 )
 
 func assertTreeImplementation() {
-	var _ trees.Tree[int] = (*Tree[int, int])(nil)
+	var _ trees.Tree[int, int] = (*Tree[int, int])(nil)
 }
 
 type color bool

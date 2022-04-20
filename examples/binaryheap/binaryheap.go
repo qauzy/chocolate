@@ -29,12 +29,12 @@ func main() {
 	heap.Size()                               // 0
 
 	// Max-heap
-	inverseIntComparator := func(a, b interface{}) int {
+	inverseIntComparator := func(a, b int) int {
 		return -utils.IntComparator(a, b)
 	}
-	heap = binaryheap.NewWith(inverseIntComparator) // empty (min-heap)
-	heap.Push(2)                                    // 2
-	heap.Push(3)                                    // 3, 2
-	heap.Push(1)                                    // 3, 2, 1
-	heap.Values()                                   // 3, 2, 1
+	heap = binaryheap.NewWith[int](inverseIntComparator) // empty (min-heap)
+	heap.Push(2)                                         // 2
+	heap.Push(3)                                         // 3, 2
+	heap.Push(1)                                         // 3, 2, 1
+	heap.Values()                                        // 3, 2, 1
 }

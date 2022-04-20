@@ -62,14 +62,13 @@ func (s *IntStream) MapToLong(fn func(each int) int64) *LongStream {
 	return &LongStream{dst}
 }
 
-//
-//func (s *IntStream) MapToDouble(fn func(each int) float64) float64 {
-//	var dst float64
-//	for _, x := range s.list {
-//		dst = fn(x)
-//	}
-//	return dst
-//}
+func (s *IntStream) MapToDouble(fn func(each int) float64) float64 {
+	var dst float64
+	for _, x := range s.list {
+		dst = fn(x)
+	}
+	return dst
+}
 
 func (s *IntStream) Count() int {
 	return len(s.list)

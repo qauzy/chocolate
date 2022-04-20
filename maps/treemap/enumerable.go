@@ -72,12 +72,12 @@ func (m *Map[K, V]) All(f func(key K, value V) bool) bool {
 // Find passes each element of the container to the given function and returns
 // the first (key,value) for which the function is true or nil,nil otherwise if no element
 // matches the criteria.
-func (m *Map[K, V]) Find(f func(key K, value V) bool) (K, V) {
+func (m *Map[K, V]) Find(f func(key K, value V) bool) (k K, v V) {
 	iterator := m.Iterator()
 	for iterator.Next() {
 		if f(iterator.Key(), iterator.Value()) {
 			return iterator.Key(), iterator.Value()
 		}
 	}
-	return nil, nil
+	return
 }

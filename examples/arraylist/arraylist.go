@@ -6,41 +6,12 @@ package main
 
 import (
 	"fmt"
-	"go/ast"
-	"go/parser"
-	"go/token"
-
 	"github.com/qauzy/chocolate/lists/arraylist"
 	"github.com/qauzy/chocolate/utils"
 )
 
-var srcCode = `
-package main
-
-import (
-	"fmt"
-)
-type List[T comparable] struct {
-	elements []T
-	size     int
-}
-
-func main() {
-	var m *hashmap.Map[int,string]
-    m = hashmap.New[int, string]()
-	//list = arraylist.New[string]()
-}
-
-`
-
 // ArrayListExample to demonstrate basic usage of ArrayList
 func main() {
-	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, "", srcCode, 0)
-	if err != nil {
-		fmt.Printf("err = %s", err)
-	}
-	ast.Print(fset, f)
 
 	var list arraylist.List[string]
 	list = arraylist.New[string]()

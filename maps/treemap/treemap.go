@@ -93,7 +93,7 @@ func (m *Map[K, V]) Min() (key K, value V) {
 	if node := m.tree.Left(); node != nil {
 		return node.Key, node.Value
 	}
-	return nil, nil
+	return
 }
 
 // Max returns the maximum key and its value from the tree map.
@@ -102,7 +102,7 @@ func (m *Map[K, V]) Max() (key K, value V) {
 	if node := m.tree.Right(); node != nil {
 		return node.Key, node.Value
 	}
-	return nil, nil
+	return
 }
 
 // Floor finds the floor key-value pair for the input key.
@@ -119,7 +119,7 @@ func (m *Map[K, V]) Floor(key K) (foundKey K, foundValue V) {
 	if found {
 		return node.Key, node.Value
 	}
-	return nil, nil
+	return
 }
 
 // Ceiling finds the ceiling key-value pair for the input key.
@@ -136,7 +136,7 @@ func (m *Map[K, V]) Ceiling(key K) (foundKey K, foundValue V) {
 	if found {
 		return node.Key, node.Value
 	}
-	return nil, nil
+	return
 }
 
 // String returns a string representation of container
