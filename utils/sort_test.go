@@ -10,16 +10,16 @@ import (
 )
 
 func TestSortInts(t *testing.T) {
-	ints := []interface{}{}
+	var ints []int
 	ints = append(ints, 4)
 	ints = append(ints, 1)
 	ints = append(ints, 2)
 	ints = append(ints, 3)
 
-	Sort(ints, IntComparator)
+	Sort[int](ints, IntComparator)
 
 	for i := 1; i < len(ints); i++ {
-		if ints[i-1].(int) > ints[i].(int) {
+		if ints[i-1] > ints[i] {
 			t.Errorf("Not sorted!")
 		}
 	}
@@ -28,16 +28,16 @@ func TestSortInts(t *testing.T) {
 
 func TestSortStrings(t *testing.T) {
 
-	strings := []interface{}{}
+	var strings []string
 	strings = append(strings, "d")
 	strings = append(strings, "a")
 	strings = append(strings, "b")
 	strings = append(strings, "c")
 
-	Sort(strings, StringComparator)
+	Sort[string](strings, StringComparator)
 
 	for i := 1; i < len(strings); i++ {
-		if strings[i-1].(string) > strings[i].(string) {
+		if strings[i-1] > strings[i] {
 			t.Errorf("Not sorted!")
 		}
 	}
@@ -80,13 +80,13 @@ func TestSortStructs(t *testing.T) {
 }
 
 func TestSortRandom(t *testing.T) {
-	ints := []interface{}{}
+	var ints []int
 	for i := 0; i < 10000; i++ {
 		ints = append(ints, rand.Int())
 	}
 	Sort(ints, IntComparator)
 	for i := 1; i < len(ints); i++ {
-		if ints[i-1].(int) > ints[i].(int) {
+		if ints[i-1] > ints[i] {
 			t.Errorf("Not sorted!")
 		}
 	}
@@ -94,7 +94,7 @@ func TestSortRandom(t *testing.T) {
 
 func BenchmarkGoSortRandom(b *testing.B) {
 	b.StopTimer()
-	ints := []interface{}{}
+	var ints []int
 	for i := 0; i < 100000; i++ {
 		ints = append(ints, rand.Int())
 	}

@@ -23,7 +23,7 @@ func TestIntComparator(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := IntComparator(test[0], test[1])
+		actual := IntComparator(test[0].(int), test[1].(int))
 		expected := test[2]
 		if actual != expected {
 			t.Errorf("Got %v expected %v", actual, expected)
@@ -46,7 +46,7 @@ func TestStringComparator(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := StringComparator(test[0], test[1])
+		actual := StringComparator(test[0].(string), test[1].(string))
 		expected := test[2]
 		if actual != expected {
 			t.Errorf("Got %v expected %v", actual, expected)
@@ -66,7 +66,7 @@ func TestTimeComparator(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := TimeComparator(test[0], test[1])
+		actual := TimeComparator(test[0].(time.Time), test[1].(time.Time))
 		expected := test[2]
 		if actual != expected {
 			t.Errorf("Got %v expected %v", actual, expected)
