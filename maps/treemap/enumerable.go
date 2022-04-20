@@ -34,7 +34,7 @@ func (m *Map[K, V]) Map(f func(key1 K, value1 V) (K, V)) *Map[K, V] {
 }
 
 // Select returns a new container containing all elements for which the given function returns a true value.
-func (m *Map[K, V]) Select(f func(key interface{}, value interface{}) bool) *Map[K, V] {
+func (m *Map[K, V]) Select(f func(key K, value V) bool) *Map[K, V] {
 	newMap := &Map[K, V]{tree: rbt.NewWith[K, V](m.tree.Comparator)}
 	iterator := m.Iterator()
 	for iterator.Next() {
